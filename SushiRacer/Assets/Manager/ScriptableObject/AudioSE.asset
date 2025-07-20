@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e34775fc57ecd4eb5204281d49e8b9, type: 3}
+  m_Name: AudioSE
+  m_EditorClassIdentifier: Assembly-CSharp::AudioDataScriptableObject
+  items:
+  - id: Maingame_Kusari_Break
+    m_audioClip: {fileID: 8300000, guid: 72ab2ff91bba2fa48b2fb12feab86dcd, type: 3}
+    m_volume: 0.814
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0
+  - id: Maingame_Kusari_jhbgbbv
+    m_audioClip: {fileID: 8300000, guid: 72ab2ff91bba2fa48b2fb12feab86dcd, type: 3}
+    m_volume: 0.258
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0
+  audioGroup: {fileID: 3982537492441001337, guid: b0936c9b96666bb4499817742b4a91c8, type: 2}

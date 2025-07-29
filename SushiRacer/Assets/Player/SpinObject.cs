@@ -4,16 +4,25 @@ using UnityEngine;
 //--------------------------------------
 // SpinInputの回転を利用して毎フレーム回転を行う
 
+[RequireComponent( typeof( SushiComponent ) )]
 public class SpinObject : MonoBehaviour
 {
+    [SerializeField]
+    private SushiComponent sushiComponent; // 対象のSushiComponent
+
     [SerializeField]
     private SpinImput spinInput; // SpinInputの参照
 
     [SerializeField]
     private Transform spinObject; // 回転させるオブジェクト
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private float rotationSpeed = 1f; // 回転速度の倍率
+
+    private void Start()
+    {
+        rotationSpeed = sushiComponent.GetSushiData().rotationSpeed;
+    }
 
     private void FixedUpdate()
     {

@@ -15,15 +15,15 @@ MonoBehaviour:
   items:
   - id: Tuna
     sushiPrefub: {fileID: 5890650759879822583, guid: ca000786a74233c44bfe31510d33f093, type: 3}
-    maxFrontSpeed: 5000
-    accelSpinRate: 50
+    maxFrontSpeed: 2000
+    accelSpinRate: 10
     decaySpinRate: 1
     rotationSpeed: 3800
     inputLimit: 0.1
     angleLimit: 5
     maxSideSpeed: 50
     accelSideRate: 5
-    rotationMinSpeed: 10
+    rotationMinSpeed: 20
     rotationMaxSpeed: 60
   - id: Ikura
     sushiPrefub: {fileID: 7621135768791106524, guid: 5c7ae701c56f45e409b06148f7f1e3ae, type: 3}

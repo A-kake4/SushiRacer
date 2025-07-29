@@ -17,7 +17,10 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     private void Start()
     {
         // キーボードの入力設定
-        InputManager.Instance.RegisterPlayerDevice(1,Keyboard.current);
-        InputManager.Instance.RegisterPlayerDevice(1,Mouse.current);
+        //InputManager.Instance.RegisterPlayerDevice(1,Keyboard.current);
+        //InputManager.Instance.RegisterPlayerDevice(1,Mouse.current);
+
+        // ゲームパッドの入力設定
+        InputManager.Instance.RegisterPlayerDevice( 1, Gamepad.current );
     }
 }

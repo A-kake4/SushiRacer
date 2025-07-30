@@ -86,14 +86,14 @@ public partial class PlayerMoveAction3d : MonoBehaviour
 
         // -----------------------------------------
         // 移動入力の受付
-        Vector2 moveInput2D = InputManager.Instance.GetActionValue<Vector2>("MainGame", "Move");
+        Vector2 moveInput2D = InputManager.Instance.GetActionValue<Vector2>(1, "MainGame", "Move");
         m_moveInput.x = moveInput2D.x;
         m_moveInput.z = moveInput2D.y;
 
         //-----------------------------------------
         // ジャンプ入力の受付
         m_jumpInputOld = m_jumpInput;
-        m_jumpInput = InputManager.Instance.GetActionValue<bool>( "MainGame", "Jump" );
+        m_jumpInput = InputManager.Instance.GetActionValue<bool>(1, "MainGame", "Jump" );
 
         if ( m_jumpInput && !m_falling && !m_jumpInputOld )
         {
@@ -144,7 +144,7 @@ public partial class PlayerMoveAction3d : MonoBehaviour
     {
         // 地面判定を行う
         Vector3 groundCheckPosition = m_playerData.m_groundCheckPosition + transform.position;
-        Vector3 groundCheckSize = new Vector3(m_playerData.m_groundCheckWidth, m_playerData.m_groundCheckDistance, m_playerData.m_groundCheckWidth);
+        Vector3 groundCheckSize = new(m_playerData.m_groundCheckWidth, m_playerData.m_groundCheckDistance, m_playerData.m_groundCheckWidth);
         Collider[] hitColliders = Physics.OverlapBox(
             groundCheckPosition,
             groundCheckSize / 2,
@@ -204,7 +204,7 @@ public partial class PlayerMoveAction3d : MonoBehaviour
     {
         // 地面判定の範囲を可視化
         Vector3 groundCheckPosition = m_playerData.m_groundCheckPosition + transform.position;
-        Vector3 groundCheckSize = new Vector3(m_playerData.m_groundCheckWidth, m_playerData.m_groundCheckDistance, m_playerData.m_groundCheckWidth);
+        Vector3 groundCheckSize = new(m_playerData.m_groundCheckWidth, m_playerData.m_groundCheckDistance, m_playerData.m_groundCheckWidth);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube( groundCheckPosition, groundCheckSize );
     }

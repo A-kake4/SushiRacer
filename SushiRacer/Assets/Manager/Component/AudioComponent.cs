@@ -77,7 +77,12 @@ public class AudioComponent : BaseComponent<AudioItem, AudioDataScriptableObject
 
         if ( IsPlayOnAwake )
         {
-            m_audioSource?.Play();
+            if ( m_audioSource == null )
+            {
+                Debug.LogWarning( "ƒGƒ‰[FAudioSource‚ª‚ ‚è‚Ü‚¹‚ñ" );
+                return;
+            }
+            m_audioSource.Play();
             OnPlay?.Invoke();
         }
     }

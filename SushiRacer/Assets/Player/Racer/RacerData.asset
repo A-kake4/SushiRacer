@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a44fee585764e43b4a9bf786000af4, type: 3}
+  m_Name: RacerData
+  m_EditorClassIdentifier: 
+  items:
+  - id: Tuna
+    sushiPrefub: {fileID: 5890650759879822583, guid: ca000786a74233c44bfe31510d33f093, type: 3}
+    maxFrontSpeed: 2000
+    accelSpinRate: 10
+    decaySpinRate: 1
+    rotationSpeed: 3800
+    inputLimit: 0.1
+    angleLimit: 5
+    maxSideSpeed: 50
+    accelSideRate: 5
+    rotationMinSpeed: 20
+    rotationMaxSpeed: 60
+  - id: Ikura
+    sushiPrefub: {fileID: 7621135768791106524, guid: 5c7ae701c56f45e409b06148f7f1e3ae, type: 3}
+    maxFrontSpeed: 5000
+    accelSpinRate: 50
+    decaySpinRate: 1
+    rotationSpeed: 3800
+    inputLimit: 0.1
+    angleLimit: 5
+    maxSideSpeed: 50
+    accelSideRate: 5
+    rotationMinSpeed: 10
+    rotationMaxSpeed: 60

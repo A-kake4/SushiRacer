@@ -89,12 +89,12 @@ public partial class PlayerMoveAction2d : MonoBehaviour
 
         // -----------------------------------------
         // 移動入力の受付
-        m_moveInputX = InputManager.Instance.GetActionValue<Vector2>( "MainGame", "Move" ).x;
+        m_moveInputX = InputManager.Instance.GetActionValue<Vector2>(1, "MainGame", "Move" ).x;
 
         //-----------------------------------------
         // ジャンプ入力の受付
         m_jumpInputOld = m_jumpInput;
-        m_jumpInput = InputManager.Instance.GetActionValue<bool>( "MainGame", "Jump" );
+        m_jumpInput = InputManager.Instance.GetActionValue<bool>(1, "MainGame", "Jump" );
 
         if ( m_jumpInput && !m_falling && !m_jumpInputOld )
         {

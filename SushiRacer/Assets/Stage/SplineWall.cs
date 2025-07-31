@@ -98,64 +98,87 @@ public class SplineWall : MonoBehaviour
 
     public void Rebuild()
     {
-        if (!updating)
-        {
+        if ( !updating )
             return;
-        }
 
-        if (splineContainer?.Spline == null)
+        if ( splineContainer?.Spline == null )
         {
             Debug.LogWarning( "Spline が設定されていません。" );
             return;
         }
 
         // スプラインの総長を取得（キャッシュを使用）
-        float totalLength = GetSplineLength( splineContainer.Spline );
+        float totalLength = GetSplineLength(splineContainer.Spline);
 
         // divided を計算
-        int divided = Mathf.Max( 2, Mathf.CeilToInt( totalLength / segmentLength ) );
+        int divided = Mathf.Max(2, Mathf.CeilToInt(totalLength / segmentLength));
 
         mesh.Clear();
 
         try
         {
-            var meshDataArray = Mesh.AllocateWritableMeshData( 1 );
+            var meshDataArray = Mesh.AllocateWritableMeshData(1);
             var meshData = meshDataArray[0];
             meshData.subMeshCount = 1;
 
-            int vertexCount = 2 * ( divided + 1 );
+            int vertexCount = 2 * (divided + 1);
             int indexCount = 6 * divided;
 
             meshData.SetIndexBufferParams( indexCount, IndexFormat.UInt32 );
             meshData.SetVertexBufferParams( vertexCount, new VertexAttributeDescriptor[]
             {
-                new VertexAttributeDescriptor(VertexAttribute.Position),
+            new VertexAttributeDescriptor(VertexAttribute.Position),
             } );
 
             var vertices = meshData.GetVertexData<VertexData>();
             var indices = meshData.GetIndexData<UInt32>();
-            for (int i = 0; i <= divided; ++i)
+
+            Vector3 firstOffsetPos = Vector3.zero;
+            Vector3 firstPosUpper = Vector3.zero;
+
+            for ( int i = 0; i <= divided; ++i )
             {
                 float t = (float)i / divided;
-                // スプラインから位置を評価し、Y 座標は無視してXZ成分のみを残す
-                splineContainer.Spline.Evaluate( t, out var pos, out _, out _ );
-                Vector3 position = new Vector3( pos.x, uniformY, pos.z );
+                splineContainer.Spline.Evaluate( t, out var pos, out var tangent, out _ );
 
-                // 下側の頂点を設定
+                // XZ平面の法線方向を計算
+                Vector3 tangentXZ = new Vector3(tangent.x, 0f, tangent.z).normalized;
+                Vector3 normalXZ = Vector3.Cross(Vector3.up, tangentXZ).normalized;
+
+                Vector3 vector3 = pos;
+
+                Vector3 offsetPos = vector3 + normalXZ * expandFactor;
+                offsetPos.y = uniformY;
+
+                Vector3 posUpper = offsetPos;
+                posUpper.y += height;
+
+                // 始点の拡縮済み座標を保存
+                if ( i == 0 )
+                {
+                    firstOffsetPos = offsetPos;
+                    firstPosUpper = posUpper;
+                }
+
+                // 終点（Closed時）は始点の拡縮済み座標を使う
+                if ( splineContainer.Spline.Closed && i == divided )
+                {
+                    offsetPos = firstOffsetPos;
+                    posUpper = firstPosUpper;
+                }
+
                 var vertex0 = vertices[2 * i];
-                vertex0.Position = position;
+                vertex0.Position = offsetPos;
                 vertices[2 * i] = vertex0;
 
-                // 上側の頂点は uniformY + height とする
                 var vertex1 = vertices[2 * i + 1];
-                Vector3 posUpper = position;
-                posUpper.y += height;
                 vertex1.Position = posUpper;
                 vertices[2 * i + 1] = vertex1;
             }
 
 
-            for (int i = 0; i < divided; ++i)
+
+            for ( int i = 0; i < divided; ++i )
             {
                 int baseIndex = 6 * i;
                 int vertIndex = 2 * i;
@@ -174,21 +197,19 @@ public class SplineWall : MonoBehaviour
             mesh.RecalculateNormals();
 
             // コライダーを更新
-            if (meshCollider != null)
+            if ( meshCollider != null )
             {
                 meshCollider.sharedMesh = null;
                 meshCollider.sharedMesh = mesh;
             }
         }
-        catch (Exception ex)
+        catch ( Exception ex )
         {
             Debug.LogError( $"メッシュの再構築中にエラーが発生しました: {ex.Message}\n{ex.StackTrace}" );
             return;
         }
-
-        // expandFactor による内側拡縮を適用
-        ApplyExpandFactor();
     }
+
 
     private void ApplyExpandFactor()
     {

@@ -3,9 +3,13 @@ using UnityEngine;
 /// <summary>
 /// カメラの向きを基準としたプレイヤーの移動方向を取得するスクリプト
 /// </summary>
+[RequireComponent(typeof(SushiComponent))]
 [RequireComponent( typeof( PlayerTotalVelocity3d ) )]
 public class PlayerSideMoveCameraTarget : MonoBehaviour
 {
+    [SerializeField, ReadOnly]
+    private SushiComponent sushiComponent;
+
     [SerializeField, ReadOnly]
     private PlayerTotalVelocity3d playerTotalVelocity;
 
@@ -15,14 +19,14 @@ public class PlayerSideMoveCameraTarget : MonoBehaviour
     [SerializeField, ReadOnly]
     private SpinImput spinImput;
 
-    [SerializeField]
-    private float acceleration = 10f; // プレイヤーの加速度
-    [SerializeField]
-    private float maxSpeed = 20f; // プレイヤーの最大速度
+    [SerializeField, ReadOnly]
+    private float accelSideRate = 10f; // プレイヤーの加速度
+    [SerializeField, ReadOnly]
+    private float maxSideSpeed = 20f; // プレイヤーの最大速度
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private float rotationMinSpeed = 0.1f;
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private float rotationMaxSpeed = 3f; // プレイヤーの回転速度
 
     private Vector3 moveDirection; // プレイヤーの移動方向
@@ -33,6 +37,16 @@ public class PlayerSideMoveCameraTarget : MonoBehaviour
         playerTotalVelocity = GetComponent<PlayerTotalVelocity3d>();
         playerRigidbody = GetComponent<Rigidbody>();
         spinImput = GetComponent<SpinImput>();
+        sushiComponent = GetComponent<SushiComponent>();
+    }
+
+    private void Start()
+    {
+        var sushiData = sushiComponent.GetSushiData();
+        accelSideRate = sushiData.accelSideRate;
+        maxSideSpeed = sushiData.maxSideSpeed;
+        rotationMaxSpeed = sushiData.rotationMaxSpeed;
+        rotationMinSpeed = sushiData.rotationMinSpeed;
     }
 
     private void FixedUpdate()
@@ -49,13 +63,13 @@ public class PlayerSideMoveCameraTarget : MonoBehaviour
         }
 
         // 入力を取得（移動のみ）
-        float horizontalInput = InputManager.Instance.GetActionValue<Vector2>("MainGame", "Move").x;
+        float horizontalInput = InputManager.Instance.GetActionValue<Vector2>(1,"MainGame", "Move").x;
 
         // 移動方向を計算
         moveDirection = playerRight * horizontalInput;
 
         // プレイヤーの左右速度を更新
-        Vector3 targetVelocity = moveDirection * maxSpeed;
+        Vector3 targetVelocity = moveDirection * maxSideSpeed;
         // 現在の速度を取得
         Vector3 currentVelocity = playerRigidbody.linearVelocity;
         currentVelocity.y = 0; // Y成分を除去して水平面での速度を取得
@@ -63,7 +77,7 @@ public class PlayerSideMoveCameraTarget : MonoBehaviour
         // 目標速度に向けて加速または減速
         if ( moveDirection.sqrMagnitude > 0.01f )
         {
-            Vector3 accelerationVector = moveDirection.normalized * acceleration;
+            Vector3 accelerationVector = moveDirection.normalized * accelSideRate;
 
             playerTotalVelocity.AddAngularVelocity(
                 Vector3.MoveTowards( currentVelocity, targetVelocity, accelerationVector.magnitude ) );

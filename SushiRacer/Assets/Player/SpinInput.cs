@@ -17,8 +17,12 @@
 //
 // 回転速度は絶対値とする
 
+[RequireComponent( typeof( SushiComponent ) )]
 public class SpinImput : MonoBehaviour
 {
+    [SerializeField]
+    SushiComponent sushiComponent = null; // 対象のSushiComponent
+
     [SerializeField, ReadOnly]
     private int nowSpinRotasion = 0;
 
@@ -29,22 +33,44 @@ public class SpinImput : MonoBehaviour
 
     public int NowSpinSpeed => nowSpinSpeed;
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private int spinRate = 1;        // 回転速度の加速値
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private int decayRate = 1;       // 回転速度の減速値
-    [SerializeField]
+    [SerializeField, ReadOnly]
+
     private int maxSpinSpeed = 100;  // 最大回転速度
     public int MaxSpinSpeed => maxSpinSpeed; // 最大回転速度のプロパティ
 
     private Vector2 oldInput = Vector2.zero;
     private Vector2 nowInput = Vector2.zero;
 
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private float inputLimit = 0.1f; // 入力の閾値
-
-    [SerializeField]
+    [SerializeField, ReadOnly]
     private float angleLimit = 5f; // 角度差分の閾値
+
+    private void Reset()
+    {
+        // 初期化処理
+        sushiComponent = GetComponent<SushiComponent>();
+    }
+
+    private void Start()
+    {
+        var sushiData = sushiComponent.GetSushiData();
+        if ( sushiData != null )
+        {
+            // スピン速度の設定
+            spinRate = sushiData.accelSpinRate;
+            decayRate = sushiData.decaySpinRate;
+            maxSpinSpeed = sushiData.maxFrontSpeed;
+        }
+        else
+        {
+            Debug.LogWarning( "SushiData is not set in SushiComponent." );
+        }
+    }
 
     private void Update()
     {
@@ -52,7 +78,7 @@ public class SpinImput : MonoBehaviour
         oldInput = nowInput;
 
         // ゲームパッドのベクトルを取得
-        nowInput = InputManager.Instance.GetActionValue<Vector2>( "MainGame", "Spin" );
+        nowInput = InputManager.Instance.GetActionValue<Vector2>(1, "MainGame", "Spin" );
 
         // 入力が閾値を超えた場合のみ処理
         if ( nowInput.sqrMagnitude > inputLimit * inputLimit && oldInput.sqrMagnitude > inputLimit * inputLimit )

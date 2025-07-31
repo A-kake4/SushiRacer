@@ -73,6 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3161801442253220967}
   - component: {fileID: 70299393082917535}
+  - component: {fileID: 2582059228214856152}
   - component: {fileID: 6675329270558242429}
   - component: {fileID: 7229541279875612050}
   - component: {fileID: 4910492394249098231}
@@ -130,6 +131,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 3
+--- !u!114 &2582059228214856152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544264415860441349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eee6ba2ed7d98a48964b87350017c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataSource: {fileID: 11400000, guid: 06160b8d98917a748921af52dd50733b, type: 2}
+  selectedItemNumber: 0
+  selectedItemID: Tuna
 --- !u!114 &6675329270558242429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5612bac98b0b7c54f96f862ab808d4af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiComponent: {fileID: 2582059228214856152}
   nowSpinRotasion: 0
   nowSpinSpeed: 0
   spinRate: 50
@@ -161,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ed8052a7ff7c541a9837c4c8a4ea59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiComponent: {fileID: 2582059228214856152}
   spinInput: {fileID: 6675329270558242429}
   spinObject: {fileID: 5096421256915493359}
   rotationSpeed: 3800
@@ -191,13 +209,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57421747499a19b409844ab449815ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiComponent: {fileID: 2582059228214856152}
   playerTotalVelocity: {fileID: 8476144634534593482}
   playerRigidbody: {fileID: 70299393082917535}
   spinImput: {fileID: 6675329270558242429}
-  acceleration: 5
-  maxSpeed: 50
-  rotationMinSpeed: 10
-  rotationMaxSpeed: 60
+  accelSideRate: 10
+  maxSideSpeed: 20
+  rotationMinSpeed: 0.1
+  rotationMaxSpeed: 3
 --- !u!114 &8476144634534593482
 MonoBehaviour:
   m_ObjectHideFlags: 0

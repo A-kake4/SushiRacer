@@ -11,14 +11,21 @@ public class TrackPoint
 
 public class MapMove_Tsuji : MonoBehaviour
 {
-    public Transform[] worldWaypoints;        // ワールド用ポイント
-    public RectTransform[] uiWaypoints;       // ミニマップ用ポイント
-    public RectTransform playerIcon;
-    public Transform player;
+    [SerializeField]
+    private Transform[] worldWaypoints;        // ワールド用ポイント
+  
+    [SerializeField]
+    private RectTransform[] uiWaypoints;       // ミニマップ用ポイント
+
+    [SerializeField]
+    private RectTransform playerIcon;          // プレイヤーのImage
+   
+    [SerializeField] 
+    private Transform player;                  // プレイヤーのオブジェクト
 
     private List<TrackPoint> trackPoints = new List<TrackPoint>();
 
-    void Awake()
+    void Start()
     {
         // 実際のオブジェクトから座標を取得
         for (int i = 0; i < worldWaypoints.Length; i++)

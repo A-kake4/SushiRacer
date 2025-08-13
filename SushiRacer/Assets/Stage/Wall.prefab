@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4410696766535443168}
   - component: {fileID: 4630317938463156773}
+  - component: {fileID: 8675075508139825230}
   - component: {fileID: 9014730759489369276}
   - component: {fileID: 5240009635213618224}
   - component: {fileID: 3834553491709809499}
@@ -57,7 +58,20 @@ MonoBehaviour:
   meshFilter: {fileID: 5240009635213618224}
   meshCollider: {fileID: 1414747286387586753}
   expandFactor: 0.5
-  splinePointReduction: 1
+  reverseFaces: 0
+--- !u!114 &8675075508139825230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8454664597697257797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f297408f683828b47834a5f6ae170491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniformY: 0
 --- !u!114 &9014730759489369276
 MonoBehaviour:
   m_ObjectHideFlags: 0

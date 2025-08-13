@@ -10,6 +10,8 @@ public class SplineWallEditor : Editor
     private SerializedProperty expandFactorProp;
     // 追加: uniformY プロパティ
     private SerializedProperty uniformYProp;
+    // 追加: reverseFaces プロパティ（本件以外の機能の場合はそのまま残します）
+    private SerializedProperty reverseFacesProp;
 
     void OnEnable()
     {
@@ -20,6 +22,7 @@ public class SplineWallEditor : Editor
 
         expandFactorProp = serializedObject.FindProperty( "expandFactor" );
         uniformYProp = serializedObject.FindProperty( "uniformY" );
+        reverseFacesProp = serializedObject.FindProperty( "reverseFaces" );
     }
 
     void OnDisable()
@@ -43,40 +46,6 @@ public class SplineWallEditor : Editor
                 ( target as SplineWall )?.Rebuild();
             }
         }
-
-        EditorGUILayout.Space();
-        if (GUILayout.Button( "スプラインをメッシュの形状に更新" ))
-        {
-            Undo.RecordObject( target, "Update Spline to Mesh Shape" );
-            ( target as SplineWall )?.GenerateSplineFromMesh();
-        }
-
-        // 追加機能：スプラインの回転をリセット
-        EditorGUILayout.Space();
-        EditorGUILayout.LabelField( "追加機能", EditorStyles.boldLabel );
-        if (GUILayout.Button( "スプラインの回転リセット" ))
-        {
-            Undo.RecordObject( target, "Reset Spline Rotation" );
-            ( target as SplineWall )?.ResetSplineRotation();
-        }
-
-        // 追加機能：スプラインの Y 座標を均一化
-        EditorGUILayout.Space();
-        EditorGUILayout.PropertyField( uniformYProp, new GUIContent( "均一化Y値" ) );
-        if (GUILayout.Button( "スプラインのY座標均一化" ))
-        {
-            Undo.RecordObject( target, "Uniformize Spline Y" );
-            ( target as SplineWall )?.UniformizeSplineY();
-        }
-
-        EditorGUILayout.Space();
-        if (GUILayout.Button( "メッシュの面を反転" ))
-        {
-            Undo.RecordObject( target, "Reverse Mesh Faces" );
-            ( target as SplineWall )?.ReverseMeshFaces();
-        }
-
-        serializedObject.ApplyModifiedProperties();
     }
 
     private void OnSplineChanged( Spline spline, int knotIndex, SplineModification modificationType )
@@ -100,7 +69,6 @@ public class SplineWallEditor : Editor
         {
             return;
         }
-
         if (target is SplineWall component)
         {
             component.Rebuild();

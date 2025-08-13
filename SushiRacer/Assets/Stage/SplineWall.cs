@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Splines;
-using Unity.Mathematics; // 追加
 
 [StructLayout( LayoutKind.Sequential )]
 struct VertexData
@@ -18,8 +18,8 @@ public class SplineWall : MonoBehaviour
     private bool updating = true;
 
     // 追加: Y 座標を均一化するための目標値
-    [SerializeField, Tooltip( "各スプラインの Y 座標を均一化する値" )]
-    private float uniformY = 0f;
+    //[SerializeField, Tooltip( "各スプラインの Y 座標を均一化する値" )]
+    //private float uniformY = 0f;
 
     [SerializeField, Range( 0.1f, 100f ), Tooltip( "壁の頂点間の長さ" )]
     private float segmentLength = 1.0f;
@@ -39,10 +39,16 @@ public class SplineWall : MonoBehaviour
     [SerializeField, Range( -10f, 10f )]
     private float expandFactor = 0.5f; // メッシュを拡縮する割合
 
-    [SerializeField, Range( 200, 1000 )]
-    private int splinePointReduction = 1000; // スプラインポイントの減点数
+    // メッシュの面反転を行うかどうかのフラグ【追加】
+    [SerializeField, Tooltip( "メッシュの面を反転するかどうか" )]
+    private bool reverseFaces = false;
 
     private float cachedLength = -1f;
+
+    // 外部から SplineContainer にアクセスできるプロパティ
+    public SplineContainer SplineContainerField => splineContainer;
+    // インスペクタで設定可能な uniformY の値にアクセスするプロパティ
+    //public float UniformYValue => uniformY;
 
     private void Awake()
     {
@@ -73,8 +79,7 @@ public class SplineWall : MonoBehaviour
 
         if (mesh == null)
         {
-            mesh = new Mesh();
-            mesh.name = $"{gameObject.name}_Mesh";
+            mesh = new Mesh { name = $"{gameObject.name}_Mesh" };
             meshFilter.mesh = mesh; // sharedMesh ではなく mesh を使用
         }
         else if (meshFilter.sharedMesh != mesh)
@@ -82,7 +87,7 @@ public class SplineWall : MonoBehaviour
             // 他のオブジェクトとメッシュを共有している場合、新しいメッシュを作成
             mesh = Instantiate( meshFilter.sharedMesh );
             mesh.name = $"{gameObject.name}_Mesh";
-            meshFilter.mesh = mesh; // sharedMesh ではなく mesh を使用
+            meshFilter.mesh = mesh;
         }
 
         if (!TryGetComponent( out meshCollider ))
@@ -95,39 +100,35 @@ public class SplineWall : MonoBehaviour
         }
     }
 
-
     public void Rebuild()
     {
-        if ( !updating )
+        if (!updating)
             return;
 
-        if ( splineContainer?.Spline == null )
+        if (splineContainer?.Spline == null)
         {
             Debug.LogWarning( "Spline が設定されていません。" );
             return;
         }
 
-        // スプラインの総長を取得（キャッシュを使用）
-        float totalLength = GetSplineLength(splineContainer.Spline);
-
-        // divided を計算
-        int divided = Mathf.Max(2, Mathf.CeilToInt(totalLength / segmentLength));
+        float totalLength = GetSplineLength( splineContainer.Spline );
+        int divided = Mathf.Max( 2, Mathf.CeilToInt( totalLength / segmentLength ) );
 
         mesh.Clear();
 
         try
         {
-            var meshDataArray = Mesh.AllocateWritableMeshData(1);
+            var meshDataArray = Mesh.AllocateWritableMeshData( 1 );
             var meshData = meshDataArray[0];
             meshData.subMeshCount = 1;
 
-            int vertexCount = 2 * (divided + 1);
+            int vertexCount = 2 * ( divided + 1 );
             int indexCount = 6 * divided;
 
             meshData.SetIndexBufferParams( indexCount, IndexFormat.UInt32 );
             meshData.SetVertexBufferParams( vertexCount, new VertexAttributeDescriptor[]
             {
-            new VertexAttributeDescriptor(VertexAttribute.Position),
+                new VertexAttributeDescriptor(VertexAttribute.Position),
             } );
 
             var vertices = meshData.GetVertexData<VertexData>();
@@ -136,32 +137,27 @@ public class SplineWall : MonoBehaviour
             Vector3 firstOffsetPos = Vector3.zero;
             Vector3 firstPosUpper = Vector3.zero;
 
-            for ( int i = 0; i <= divided; ++i )
+            for (int i = 0; i <= divided; ++i)
             {
                 float t = (float)i / divided;
                 splineContainer.Spline.Evaluate( t, out var pos, out var tangent, out _ );
 
-                // XZ平面の法線方向を計算
-                Vector3 tangentXZ = new Vector3(tangent.x, 0f, tangent.z).normalized;
-                Vector3 normalXZ = Vector3.Cross(Vector3.up, tangentXZ).normalized;
+                Vector3 tangentXZ = new Vector3( tangent.x, 0f, tangent.z ).normalized;
+                float3 normalXZ = Vector3.Cross( Vector3.up, tangentXZ ).normalized;
 
-                Vector3 vector3 = pos;
-
-                Vector3 offsetPos = vector3 + normalXZ * expandFactor;
-                offsetPos.y = uniformY;
+                float3 offsetPos = pos + normalXZ * expandFactor;
+                //offsetPos.y = uniformY;
 
                 Vector3 posUpper = offsetPos;
                 posUpper.y += height;
 
-                // 始点の拡縮済み座標を保存
-                if ( i == 0 )
+                if (i == 0)
                 {
                     firstOffsetPos = offsetPos;
                     firstPosUpper = posUpper;
                 }
 
-                // 終点（Closed時）は始点の拡縮済み座標を使う
-                if ( splineContainer.Spline.Closed && i == divided )
+                if (splineContainer.Spline.Closed && i == divided)
                 {
                     offsetPos = firstOffsetPos;
                     posUpper = firstPosUpper;
@@ -176,9 +172,7 @@ public class SplineWall : MonoBehaviour
                 vertices[2 * i + 1] = vertex1;
             }
 
-
-
-            for ( int i = 0; i < divided; ++i )
+            for (int i = 0; i < divided; ++i)
             {
                 int baseIndex = 6 * i;
                 int vertIndex = 2 * i;
@@ -196,152 +190,23 @@ public class SplineWall : MonoBehaviour
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
 
-            // コライダーを更新
-            if ( meshCollider != null )
+            if (meshCollider != null)
             {
                 meshCollider.sharedMesh = null;
                 meshCollider.sharedMesh = mesh;
             }
+
+            // もし reverseFaces が true なら、メッシュの面を反転する
+            if (reverseFaces)
+            {
+                ReverseMeshFaces();
+            }
         }
-        catch ( Exception ex )
+        catch (Exception ex)
         {
             Debug.LogError( $"メッシュの再構築中にエラーが発生しました: {ex.Message}\n{ex.StackTrace}" );
             return;
         }
-    }
-
-
-    private void ApplyExpandFactor()
-    {
-        if (mesh == null)
-        {
-            Debug.LogError( "メッシュが存在しません。" );
-            return;
-        }
-
-        // メッシュの独立性を確保するために新しいメッシュを生成
-        Mesh expandedMesh = Instantiate( mesh );
-        expandedMesh.name = $"{gameObject.name}_ExpandedMesh";
-        meshFilter.mesh = expandedMesh;
-
-        Vector3[] vertices = expandedMesh.vertices;
-        Vector3[] normals = expandedMesh.normals;
-
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            // 法線から Y 成分を除去し、XZ平面上の方向を得る
-            Vector3 n = normals[i];
-            n.y = 0f;
-            if (n.sqrMagnitude > 0.0001f)
-            {
-                n.Normalize();
-            }
-            // XZ 平面だけで拡縮を適用
-            vertices[i] += n * expandFactor;
-        }
-
-        expandedMesh.vertices = vertices;
-        expandedMesh.RecalculateBounds();
-        expandedMesh.RecalculateNormals();
-
-        if (meshCollider != null)
-        {
-            meshCollider.sharedMesh = null;
-            meshCollider.sharedMesh = expandedMesh;
-        }
-
-        mesh = expandedMesh;
-    }
-
-    /// <summary>
-    /// スプライン内の各 Knot の Y 座標を uniformY の値に均一化します。
-    /// </summary>
-    public void UniformizeSplineY()
-    {
-        if (splineContainer?.Spline == null)
-        {
-            Debug.LogWarning( "スプラインが設定されていません。" );
-            return;
-        }
-
-        int knotCount = splineContainer.Spline.Count;
-        for (int i = 0; i < knotCount; i++)
-        {
-            BezierKnot knot = (BezierKnot)splineContainer.Spline[i];
-            Vector3 pos = knot.Position;
-            pos.y = uniformY;
-            knot.Position = pos;
-            splineContainer.Spline[i] = knot;
-        }
-        Debug.Log( $"スプラインのY座標が {uniformY} に均一化されました。" );
-    }
-
-    /// <summary>
-    /// スプライン内の各 Knot の回転の X, Z をリセットし、Y 軸の値のみ残します。
-    /// </summary>
-    public void ResetSplineRotation()
-    {
-        if (splineContainer?.Spline == null)
-        {
-            Debug.LogWarning( "スプラインが設定されていません。" );
-            return;
-        }
-
-        int knotCount = splineContainer.Spline.Count;
-        for (int i = 0; i < knotCount; i++)
-        {
-            // BezierKnot 型であると仮定
-            BezierKnot knot = (BezierKnot)splineContainer.Spline[i];
-
-            // math.quaternion を UnityEngine.Quaternion に変換して Euler 角を取得
-            UnityEngine.Quaternion unityQuat = new UnityEngine.Quaternion( knot.Rotation.value.x, knot.Rotation.value.y, knot.Rotation.value.z, knot.Rotation.value.w );
-            float yRotationDegrees = unityQuat.eulerAngles.y;
-            // EulerXYZ() はラジアンを想定しているため変換
-            float yRotationRadians = math.radians( yRotationDegrees );
-
-            // X, Z を 0 にして Y 軸のみ残す新たな回転を設定
-            knot.Rotation = quaternion.EulerXYZ( new float3( 0f, yRotationRadians, 0f ) );
-            splineContainer.Spline[i] = knot;
-        }
-        Debug.Log( "スプラインの回転がY軸だけ残す形でリセットされました。" );
-    }
-
-
-    public void GenerateSplineFromMesh()
-    {
-        if (mesh == null)
-        {
-            Debug.LogError( "メッシュが存在しません。" );
-            return;
-        }
-
-        if (mesh.vertexCount % 2 != 0)
-        {
-            Debug.LogError( "メッシュの頂点数が不正です。頂点数は偶数である必要があります。" );
-            return;
-        }
-
-        Vector3[] vertices = mesh.vertices;
-        int totalPoints = vertices.Length / 2;
-
-        splinePointReduction = Mathf.Clamp( splinePointReduction, 1, totalPoints );
-
-        int pointCount = Mathf.CeilToInt( (float)totalPoints / splinePointReduction );
-        splineContainer.Spline.Clear();
-
-        for (int i = 0; i < totalPoints; i += splinePointReduction)
-        {
-            Vector3 position = vertices[2 * i];
-            splineContainer.Spline.Add( new BezierKnot( position, 0f, 0f, Quaternion.identity ) );
-        }
-
-        if (( totalPoints - 1 ) % splinePointReduction != 0)
-        {
-            Vector3 lastPosition = vertices[2 * ( totalPoints - 1 )];
-            splineContainer.Spline.Add( new BezierKnot( lastPosition, 0f, 0f, Quaternion.identity ) );
-        }
-
-        Debug.Log( "メッシュからスプラインを生成しました。" );
     }
 
     private float GetSplineLength( Spline spline )
@@ -377,7 +242,7 @@ public class SplineWall : MonoBehaviour
         }
 
         mesh = Instantiate( mesh );
-        mesh.name = $"{gameObject.name}_ReversedMesh";
+        mesh.name = $"{gameObject.name}_Mesh";
         meshFilter.mesh = mesh;
 
         var triangles = mesh.triangles;
@@ -396,7 +261,8 @@ public class SplineWall : MonoBehaviour
             meshCollider.sharedMesh = mesh;
         }
 
-        updating = false;
+        // ※reverseFacesフラグで制御しているため、ここでフラグの値を変更しない
+        // updating = false;
     }
 
     private void OnValidate()
@@ -408,8 +274,7 @@ public class SplineWall : MonoBehaviour
 
         if (mesh == null)
         {
-            mesh = new Mesh();
-            mesh.name = $"{gameObject.name}_Mesh";
+            mesh = new Mesh { name = $"{gameObject.name}_Mesh" };
             meshFilter.mesh = mesh;
         }
 

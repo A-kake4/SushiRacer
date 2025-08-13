@@ -11,18 +11,25 @@ public class TrackPoint
 
 public class MapMove_Tsuji : MonoBehaviour
 {
-    [SerializeField]
-    private List<TrackPoint> trackPoints; // コース上のポイントリスト
-    [SerializeField]
-    private RectTransform playerIcon; // ミニマップ上のプレイヤーアイコン
-    [SerializeField]
-    private GameObject player; // プレイヤーオブジェクト（位置を取得するため）
+    public Transform[] worldWaypoints;        // ワールド用ポイント
+    public RectTransform[] uiWaypoints;       // ミニマップ用ポイント
+    public RectTransform playerIcon;
+    public Transform player;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private List<TrackPoint> trackPoints = new List<TrackPoint>();
+
+    void Awake()
     {
-
+        // 実際のオブジェクトから座標を取得
+        for (int i = 0; i < worldWaypoints.Length; i++)
+        {
+            TrackPoint tp = new TrackPoint();
+            tp.worldPos = worldWaypoints[i].position;
+            tp.uiPos = uiWaypoints[i].anchoredPosition;
+            trackPoints.Add(tp);
+        }
     }
+
 
 
     // Update is called once per frame

@@ -1611,17 +1611,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e72d247cee2284ab816a9f113b5642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackPoints:
-  - worldPos: {x: 10, y: 3, z: -10}
-    uiPos: {x: -700, y: -110}
-  - worldPos: {x: 10, y: 3, z: 10}
-    uiPos: {x: -700, y: 110}
-  - worldPos: {x: -10, y: 3, z: 10}
-    uiPos: {x: -900, y: 110}
-  - worldPos: {x: -10, y: 3, z: -10}
-    uiPos: {x: -900, y: -110}
+  worldWaypoints:
+  - {fileID: 759592299}
+  - {fileID: 788641356}
+  - {fileID: 522161653}
+  - {fileID: 1721950323}
+  uiWaypoints:
+  - {fileID: 180264434}
+  - {fileID: 1066316930}
+  - {fileID: 484697959}
+  - {fileID: 2084773312}
   playerIcon: {fileID: 1831851396}
-  player: {fileID: 1507550156}
+  player: {fileID: 1507550161}
 --- !u!114 &1831851398
 MonoBehaviour:
   m_ObjectHideFlags: 0

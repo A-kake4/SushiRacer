@@ -9,14 +9,12 @@ using UnityEngine;
 [RequireComponent( typeof( Rigidbody ) )]
 public class PlayerTotalVelocity3d : MonoBehaviour
 {
-    [SerializeField,ReadOnly]
-    private Rigidbody playerRigidbody; // プレイヤーのRigidbody
-    
-    // 総合加速度
-    [SerializeField, ReadOnly]
+    [SerializeField, Header("プレイヤーRigidbody") ,ReadOnly]
+    private Rigidbody playerRigidbody;
+    [SerializeField, Header( "設定加速度" ) , ReadOnly]
     private Vector3 totalAngularVelocity = Vector3.zero;
     // 総合実速度
-    [SerializeField, ReadOnly]
+    [SerializeField, Header( "設定速度" ) , ReadOnly]
     private Vector3 totalLinearVelocity = Vector3.zero;
 
     private bool isInitializedLinear = false; // 総合実速度が設定されたかどうか

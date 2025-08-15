@@ -9,11 +9,8 @@ public class RacerProgress_Tsuji : MonoBehaviour
     private Transform targetObject; // 参照元のオブジェクト
     [SerializeField]
     private float heightOffset = 5f; // 上方向へのオフセット
-
-    private void Update()
-    {
-        Debug.Log(gameObject.name + " は現在の順位は：" + rank + " 位");
-    }
+    [SerializeField]
+    private Vector3 startPoint = Vector3.zero;  // スタート地点
 
     public void UpdateProgress(Transform[] waypoints)
     {
@@ -36,13 +33,33 @@ public class RacerProgress_Tsuji : MonoBehaviour
         return totalDistance;
     }
 
-    void Teleport()
+    public void Teleport()
     {
         if (targetObject != null)
         {
             Vector3 newPosition = targetObject.position + Vector3.up * heightOffset;
             transform.position = newPosition;
         }
+        else
+        {
+            Vector3 newPosition = startPoint + Vector3.up * heightOffset;
+            transform.position = newPosition;
+        }
     }
 
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "WayPoint")
+        {
+            targetObject = collider.transform;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "WayPoint")
+        {
+            targetObject = collision.transform;
+        }
+    }
 }

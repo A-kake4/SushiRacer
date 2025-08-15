@@ -99,6 +99,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Warp"",
+                    ""type"": ""Button"",
+                    ""id"": ""c61a16d2-e69c-473a-b071-71053ba8f168"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -156,6 +165,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26d76536-3987-4cdf-a333-d643235916ff"",
+                    ""path"": ""<Keyboard>/#(Z)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Warp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -165,6 +185,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // TestAction
         m_TestAction = asset.FindActionMap("TestAction", throwIfNotFound: true);
         m_TestAction_Move = m_TestAction.FindAction("Move", throwIfNotFound: true);
+        m_TestAction_Warp = m_TestAction.FindAction("Warp", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -246,6 +267,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TestAction;
     private List<ITestActionActions> m_TestActionActionsCallbackInterfaces = new List<ITestActionActions>();
     private readonly InputAction m_TestAction_Move;
+    private readonly InputAction m_TestAction_Warp;
     /// <summary>
     /// Provides access to input actions defined in input action map "TestAction".
     /// </summary>
@@ -261,6 +283,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "TestAction/Move".
         /// </summary>
         public InputAction @Move => m_Wrapper.m_TestAction_Move;
+        /// <summary>
+        /// Provides access to the underlying input action "TestAction/Warp".
+        /// </summary>
+        public InputAction @Warp => m_Wrapper.m_TestAction_Warp;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -290,6 +316,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @Warp.started += instance.OnWarp;
+            @Warp.performed += instance.OnWarp;
+            @Warp.canceled += instance.OnWarp;
         }
 
         /// <summary>
@@ -304,6 +333,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @Warp.started -= instance.OnWarp;
+            @Warp.performed -= instance.OnWarp;
+            @Warp.canceled -= instance.OnWarp;
         }
 
         /// <summary>
@@ -351,5 +383,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Warp" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnWarp(InputAction.CallbackContext context);
     }
 }

@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updating: 0
-  uniformY: 0
   segmentLength: 1
   height: 5
   splineContainer: {fileID: 9014730759489369276}

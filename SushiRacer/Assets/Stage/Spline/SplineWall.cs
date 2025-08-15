@@ -17,10 +17,6 @@ public class SplineWall : MonoBehaviour
     [SerializeField, Tooltip( "スプラインにメッシュを合わせるか" )]
     private bool updating = true;
 
-    // 追加: Y 座標を均一化するための目標値
-    //[SerializeField, Tooltip( "各スプラインの Y 座標を均一化する値" )]
-    //private float uniformY = 0f;
-
     [SerializeField, Range( 0.1f, 100f ), Tooltip( "壁の頂点間の長さ" )]
     private float segmentLength = 1.0f;
 

@@ -481,9 +481,10 @@ GameObject:
   - component: {fileID: 658997575}
   - component: {fileID: 658997574}
   - component: {fileID: 658997573}
+  - component: {fileID: 658997579}
   - component: {fileID: 658997572}
   m_Layer: 7
-  m_Name: DorifutoWall_ON
+  m_Name: DorifutoWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -753,6 +754,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &658997579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658997571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca1d076c3964ad4ab2d84d9ac47bc6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &977821057
 GameObject:
   m_ObjectHideFlags: 0

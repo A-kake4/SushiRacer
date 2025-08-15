@@ -17,32 +17,32 @@ public class GimmickHitCompornent : MonoBehaviour
 
     private void OnTriggerEnter( Collider other )
     {
-        ProcessCollision( other.gameObject, gimmick => gimmick.GimmicPlayTriggerEnter( gimmickMove ) );
+        ProcessCollision( other.gameObject, gimmick => gimmick.GimmickPlayTriggerEnter( gimmickMove ) );
     }
 
     private void OnTriggerStay( Collider other )
     {
-        ProcessCollision( other.gameObject, gimmick => gimmick.GimmicPlayTriggerStay( gimmickMove ) );
+        ProcessCollision( other.gameObject, gimmick => gimmick.GimmickPlayTriggerStay( gimmickMove ) );
     }
 
     private void OnTriggerExit( Collider other )
     {
-        ProcessCollision( other.gameObject, gimmick => gimmick.GimmicPlayTriggerExit( gimmickMove ) );
+        ProcessCollision( other.gameObject, gimmick => gimmick.GimmickPlayTriggerExit( gimmickMove ) );
     }
 
     private void OnCollisionEnter( Collision collision )
     {
-        ProcessCollision( collision.gameObject, gimmick => gimmick.GimmicPlayCollisionEnter( gimmickMove ) );
+        ProcessCollision( collision.gameObject, gimmick => gimmick.GimmickPlayCollisionEnter( gimmickMove ) );
     }
 
     private void OnCollisionStay( Collision collision )
     {
-        ProcessCollision( collision.gameObject, gimmick => gimmick.GimmicPlayCollisionStay( gimmickMove ) );
+        ProcessCollision( collision.gameObject, gimmick => gimmick.GimmickPlayCollisionStay( gimmickMove ) );
     }
 
     private void OnCollisionExit( Collision collision )
     {
-        ProcessCollision( collision.gameObject, gimmick => gimmick.GimmicPlayCollisionExit( gimmickMove ) );
+        ProcessCollision( collision.gameObject, gimmick => gimmick.GimmickPlayCollisionExit( gimmickMove ) );
     }
 
     private void ProcessCollision( GameObject target, Action<BaseGimmickPlayCompornent> action )

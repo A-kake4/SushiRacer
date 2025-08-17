@@ -16,6 +16,13 @@ public class SplineAnimateRigidbody : MonoBehaviour
         set { splineContainer = value; }
     }
 
+    [SerializeField, Header( "接続対象" )]
+    private HingeJoint joint; // Rigidbodyと接続するためのJoint
+    public HingeJoint Joint
+    {
+        get { return joint; }
+    }
+
     // 進行パラメータの変化を調整する係数（Inspector上では補正用）
     [SerializeField, Header( "移動量調整用係数" )]
     private float speedFactor = 1f;
@@ -29,12 +36,19 @@ public class SplineAnimateRigidbody : MonoBehaviour
     [SerializeField, Header( "パスに合わせて回転させるか" )]
     private bool orientToPath = true;
     // オブジェクトの進行方向から見たオフセット
-    [SerializeField, Header( "オブジェクトの進行方向から見たオフセット" )]
-    private Vector3 offset;
-    public Vector3 Offset
+    [SerializeField, Header( "オブジェクト位置のオフセット" )]
+    private Vector3 offsetPosition;
+    public Vector3 OffsetPosition
     {
-        get { return offset; }
-        set { offset = value; }
+        get { return offsetPosition; }
+        set { offsetPosition = value; }
+    }
+    [SerializeField, Header( "オブジェクト位置のオフセット" )]
+    private float offsetRotation = 5f;
+    public float OffsetRotation
+    {
+        get { return offsetRotation; }
+        set { offsetRotation = value; }
     }
 
     [SerializeField, Header( "スプラインをループするか" )]
@@ -46,8 +60,13 @@ public class SplineAnimateRigidbody : MonoBehaviour
     // スプライン上の進行パラメータ（0～1と想定）
     [SerializeField, Header( "スプライン上の進行パラメータ" ), ReadOnly]
     private bool isMoving = false; // スプライン上を移動中かどうか
+    public bool IsMoving
+    {
+        get { return isMoving; }
+    }
     private float distance = 0f; // スプライン上の進行パラメータ（0～1）
     private Rigidbody rb;
+
 
     private void Awake()
     {
@@ -56,20 +75,12 @@ public class SplineAnimateRigidbody : MonoBehaviour
 
     private void Start()
     {
-        if (splineContainer == null || splineContainer.Spline == null)
-        {
-            Debug.LogError( "SplineContainer or Spline is not set." );
-            enabled = false; // スクリプトを無効化
-            return;
-        }
-        // 初期位置をスプラインの開始位置に設定
 
         if (awakeMove)
         {
             PlayFromClosestPoint( splineContainer );
+            UpdateAtCurrentDistance();
         }
-
-        UpdateAtCurrentDistance();
     }
 
     private void FixedUpdate()
@@ -118,35 +129,37 @@ public class SplineAnimateRigidbody : MonoBehaviour
 
         // オブジェクトの位置と回転を更新
         UpdateAtCurrentDistance();
-    }
 
-    /// <summary>
-    /// 指定されたスプライン上の割合(0～1)から移動を開始します。
-    /// </summary>
-    /// <param name="startParam">スプライン上の開始位置 (0～1)</param>
-    public void Play( float startParam )
-    {
-        if (splineContainer == null || splineContainer.Spline == null)
+        // 接続対象との直線距離を表示する
+        if (joint.connectedBody != null)
         {
-            Debug.LogError( "SplineContainer or Spline is not set." );
-            return;
+            Debug.DrawLine( rb.position, joint.connectedBody.position, Color.red );
         }
-        distance = Mathf.Clamp01( startParam );
-        UpdateAtCurrentDistance();
-        isMoving = true;
     }
 
     /// <summary>
     /// 指定されたSplineContainerに基づき、オブジェクトの現在位置から最も近い曲線位置で移動を開始します。
     /// </summary>
     /// <param name="newSplineContainer">使用するSplineContainer</param>
-    public void PlayFromClosestPoint( SplineContainer newSplineContainer )
+    public void PlayFromClosestPoint( SplineContainer newSplineContainer, Rigidbody rigidbody = null, float connecteDistance = 0.0f )
     {
         if (newSplineContainer == null || newSplineContainer.Spline == null)
         {
             Debug.LogError( "Provided SplineContainer or its Spline is not valid." );
             return;
         }
+
+        if (splineContainer == newSplineContainer && isMoving)
+        {
+            Debug.LogWarning( "Already moving on the specified spline." );
+            return;
+        }
+
+        if (rigidbody != null)
+        {
+            SetJoint( rigidbody, connecteDistance );
+        }
+
         splineContainer = newSplineContainer;
         distance = FindClosestParameter( rb.position );
         UpdateAtCurrentDistance();
@@ -186,7 +199,10 @@ public class SplineAnimateRigidbody : MonoBehaviour
         Quaternion rot = orientToPath
             ? Quaternion.LookRotation( splineContainer.Spline.EvaluateTangent( distance ), Vector3.up )
             : Quaternion.identity;
-        rb.MovePosition( splinePos + rot * offset );
+        Vector3 targetPosition = splinePos + rot * offsetPosition;
+
+        // 補間処理を削除し、確実にターゲット位置へ移動させる
+        rb.MovePosition( targetPosition );
 
         if (orientToPath)
         {
@@ -195,7 +211,26 @@ public class SplineAnimateRigidbody : MonoBehaviour
             {
                 Quaternion targetRotation = Quaternion.LookRotation( forward, Vector3.up );
                 rb.MoveRotation( targetRotation );
+
+                // プレイヤーが向く方向に補正をかける
+                Vector3 angle = targetRotation * ( joint.anchor * offsetRotation);
+
+                targetRotation = Quaternion.LookRotation( forward + angle, Vector3.up );
+
+                joint.connectedBody.rotation = targetRotation;
             }
         }
+    }
+
+    public void SetJoint( Rigidbody targetRigidbody, float connecteDistance = default )
+    {
+        if (targetRigidbody != null && splineContainer != null && splineContainer.Spline != null)
+        {
+            joint.anchor = Vector3.right * connecteDistance;
+
+            isReversing = connecteDistance < 0f; // 接続距離が負の場合は進行方向を反転
+        }
+
+        joint.connectedBody = targetRigidbody;
     }
 }

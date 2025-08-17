@@ -73,7 +73,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8183
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ba53747566f54182e087e33849aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  focusMode: 1
   playerRigidbody: {fileID: 0}
   offset: {x: 0, y: 1, z: -4}
   rotationOffset: {x: 0, y: -10}
@@ -112,3 +113,4 @@ MonoBehaviour:
   minField: 40
   maxField: 60
   maxFieldY: 1
+  rotationSmoothSpeed: 5

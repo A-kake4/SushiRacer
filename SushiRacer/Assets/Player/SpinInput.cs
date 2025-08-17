@@ -38,12 +38,20 @@ public class SpinImput : MonoBehaviour
     [SerializeField, ReadOnly]
     private int decayRate = 1;       // 回転速度の減速値
     [SerializeField, ReadOnly]
-
     private int maxSpinSpeed = 100;  // 最大回転速度
     public int MaxSpinSpeed => maxSpinSpeed; // 最大回転速度のプロパティ
+    [SerializeField, ReadOnly]
+    private float brakeSpeed = 0.5f; // ブレーキの減速率
 
-    private Vector2 oldInput = Vector2.zero;
-    private Vector2 nowInput = Vector2.zero;
+    private Vector2 oldMoveInput = Vector2.zero;
+    private Vector2 nowMoveInput = Vector2.zero;
+
+    // ブレーキ入力のフラグ
+    private bool oldBrakeInput = false; // 前回フレームのブレーキ入力
+    private bool brakeInput = false; // ブレーキ入力のフラグ
+    private int brakeInputFrameCount = 0; // ブレーキ入力のフレームカウント
+
+    private int oldSpinSpeed = 0; // ブレーキ前の回転速度を保存するための変数
 
     [SerializeField, ReadOnly]
     private float inputLimit = 0.1f; // 入力の閾値
@@ -65,6 +73,7 @@ public class SpinImput : MonoBehaviour
             spinRate = sushiData.accelSpinRate;
             decayRate = sushiData.decaySpinRate;
             maxSpinSpeed = sushiData.maxFrontSpeed;
+            brakeSpeed = sushiData.brakeSpeed;
         }
         else
         {
@@ -75,17 +84,17 @@ public class SpinImput : MonoBehaviour
     private void Update()
     {
         // 前回の入力を保存
-        oldInput = nowInput;
+        oldMoveInput = nowMoveInput;
 
         // ゲームパッドのベクトルを取得
-        nowInput = InputManager.Instance.GetActionValue<Vector2>(1, "MainGame", "Spin" );
+        nowMoveInput = InputManager.Instance.GetActionValue<Vector2>(1, "MainGame", "Spin" );
 
         // 入力が閾値を超えた場合のみ処理
-        if ( nowInput.sqrMagnitude > inputLimit * inputLimit && oldInput.sqrMagnitude > inputLimit * inputLimit )
+        if (nowMoveInput.sqrMagnitude > inputLimit * inputLimit && oldMoveInput.sqrMagnitude > inputLimit * inputLimit )
         {
             // 入力ベクトルを正規化
-            Vector2 normalizedNowInput = nowInput.normalized;
-            Vector2 normalizedOldInput = oldInput.normalized;
+            Vector2 normalizedNowInput = nowMoveInput.normalized;
+            Vector2 normalizedOldInput = oldMoveInput.normalized;
 
             // 角度を計算
             float oldAngle = Mathf.Atan2(normalizedOldInput.y, normalizedOldInput.x) * Mathf.Rad2Deg;
@@ -119,6 +128,45 @@ public class SpinImput : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // ブレーキ入力を取得
+        oldBrakeInput = brakeInput; // 前回フレームのブレーキ入力を保存
+        brakeInput = InputManager.Instance.GetActionValue<bool>( 1, "MainGame", "Brake" );
+
+        // ブレーキ入力がある場合は回転速度を減速
+        if (brakeInput)
+        {
+            if (!oldBrakeInput)
+            {
+                // ブレーキ入力が新たに開始された場合はフレームカウントをリセット
+                brakeInputFrameCount = 0;
+                oldSpinSpeed = nowSpinSpeed; // ブレーキ前の回転速度を保存
+            }
+
+            brakeInputFrameCount++;
+            // ブレーキ入力が連続している場合は減速
+            if (brakeInputFrameCount > 8)
+            {
+                nowSpinSpeed = (int)( nowSpinSpeed * brakeSpeed );
+            }
+        }
+        else if (oldBrakeInput)
+        {
+            if (brakeInputFrameCount > 60)
+            {
+                // ブレーキ入力が解除された場合は回転速度を元に戻す
+                nowSpinSpeed = (int)( oldSpinSpeed * 0.9f ); // ブレーキ前の回転速度を復元
+            }
+            nowSpinSpeed = -nowSpinSpeed;
+        }
+
+        bool attackInput = InputManager.Instance.GetActionValue<bool>( 1, "MainGame", "Attack" );
+        
+        // 攻撃入力がある場合は回転速度を逆回転
+        if (attackInput)
+        {
+            nowSpinSpeed = -nowSpinSpeed;
+        }
+
         // 回転速度を更新
         if ( nowSpinRotasion > 0 )
         {

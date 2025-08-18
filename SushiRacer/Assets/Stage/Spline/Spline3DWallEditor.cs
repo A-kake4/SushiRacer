@@ -35,13 +35,13 @@ public class Spline3DWallEditor : Editor
         base.OnInspectorGUI();
         if (EditorGUI.EndChangeCheck())
         {
-            if (target is Spline3DWall wall)
+            if (target is Spline3DWall)
             {
-                wall.Rebuild();
+                ( target as Spline3DWall ) ?.Rebuild();
             }
         }
 
-        serializedObject.ApplyModifiedProperties();
+        //serializedObject.ApplyModifiedProperties();
     }
 
     private void OnSplineChanged( Spline spline, int knotIndex, SplineModification modificationType )

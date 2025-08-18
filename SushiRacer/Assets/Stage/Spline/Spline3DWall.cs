@@ -1,9 +1,11 @@
 using System;
 using System.Runtime.InteropServices;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Splines;
+using UnityEngine.SceneManagement;
 
 [RequireComponent( typeof( SplineContainer ), typeof( MeshFilter ), typeof( MeshCollider ) )]
 public class Spline3DWall : MonoBehaviour
@@ -64,13 +66,13 @@ public class Spline3DWall : MonoBehaviour
 
         if (mesh == null)
         {
-            mesh = new Mesh { name = $"{gameObject.name}_3dWallMesh" };
+            mesh = new Mesh { name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh" };
             meshFilter.mesh = mesh;
         }
         else if (meshFilter.sharedMesh != mesh)
         {
             mesh = Instantiate( meshFilter.sharedMesh );
-            mesh.name = $"{gameObject.name}_3dWallMesh";
+            mesh.name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh";
             meshFilter.mesh = mesh;
         }
 
@@ -93,6 +95,14 @@ public class Spline3DWall : MonoBehaviour
         {
             Debug.LogWarning( "Spline が設定されていません。" );
             return;
+        }
+
+        // 毎回新規の Mesh を作成（共有状態を防止）
+        mesh = new Mesh { name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh" };
+        meshFilter.mesh = mesh;
+        if (meshCollider != null)
+        {
+            meshCollider.sharedMesh = mesh;
         }
 
         float totalLength = GetSplineLength( splineContainer.Spline );
@@ -118,7 +128,7 @@ public class Spline3DWall : MonoBehaviour
             meshData.SetIndexBufferParams( indexCount, IndexFormat.UInt32 );
             meshData.SetVertexBufferParams( vertexCount, new VertexAttributeDescriptor[]
             {
-                new VertexAttributeDescriptor(VertexAttribute.Position),
+            new VertexAttributeDescriptor(VertexAttribute.Position),
             } );
 
             var vertices = meshData.GetVertexData<VertexData>();
@@ -225,7 +235,7 @@ public class Spline3DWall : MonoBehaviour
             // スプラインが閉じていない場合、開始と終了にキャップを追加
             if (!closed)
             {
-                // 開始キャップ（最初の断面）のキャップ（クワッドを三角形2つに分割）
+                // 開始キャップ（最初の断面）のキャップ
                 indices[indexOffset++] = 0;
                 indices[indexOffset++] = 2;
                 indices[indexOffset++] = 1;
@@ -302,7 +312,7 @@ public class Spline3DWall : MonoBehaviour
         }
 
         mesh = Instantiate( mesh );
-        mesh.name = $"{gameObject.name}_3dWallMesh";
+        mesh.name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh";
         meshFilter.mesh = mesh;
 
         var triangles = mesh.triangles;
@@ -324,6 +334,28 @@ public class Spline3DWall : MonoBehaviour
 
     private void OnValidate()
     {
+#if UNITY_EDITOR
+        if (!Application.isPlaying)
+        {
+            // エディター実行中の場合、遅延呼び出しで実行
+            EditorApplication.delayCall += () =>
+            {
+                // オブジェクトが既に破棄されていないか確認
+                if (this == null)
+                    return;
+                ValidateMeshFilter();
+            };
+        }
+        else
+        {
+            ValidateMeshFilter();
+        }
+#else
+#endif
+    }
+
+    private void ValidateMeshFilter()
+    {
         if (meshFilter == null)
         {
             TryGetComponent( out meshFilter );
@@ -331,14 +363,14 @@ public class Spline3DWall : MonoBehaviour
 
         if (mesh == null)
         {
-            mesh = new Mesh { name = $"{gameObject.name}_3dWallMesh" };
+            mesh = new Mesh { name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh" };
             meshFilter.mesh = mesh;
         }
 
         if (meshFilter != null && meshFilter.sharedMesh != mesh)
         {
             mesh = Instantiate( meshFilter.sharedMesh );
-            mesh.name = $"{gameObject.name}_3dWallMesh";
+            mesh.name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh";
             meshFilter.mesh = mesh;
         }
     }

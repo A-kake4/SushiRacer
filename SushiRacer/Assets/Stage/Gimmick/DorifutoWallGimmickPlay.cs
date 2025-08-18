@@ -29,7 +29,7 @@ public class DorifutoWallGimmickPlay : BaseGimmickPlayCompornent
         splineContainer = GetComponent<SplineContainer>();
     }
 
-    public override void GimmickPlayTriggerEnter( BaseGimmickMoveCompornent hitObject )
+    public override void GimmickPlayTriggerStay( BaseGimmickMoveCompornent hitObject )
     {
         // 接触位置としてhitObjectの位置を利用（必要に応じて修正）
         Vector3 contactPoint = hitObject.transform.position;

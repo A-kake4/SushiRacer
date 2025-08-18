@@ -32,12 +32,11 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     [SerializeField, ReadOnly]
     private SpinImput spinImput; // SpinImputスクリプトの参照
 
-    [SerializeField, ReadOnly, Header( "ドリフトウォールの移動コンポーネント" )]
+    [SerializeField, Header( "ドリフトウォールの移動コンポーネント" )]
     private SplineAnimateRigidbody splineAnimateRigidbody; // スプラインアニメーションの参照
     public SplineAnimateRigidbody SplineAnimateRigidbody
     {
         get => splineAnimateRigidbody;
-        set => splineAnimateRigidbody = value;
     }
 
     [SerializeField, ReadOnly]
@@ -115,6 +114,8 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
                                 | RigidbodyConstraints.FreezeRotationY
                                 | RigidbodyConstraints.FreezeRotationZ;
 
+                rb.useGravity = true; // 重力を有効にする
+
                 rb.isKinematic = false; // 動的にする
                 playerFocusCamera.FocusMode = 1; // カメラのフォーカスモードを通常に設定
                 break;
@@ -149,6 +150,24 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         if (sushiMode == SushiMode.DriftWall)
         {
             splineAnimateRigidbody.SpeedFactor = -spinImput.NowSpinSpeed * 0.02f * gierRatio; // スピン速度に応じて移動速度を調整
+
+            var moveInput = InputManager.Instance.GetActionValue<Vector2>( 1, "MainGame", "Move" );
+            if (moveInput.sqrMagnitude < 0.01f)
+            {
+                // 入力がほとんどない場合は移動しない
+            }
+            else
+            {
+                float nowSpinSpeed = spinImput.NowSpinSpeed < 0 ? -spinImput.NowSpinSpeed : spinImput.NowSpinSpeed;
+                int maxSpinSpeed = spinImput.MaxSpinSpeed;
+
+                float rotationSpeed = Mathf.Lerp(
+                    rotationMaxSpeed * Time.fixedDeltaTime,
+                    rotationMinSpeed * Time.fixedDeltaTime,
+                    nowSpinSpeed / maxSpinSpeed );
+
+                splineAnimateRigidbody.OffsetPsitionY -= rotationSpeed * moveInput.x; // 入力に応じてカメラのY軸回転を調整
+            }
             return;
         }
     }

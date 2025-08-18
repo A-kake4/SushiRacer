@@ -156,6 +156,14 @@ public class SpinImput : MonoBehaviour
                 // ブレーキ入力が解除された場合は回転速度を元に戻す
                 nowSpinSpeed = (int)( oldSpinSpeed * 0.9f ); // ブレーキ前の回転速度を復元
             }
+
+            // ドリフト中の場合は解除
+            if (sushiComponent.GetSushiMode() == SushiMode.DriftWall)
+            {
+                sushiComponent.SplineAnimateRigidbody.StopMovement();
+                sushiComponent.SetSushiMode( SushiMode.Normal ); // ドリフトモードを解除
+            }
+
             nowSpinSpeed = -nowSpinSpeed;
         }
 

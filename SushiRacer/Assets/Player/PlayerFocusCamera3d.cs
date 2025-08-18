@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class PlayerFocusCamera3d : MonoBehaviour
 {
-    [SerializeField, Header( "カメラのモード" ), Tooltip( "0: 自由, 1: オブジェクトの正面, 2: Rigidbodyの速度方向" )]
+    [SerializeField, Header( "カメラのモード" ), Tooltip( "0: 自由, 1: オブジェクトの正面, 2: Y軸の転換可能" )]
     private int focusMode = 0; // モードの初期値（必要に応じて設定）
     public int FocusMode
     {
@@ -24,16 +24,22 @@ public class PlayerFocusCamera3d : MonoBehaviour
         set => playerRigidbody = value;
     }
 
-    [SerializeField] private Vector3 offset = new Vector3( 0, 5, -10 ); // カメラのオフセット
+    private Vector3 offsetPosition = new Vector3( 0, 5, -10 ); // カメラのオフセット
+    private Camera cameraObject; // カメラコンポーネント
     [SerializeField] private Vector2 rotationOffset = Vector2.zero; // プレイヤーの方向を向く際の補正角度
+
     [SerializeField] private float zoomSpeed = 2f; // ズーム速度
     [SerializeField] private float minField = 40f; // 最大ズーム値
     [SerializeField] private float maxField = 100f; // 最大ズーム距離
 
     [SerializeField] private float maxFieldY = 1f; // 最大Y軸のズーム値
 
-    // カメラ回転のスムーズ補間速度
-    //[SerializeField] private float rotationSmoothSpeed = 5f;
+    private void Start()
+    {
+        offsetPosition = transform.localPosition;
+        cameraObject = GetComponent<Camera>();
+    }
+
 
     void LateUpdate()
     {
@@ -63,9 +69,10 @@ public class PlayerFocusCamera3d : MonoBehaviour
         // 現在の速度に基づいてカメラのField of Viewを計算
         float targetField = Mathf.Lerp( minField, maxField, nowSpeed / maxSpeed );
 
-        var targetOffset = offset;
+        var targetOffset = offsetPosition;
+
         // プレイヤーの速度に基づいてY軸のオフセットを調整
-        targetOffset.y = Mathf.Lerp( offset.y, offset.y + maxFieldY, nowSpeed / maxSpeed );
+        targetOffset.y = Mathf.Lerp( targetOffset.y, targetOffset.y + maxFieldY, nowSpeed / maxSpeed );
 
         // プレイヤーの正面方向を基準にオフセットを回転
         Vector3 rotatedOffset = playerRigidbody.rotation * targetOffset;
@@ -75,44 +82,19 @@ public class PlayerFocusCamera3d : MonoBehaviour
         transform.position = desiredPosition;
 
         // カメラのField of Viewを更新
-        var camera = GetComponent<Camera>();
-        if (camera == null)
+        if (cameraObject == null)
         {
             Debug.LogError( "Camera component is not assigned." );
             return;
         }
-        camera.fieldOfView = Mathf.Lerp( camera.fieldOfView, targetField, Time.deltaTime * zoomSpeed );
+        cameraObject.fieldOfView = Mathf.Lerp( cameraObject.fieldOfView, targetField, Time.deltaTime * zoomSpeed );
 
         // モード毎にカメラの注視ターゲットを変更
-        Vector3 lookTarget = playerRigidbody.position; // デフォルトはプレイヤーの位置
+        Vector3 lookTarget = playerRigidbody.position + playerRigidbody.transform.forward;
 
-
-
-        lookTarget += playerRigidbody.transform.forward;
-
-        // 即時に回転を適用
+        // オブジェクトの正面を即時に向く
         transform.LookAt( lookTarget );
         transform.Rotate( rotationOffset.y, rotationOffset.x, 0, Space.Self );
-
-        //if (focusMode == 1) // オブジェクトの正面
-        //{
-        //    lookTarget += playerRigidbody.transform.forward;
-
-        //    // 即時に回転を適用
-        //    transform.LookAt( lookTarget );
-        //    transform.Rotate( rotationOffset.y, rotationOffset.x, 0, Space.Self );
-        //}
-        //else if (focusMode == 2) // Rigidbodyの速度方向
-        //{
-        //    if (playerRigidbody.linearVelocity.magnitude > 0.1f)
-        //    {
-        //        lookTarget += playerRigidbody.linearVelocity.normalized;
-        //    }
-        //    // 目標角度の計算とスムーズな補間
-        //    Quaternion desiredRotation = Quaternion.LookRotation( lookTarget - transform.position );
-        //    desiredRotation *= Quaternion.Euler( rotationOffset.y, rotationOffset.x, 0 );
-        //    transform.rotation = Quaternion.Slerp( transform.rotation, desiredRotation, Time.deltaTime * rotationSmoothSpeed );
-        //}
     }
 
 }

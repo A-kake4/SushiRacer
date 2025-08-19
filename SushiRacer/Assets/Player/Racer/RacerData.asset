@@ -35,7 +35,7 @@ MonoBehaviour:
     rotationSpeed: 3800
     inputLimit: 0.1
     angleLimit: 5
-    maxSideSpeed: 58
+    maxSideSpeed: 65
     accelSideRate: 8
     rotationMinSpeed: 40
     rotationMaxSpeed: 60

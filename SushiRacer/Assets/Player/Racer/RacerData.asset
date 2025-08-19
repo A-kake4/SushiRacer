@@ -25,7 +25,7 @@ MonoBehaviour:
     accelSideRate: 5
     rotationMinSpeed: 20
     rotationMaxSpeed: 60
-    brakeSpeed: 0.5
+    brakeSpeed: 0.99
     gierRatio: 1
   - id: Ikura
     sushiPrefub: {fileID: 7621135768791106524, guid: 5c7ae701c56f45e409b06148f7f1e3ae, type: 3}

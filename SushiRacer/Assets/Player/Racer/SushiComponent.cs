@@ -232,8 +232,8 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         {
             Vector3 accelerationVector = moveDirection.normalized * accelSideRate;
 
-            playerTotalVelocity.AddAngularVelocity(
-                Vector3.MoveTowards( currentVelocity, targetVelocity, accelerationVector.magnitude ) );
+            //playerTotalVelocity.AddAngularVelocity(
+            //    Vector3.MoveTowards( currentVelocity, targetVelocity, accelerationVector.magnitude ) );
 
             // ‰ñ“]‚ÌÅ‘å‘¬“x‚ð1‚Æ‚µ‚ÄÅ‘å‰ñ“]‚ðs‚¤
             float nowSpinSpeed = spinImput.NowSpinSpeed < 0 ? -spinImput.NowSpinSpeed : spinImput.NowSpinSpeed;

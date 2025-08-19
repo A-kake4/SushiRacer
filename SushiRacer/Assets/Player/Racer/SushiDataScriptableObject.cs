@@ -28,9 +28,9 @@ public class SushiItem : BaseItem
     public float maxSideSpeed = 50f;            // プレイヤーの最大速度
     [Header( "横移動　加速度" ), Tooltip( "横入力をした時の横滑り。加速度" )]
     public float accelSideRate = 5f;        // プレイヤーの加速度
-    [Header( "カメラ旋回速度　最大速度時" ), Tooltip( "スシが停止時の旋回能力" )]
+    [Header( "カメラ旋回速度　最大速度時" ), Tooltip( "スシが最大回転の旋回能力" )]
     public float rotationMinSpeed = 10f;
-    [Header( "カメラ旋回速度　停止時" ), Tooltip( "スシが最大回転の時の旋回能力" )]
+    [Header( "カメラ旋回速度　停止時" ), Tooltip( "スシが停止時の時の旋回能力" )]
     public float rotationMaxSpeed = 60f;     // プレイヤーの回転速度
 
     [Header( "ブレーキ速度" ), Tooltip( "スシがブレーキをかける速度。0で急停止" ), Range(0.1f, 1f)]

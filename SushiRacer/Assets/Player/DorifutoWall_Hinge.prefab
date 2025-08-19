@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7407795714758906937}
   - component: {fileID: 6309915650769646912}
   - component: {fileID: 6250963346439133369}
-  m_Layer: 7
+  m_Layer: 3
   m_Name: DorifutoWall_Hinge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 070b594dd5c3743449285f1448a9f2a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sushiComponent: {fileID: 0}
   awakeMove: 0
   splineContainer: {fileID: 0}
   joint: {fileID: 6309915650769646912}

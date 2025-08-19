@@ -25,10 +25,52 @@ MonoBehaviour:
     accelSideRate: 5
     rotationMinSpeed: 20
     rotationMaxSpeed: 60
-    brakeSpeed: 0.5
+    brakeSpeed: 0.79
     gierRatio: 1
   - id: Ikura
     sushiPrefub: {fileID: 7621135768791106524, guid: 5c7ae701c56f45e409b06148f7f1e3ae, type: 3}
+    maxFrontSpeed: 5000
+    accelSpinRate: 50
+    decaySpinRate: 1
+    rotationSpeed: 3800
+    inputLimit: 0.1
+    angleLimit: 5
+    maxSideSpeed: 50
+    accelSideRate: 5
+    rotationMinSpeed: 10
+    rotationMaxSpeed: 60
+    brakeSpeed: 0.5
+    gierRatio: 1
+  - id: Salmon
+    sushiPrefub: {fileID: 5890650759879822583, guid: cb15bebcff76a6046907c5827535fdbf, type: 3}
+    maxFrontSpeed: 5000
+    accelSpinRate: 50
+    decaySpinRate: 1
+    rotationSpeed: 3800
+    inputLimit: 0.1
+    angleLimit: 5
+    maxSideSpeed: 50
+    accelSideRate: 5
+    rotationMinSpeed: 10
+    rotationMaxSpeed: 60
+    brakeSpeed: 0.5
+    gierRatio: 1
+  - id: Anago
+    sushiPrefub: {fileID: 5782814722408875724, guid: bca7394c85ce70646a7780db37b086ab, type: 3}
+    maxFrontSpeed: 5000
+    accelSpinRate: 50
+    decaySpinRate: 1
+    rotationSpeed: 3800
+    inputLimit: 0.1
+    angleLimit: 5
+    maxSideSpeed: 50
+    accelSideRate: 5
+    rotationMinSpeed: 10
+    rotationMaxSpeed: 60
+    brakeSpeed: 0.5
+    gierRatio: 1
+  - id: Uni
+    sushiPrefub: {fileID: 2327180845134270947, guid: b5e6af992c4c0c54f97466647e0f7f0e, type: 3}
     maxFrontSpeed: 5000
     accelSpinRate: 50
     decaySpinRate: 1

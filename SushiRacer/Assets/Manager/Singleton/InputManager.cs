@@ -45,17 +45,29 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
         {
             user = playerInputUsers[playerIndex];
             InputUser.PerformPairingWithDevice( device, user );
-            // 既存ユーザーにデバイス追加のみ
+            // キーボードが登録された場合、Mouse.currentが存在すればマウスも追加でペアリング
+            if ( device is Keyboard && Mouse.current != null )
+            {
+                InputUser.PerformPairingWithDevice( Mouse.current, user );
+            }
             return;
         }
 
+        // プレイヤー専用のInputActionAssetを生成
+        var playerActionAsset = Object.Instantiate(inputActionAsset);
+
         user = InputUser.CreateUserWithoutPairedDevices();
-        user.AssociateActionsWithUser( inputActionAsset );
+        user.AssociateActionsWithUser( playerActionAsset );
         InputUser.PerformPairingWithDevice( device, user );
+        // キーボードの場合は、マウスも自動でペアリング
+        if ( device is Keyboard && Mouse.current != null )
+        {
+            InputUser.PerformPairingWithDevice( Mouse.current, user );
+        }
         playerInputUsers[playerIndex] = user;
 
-        // コールバック登録などは初回のみ
-        foreach ( var actionMap in inputActionAsset.actionMaps )
+        // コールバック登録は初回のみ
+        foreach ( var actionMap in playerActionAsset.actionMaps )
         {
             foreach ( var action in actionMap.actions )
             {

@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 8476144634534593482}
   - component: {fileID: 3715903175472035159}
   - component: {fileID: 3099886611954904305}
+  - component: {fileID: 9005375163568157950}
   m_Layer: 8
   m_Name: Racer
   m_TagString: Untagged
@@ -189,7 +190,8 @@ MonoBehaviour:
   dataSource: {fileID: 11400000, guid: 06160b8d98917a748921af52dd50733b, type: 2}
   selectedItemNumber: 0
   selectedItemID: Tuna
-  sushiMode: 0
+  playerNumber: 0
+  sushiMode: 1
   playerFocusCamera: {fileID: 526905383117626732}
   rb: {fileID: 70299393082917535}
   spinImput: {fileID: 6675329270558242429}
@@ -283,6 +285,23 @@ MonoBehaviour:
   rb: {fileID: 70299393082917535}
   sushiComponent: {fileID: 2582059228214856152}
   playerSize: 1.3
+--- !u!114 &9005375163568157950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544264415860441349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff5495f6e721524f917a2286288ff74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sushiComponent: {fileID: 2582059228214856152}
+  playerWindow: {fileID: 11400000, guid: 5dac42f749f758e4682193f281637488, type: 2}
+  mainCamera: {fileID: 3608739778798884928}
+  effectCamera: {fileID: 4974133770131773319}
+  effectLayerObject: {fileID: 4798830434192146337}
 --- !u!1 &2647780271328439411
 GameObject:
   m_ObjectHideFlags: 0
@@ -5425,10 +5444,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cec2461b40adff498fe9df1d0ae6ef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sushiComponent: {fileID: 2582059228214856152}
-  spinInput: {fileID: 6675329270558242429}
   rb: {fileID: 70299393082917535}
   windEffect: {fileID: 7301740960120201906}
+  maxSpeed: 100
   maxRateOverTime: 50
 --- !u!1 &5456589090336704770
 GameObject:
@@ -6173,7 +6191,8 @@ PrefabInstance:
       propertyPath: playerRigidbody
       value: 
       objectReference: {fileID: 70299393082917535}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1771266599964390854, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 487952999974665948, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}
@@ -6192,6 +6211,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841ba53747566f54182e087e33849aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &3608739778798884928 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4946949570821012922, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}
+  m_PrefabInstance: {fileID: 8553402054518744570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8103743137777507110 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 487952999974665948, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}

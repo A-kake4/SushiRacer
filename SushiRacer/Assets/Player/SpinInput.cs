@@ -88,13 +88,15 @@ public class SpinImput : MonoBehaviour
     private void Update()
     {
         // 移動入力を取得
-        moveInput = InputManager.Instance.GetActionValue<Vector2>( 0, "MainGame", "Move" );
+        moveInput = InputManager.Instance.GetActionValue<Vector2>( sushiComponent.PlayerNumber, "MainGame", "Move" );
+
+
 
         // 前回の入力を保存
         oldSpinInput = nowSpinInput;
 
         // ゲームパッドのベクトルを取得
-        nowSpinInput = InputManager.Instance.GetActionValue<Vector2>(0, "MainGame", "Spin" );
+        nowSpinInput = InputManager.Instance.GetActionValue<Vector2>( sushiComponent.PlayerNumber, "MainGame", "Spin" );
 
         // 入力が閾値を超えた場合のみ処理
         if (nowSpinInput.sqrMagnitude > inputLimit * inputLimit && oldSpinInput.sqrMagnitude > inputLimit * inputLimit )
@@ -137,7 +139,9 @@ public class SpinImput : MonoBehaviour
     {
         // ブレーキ入力を取得
         oldBrakeInput = brakeInput; // 前回フレームのブレーキ入力を保存
-        brakeInput = InputManager.Instance.GetActionValue<bool>( 0, "MainGame", "Brake" );
+        brakeInput = InputManager.Instance.GetActionValue<bool>( sushiComponent.PlayerNumber, "MainGame", "Brake" );
+
+        Debug.Log( sushiComponent.PlayerNumber +" : " + brakeInput );
 
         // ブレーキ入力がある場合は回転速度を減速
         if (brakeInput)
@@ -172,7 +176,7 @@ public class SpinImput : MonoBehaviour
             }
         }
 
-        bool attackInput = InputManager.Instance.GetActionValue<bool>( 0, "MainGame", "Attack" );
+        bool attackInput = InputManager.Instance.GetActionValue<bool>( sushiComponent.PlayerNumber, "MainGame", "Attack" );
         
         // 攻撃入力がある場合は回転速度を逆回転
         if (attackInput)

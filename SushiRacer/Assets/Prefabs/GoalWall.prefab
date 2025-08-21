@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6943537592764119805}
   - component: {fileID: 1008576078559150479}
   - component: {fileID: 582001261327580605}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GoalWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,5 +152,5 @@ MonoBehaviour:
   goalCamera: {fileID: 0}
   cameraP1: {fileID: 0}
   cameraP2: {fileID: 0}
-  canvas: {fileID: 0}
+  canvasTsuji: {fileID: 0}
   waitTime: 2

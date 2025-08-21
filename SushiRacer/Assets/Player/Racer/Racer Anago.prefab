@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anago (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 140173068019338743, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 772980886079461197, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.4
@@ -51,6 +55,10 @@ PrefabInstance:
     - target: {fileID: 772980886079461197, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276921272662154329, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -179,6 +187,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Plate_02
       objectReference: {fileID: 0}
+    - target: {fileID: 5887432825129157139, guid: 082815481f9809a49bc7e44fb142da32, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6557113903845480617, guid: 082815481f9809a49bc7e44fb142da32, type: 3}
       propertyPath: m_LocalScale.x
       value: 7
@@ -258,6 +270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Anago
       objectReference: {fileID: 0}
+    - target: {fileID: 140173068019338743, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 772980886079461197, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.4
@@ -297,6 +313,10 @@ PrefabInstance:
     - target: {fileID: 772980886079461197, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276921272662154329, guid: 6b46d45b2bfcc264380579c8e5fb7b4a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

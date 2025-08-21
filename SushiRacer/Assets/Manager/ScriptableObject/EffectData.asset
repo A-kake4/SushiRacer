@@ -15,4 +15,4 @@ MonoBehaviour:
   items:
   - id: Cone
     m_effectPrefab: {fileID: 7381796096647289744, guid: f558228560d087345989ec32b6c6e775, type: 3}
-    m_effectNum: 50
+    m_effectNum: 5

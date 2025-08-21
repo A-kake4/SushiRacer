@@ -116,15 +116,17 @@ public class SplineAnimateRigidbody : MonoBehaviour
             return;
         }
 
+        distance += Mathf.Abs( speedFactor * Time.fixedDeltaTime ) / splineLength;
+
         // 進行方向が逆の場合は距離をマイナスにする
-        if (isReversing)
-        {
-            distance -= ( speedFactor * Time.fixedDeltaTime ) / splineLength;
-        }
-        else
-        {
-            distance += ( speedFactor * Time.fixedDeltaTime ) / splineLength;
-        }
+        //if ( isReversing)
+        //{
+        //    distance += ( speedFactor * Time.fixedDeltaTime ) / splineLength;
+        //}
+        //else
+        //{
+        //    distance -= ( speedFactor * Time.fixedDeltaTime ) / splineLength;
+        //}
 
         // ループする場合はパラメータを0～1の範囲に制限
         if (isLooping)

@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nigiri_Sake_Free (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4449700313103077667, guid: 9962e92589c14aa45be915db7e4088a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373998080992121623, guid: 9962e92589c14aa45be915db7e4088a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -223,6 +231,14 @@ PrefabInstance:
     - target: {fileID: 4449700313103077667, guid: 9962e92589c14aa45be915db7e4088a0, type: 3}
       propertyPath: m_Name
       value: Nigiri_Sake_Free
+      objectReference: {fileID: 0}
+    - target: {fileID: 4449700313103077667, guid: 9962e92589c14aa45be915db7e4088a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373998080992121623, guid: 9962e92589c14aa45be915db7e4088a0, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

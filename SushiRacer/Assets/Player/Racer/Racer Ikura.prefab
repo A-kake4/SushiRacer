@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5019496389550671036, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: selectedItemID
+      value: Ikura
+      objectReference: {fileID: 0}
+    - target: {fileID: 5019496389550671036, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: selectedItemNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5592764609599643907, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -49,12 +57,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6999631737755744371, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999631737755744371, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7523292666687259067, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053132048281758596, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169031753460165768, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8292200186971769953, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
       propertyPath: m_Name
       value: Racer Ikura
+      objectReference: {fileID: 0}
+    - target: {fileID: 8652978604523132224, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9205335707231453055, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

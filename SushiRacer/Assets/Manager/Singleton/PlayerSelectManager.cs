@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static Unity.VisualScripting.Metadata;
 
 public class PlayerSelectManager : SingletonMonoBehaviour<PlayerSelectManager>
 {
@@ -51,7 +49,7 @@ public class PlayerSelectManager : SingletonMonoBehaviour<PlayerSelectManager>
         // 接続されているデバイス一覧から、GamepadとKeyboardのみ取得
         var allDevices = InputSystem.devices;
         var availableGamepads = new List<Gamepad>();
-        Keyboard keyboard = Keyboard.current;
+        InputDevice keyboard = Keyboard.current;
 
         foreach (var device in allDevices)
         {
@@ -93,7 +91,6 @@ public class PlayerSelectManager : SingletonMonoBehaviour<PlayerSelectManager>
         // 接続されているデバイス一覧を更新
         var allDevices = InputSystem.devices;
         var availableGamepads = new List<Gamepad>();
-        Keyboard keyboard = Keyboard.current;
         foreach (var device in allDevices)
         {
             if (device is Gamepad gamepad)
@@ -113,6 +110,16 @@ public class PlayerSelectManager : SingletonMonoBehaviour<PlayerSelectManager>
             return null;
         }
         return playerSelectDataList[playerIndex].device;
+    }
+
+    public void SetSelectedCharacterIndex( int playerIndex, int charaIndex )
+    {
+        playerSelectDataList[playerIndex].characterIndex = charaIndex;
+    }
+
+    public int GetSelectedCharacterIndex( int playerIndex )
+    {
+        return playerSelectDataList[playerIndex].characterIndex;
     }
 
     // デバイスの変更を検知した時の処理

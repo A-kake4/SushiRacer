@@ -16,6 +16,15 @@ public enum SushiMode
 
 public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject>
 {
+    [SerializeField,Header("プレイヤーの番号")]
+    private int playerNumber = 0; // プレイヤーの番号
+
+    public int PlayerNumber
+    {
+        set => playerNumber = value;
+        get => playerNumber;
+    }
+
     [SerializeField]
     private SushiMode sushiMode = SushiMode.Event;
 
@@ -28,6 +37,7 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     {
         get => rb;
     }
+
 
     [SerializeField, ReadOnly]
     private SpinImput spinImput; // SpinImputスクリプトの参照
@@ -65,26 +75,6 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
 
     private void Start()
     {
-        // ゲームパッドの入力設定
-        //var device = PlayerSelectManager.Instance.GetPlayerDevice( 0 );
-        //InputManager.Instance.RegisterPlayerDevice( 0, device );
-        //InputManager.Instance.RegisterPlayerDevice( 0, Gamepad.current );
-        // プレイヤー0用のデバイス取得
-        var device = PlayerSelectManager.Instance.GetPlayerDevice( 0 );
-        if (device == null)
-        {
-            Debug.LogError( "プレイヤー0に割り当てられたデバイスが null です。" );
-        }
-        else
-        {
-            Debug.Log( $"プレイヤー0に割り当てられたデバイス: {device}" );
-        }
-
-        Debug.Log( $"currentデバイス: {Gamepad.current}" );
-
-        // 入力マネージャにデバイスを登録
-        InputManager.Instance.RegisterPlayerDevice( 0, device );
-
         var sushiData = dataSource.GetItem( selectedItemNumber );
         accelSideRate = sushiData.accelSideRate;
         maxSideSpeed = sushiData.maxSideSpeed;
@@ -166,7 +156,7 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         }
         if (sushiMode == SushiMode.DriftWall)
         {
-            splineAnimateRigidbody.SpeedFactor = -spinImput.NowSpinSpeed * 0.02f * gierRatio; // スピン速度に応じて移動速度を調整
+            splineAnimateRigidbody.SpeedFactor = spinImput.NowSpinSpeed * 0.02f * gierRatio; // スピン速度に応じて移動速度を調整
 
             var moveInput = spinImput.MoveInput;
             if (moveInput.sqrMagnitude < 0.01f)

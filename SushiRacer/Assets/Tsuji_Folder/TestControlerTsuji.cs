@@ -108,6 +108,33 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Change30"",
+                    ""type"": ""Button"",
+                    ""id"": ""40c9d2b5-bb6b-4d06-849f-e2aa16107b89"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Change50"",
+                    ""type"": ""Button"",
+                    ""id"": ""9388d5d2-a9e4-4fc1-a4e2-5884178f1352"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Change100"",
+                    ""type"": ""Button"",
+                    ""id"": ""ef91b7af-5528-4ca9-9ee7-2ee4ace24c09"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -176,6 +203,39 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Warp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cd4fc8f-b78f-428a-9057-40da38a5ece7"",
+                    ""path"": ""<Keyboard>/#(B)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change30"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02b600c2-b443-4034-9af3-cf52a142713f"",
+                    ""path"": ""<Keyboard>/#(N)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change50"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d7515c4-5c12-41bd-b15c-e8850ebe1543"",
+                    ""path"": ""<Keyboard>/#(M)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Change100"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +246,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_TestAction = asset.FindActionMap("TestAction", throwIfNotFound: true);
         m_TestAction_Move = m_TestAction.FindAction("Move", throwIfNotFound: true);
         m_TestAction_Warp = m_TestAction.FindAction("Warp", throwIfNotFound: true);
+        m_TestAction_Change30 = m_TestAction.FindAction("Change30", throwIfNotFound: true);
+        m_TestAction_Change50 = m_TestAction.FindAction("Change50", throwIfNotFound: true);
+        m_TestAction_Change100 = m_TestAction.FindAction("Change100", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
@@ -268,6 +331,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<ITestActionActions> m_TestActionActionsCallbackInterfaces = new List<ITestActionActions>();
     private readonly InputAction m_TestAction_Move;
     private readonly InputAction m_TestAction_Warp;
+    private readonly InputAction m_TestAction_Change30;
+    private readonly InputAction m_TestAction_Change50;
+    private readonly InputAction m_TestAction_Change100;
     /// <summary>
     /// Provides access to input actions defined in input action map "TestAction".
     /// </summary>
@@ -287,6 +353,18 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "TestAction/Warp".
         /// </summary>
         public InputAction @Warp => m_Wrapper.m_TestAction_Warp;
+        /// <summary>
+        /// Provides access to the underlying input action "TestAction/Change30".
+        /// </summary>
+        public InputAction @Change30 => m_Wrapper.m_TestAction_Change30;
+        /// <summary>
+        /// Provides access to the underlying input action "TestAction/Change50".
+        /// </summary>
+        public InputAction @Change50 => m_Wrapper.m_TestAction_Change50;
+        /// <summary>
+        /// Provides access to the underlying input action "TestAction/Change100".
+        /// </summary>
+        public InputAction @Change100 => m_Wrapper.m_TestAction_Change100;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -319,6 +397,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Warp.started += instance.OnWarp;
             @Warp.performed += instance.OnWarp;
             @Warp.canceled += instance.OnWarp;
+            @Change30.started += instance.OnChange30;
+            @Change30.performed += instance.OnChange30;
+            @Change30.canceled += instance.OnChange30;
+            @Change50.started += instance.OnChange50;
+            @Change50.performed += instance.OnChange50;
+            @Change50.canceled += instance.OnChange50;
+            @Change100.started += instance.OnChange100;
+            @Change100.performed += instance.OnChange100;
+            @Change100.canceled += instance.OnChange100;
         }
 
         /// <summary>
@@ -336,6 +423,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Warp.started -= instance.OnWarp;
             @Warp.performed -= instance.OnWarp;
             @Warp.canceled -= instance.OnWarp;
+            @Change30.started -= instance.OnChange30;
+            @Change30.performed -= instance.OnChange30;
+            @Change30.canceled -= instance.OnChange30;
+            @Change50.started -= instance.OnChange50;
+            @Change50.performed -= instance.OnChange50;
+            @Change50.canceled -= instance.OnChange50;
+            @Change100.started -= instance.OnChange100;
+            @Change100.performed -= instance.OnChange100;
+            @Change100.canceled -= instance.OnChange100;
         }
 
         /// <summary>
@@ -390,5 +486,26 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnWarp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Change30" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChange30(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Change50" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChange50(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Change100" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnChange100(InputAction.CallbackContext context);
     }
 }

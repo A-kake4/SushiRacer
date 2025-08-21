@@ -8,12 +8,18 @@ public class TestMove_Tsuji : MonoBehaviour
     [SerializeField]
     private RacerProgress_Tsuji racerProgress;
 
+    [SerializeField]
+    private SequentialOperation_Tsuji so;
+
     private void Awake()
     {
         controls = new PlayerControls();
         controls.TestAction.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.TestAction.Move.canceled += ctx => moveInput = Vector2.zero;
         controls.TestAction.Warp.performed += ctx => OnWarp();
+        controls.TestAction.Change30.performed += ctx => Change30();
+        controls.TestAction.Change50.performed += ctx => Change50();
+        controls.TestAction.Change100.performed += ctx => Change100();
     }
 
     private void OnEnable()
@@ -36,5 +42,24 @@ public class TestMove_Tsuji : MonoBehaviour
     void OnWarp()
     {
         racerProgress.Teleport();
+
+    }
+
+    void Change30()
+    {
+        so.SetPasteSeal(SealPercent.Percent_30);
+
+    }
+
+    void Change50()
+    {
+        so.SetPasteSeal(SealPercent.Percent_50);
+
+    }
+    
+    void Change100()
+    {
+        so.SetPasteSeal(SealPercent.None);
+
     }
 }

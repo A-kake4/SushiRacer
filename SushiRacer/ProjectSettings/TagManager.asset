@@ -19,7 +19,7 @@ TagManager:
   - GimmickHit
   - PlayerIcon
   - Gimmick
-  - 
+  - PlayerEffect
   - 
   - 
   - 
@@ -41,6 +41,12 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: StageEffect
+    uniqueID: 3123990819
+    locked: 0
+  - name: PlayerEffect
+    uniqueID: 3121381915
     locked: 0
   m_RenderingLayers:
   - Default

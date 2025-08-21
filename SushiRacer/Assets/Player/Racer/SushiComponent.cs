@@ -66,7 +66,24 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     private void Start()
     {
         // ゲームパッドの入力設定
-        InputManager.Instance.RegisterPlayerDevice( 1, Gamepad.current );
+        //var device = PlayerSelectManager.Instance.GetPlayerDevice( 0 );
+        //InputManager.Instance.RegisterPlayerDevice( 0, device );
+        //InputManager.Instance.RegisterPlayerDevice( 0, Gamepad.current );
+        // プレイヤー0用のデバイス取得
+        var device = PlayerSelectManager.Instance.GetPlayerDevice( 0 );
+        if (device == null)
+        {
+            Debug.LogError( "プレイヤー0に割り当てられたデバイスが null です。" );
+        }
+        else
+        {
+            Debug.Log( $"プレイヤー0に割り当てられたデバイス: {device}" );
+        }
+
+        Debug.Log( $"currentデバイス: {Gamepad.current}" );
+
+        // 入力マネージャにデバイスを登録
+        InputManager.Instance.RegisterPlayerDevice( 0, device );
 
         var sushiData = dataSource.GetItem( selectedItemNumber );
         accelSideRate = sushiData.accelSideRate;
@@ -151,7 +168,7 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         {
             splineAnimateRigidbody.SpeedFactor = -spinImput.NowSpinSpeed * 0.02f * gierRatio; // スピン速度に応じて移動速度を調整
 
-            var moveInput = InputManager.Instance.GetActionValue<Vector2>( 1, "MainGame", "Move" );
+            var moveInput = spinImput.MoveInput;
             if (moveInput.sqrMagnitude < 0.01f)
             {
                 // 入力がほとんどない場合は移動しない
@@ -216,7 +233,7 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         }
 
         // 入力を取得（移動のみ）
-        float horizontalInput = InputManager.Instance.GetActionValue<Vector2>( 1, "MainGame", "Move" ).x;
+        float horizontalInput =spinImput.MoveInput.x;
 
         // 移動方向を計算
         moveDirection = playerRight * horizontalInput;

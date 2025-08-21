@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class RacerProgress_Tsuji : MonoBehaviour
@@ -6,11 +7,38 @@ public class RacerProgress_Tsuji : MonoBehaviour
     private int currentWaypointIndex;
     private float totalDistance;
     private int rank;
+    private int beforeRank;
+
     private Transform targetObject; // 参照元のオブジェクト
     [SerializeField]
     private float heightOffset = 5f; // 上方向へのオフセット
     [SerializeField]
     private Vector3 startPoint = Vector3.zero;  // スタート地点
+
+    [SerializeField]
+    private Image playerRankImage; // プレイヤー順位用のUIイメージ
+
+    [SerializeField]
+    private Sprite rank1Sprite; // １位のスプライト
+
+    [SerializeField]
+    private Sprite rank2Sprite; // ２位のスプライト
+
+    private void FixedUpdate()
+    {
+        if (beforeRank != rank && playerRankImage != null && rank1Sprite != null && rank2Sprite != null)
+        {
+            if (rank == 1)
+            {
+                playerRankImage.sprite = rank1Sprite; // １位のスプライトを設定
+            }
+            else if (rank == 2)
+            {
+                playerRankImage.sprite = rank2Sprite; // ２位のスプライトを設定
+            }
+        }
+        beforeRank = rank;
+    }
 
     public void UpdateProgress(Transform[] waypoints)
     {
@@ -31,6 +59,11 @@ public class RacerProgress_Tsuji : MonoBehaviour
     public float GetTotalDistance()
     {
         return totalDistance;
+    }
+
+    public int GetRank()
+    {
+        return rank;
     }
 
     public void Teleport()

@@ -574,6 +574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightOffset: 5
   startPoint: {x: 0, y: 0, z: 0}
+  playerRankImage: {fileID: 1473174251}
+  rank1Sprite: {fileID: 21300000, guid: 51d0575391800784ca59d971670a71e5, type: 3}
+  rank2Sprite: {fileID: 21300000, guid: 2cc96d3b51e2680428ffa3b4fd234170, type: 3}
 --- !u!1 &1065657776
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,12 +663,23 @@ Transform:
   m_GameObject: {fileID: 1065657776}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3, y: 1, z: -7.43}
+  m_LocalPosition: {x: 18.5, y: 1.5, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1473174251 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4357986295712214832, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+  m_PrefabInstance: {fileID: 392404602972158809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1546844186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8470651579932262052, guid: dc62e9af40e48084f83e1f204dcacf75, type: 3}
@@ -761,13 +775,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679625191}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.18, y: 1, z: 5.46}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 1.5, z: -4.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1711224402
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +918,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1786205455 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4317181072383105241, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+  m_PrefabInstance: {fileID: 392404602972158809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1840618909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1070,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heightOffset: 5
   startPoint: {x: 0, y: 0, z: 0}
+  playerRankImage: {fileID: 1786205455}
+  rank1Sprite: {fileID: 21300000, guid: 51d0575391800784ca59d971670a71e5, type: 3}
+  rank2Sprite: {fileID: 21300000, guid: 2cc96d3b51e2680428ffa3b4fd234170, type: 3}
 --- !u!54 &1840618916
 Rigidbody:
   m_ObjectHideFlags: 0

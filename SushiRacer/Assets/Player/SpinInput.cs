@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 //----------------------------------------
 // 回転の入力を管理するクラス
 //-----------------------------------------
@@ -43,8 +44,11 @@ public class SpinImput : MonoBehaviour
     [SerializeField, ReadOnly]
     private float brakeSpeed = 0.5f; // ブレーキの減速率
 
-    private Vector2 oldMoveInput = Vector2.zero;
-    private Vector2 nowMoveInput = Vector2.zero;
+    private Vector2 oldSpinInput = Vector2.zero;
+    private Vector2 nowSpinInput = Vector2.zero;
+
+    private Vector2 moveInput = Vector2.zero; // 移動入力のベクトル
+    public Vector2 MoveInput => moveInput; // 移動入力のプロパティ
 
     // ブレーキ入力のフラグ
     private bool oldBrakeInput = false; // 前回フレームのブレーキ入力
@@ -83,18 +87,21 @@ public class SpinImput : MonoBehaviour
 
     private void Update()
     {
+        // 移動入力を取得
+        moveInput = InputManager.Instance.GetActionValue<Vector2>( 0, "MainGame", "Move" );
+
         // 前回の入力を保存
-        oldMoveInput = nowMoveInput;
+        oldSpinInput = nowSpinInput;
 
         // ゲームパッドのベクトルを取得
-        nowMoveInput = InputManager.Instance.GetActionValue<Vector2>(1, "MainGame", "Spin" );
+        nowSpinInput = InputManager.Instance.GetActionValue<Vector2>(0, "MainGame", "Spin" );
 
         // 入力が閾値を超えた場合のみ処理
-        if (nowMoveInput.sqrMagnitude > inputLimit * inputLimit && oldMoveInput.sqrMagnitude > inputLimit * inputLimit )
+        if (nowSpinInput.sqrMagnitude > inputLimit * inputLimit && oldSpinInput.sqrMagnitude > inputLimit * inputLimit )
         {
             // 入力ベクトルを正規化
-            Vector2 normalizedNowInput = nowMoveInput.normalized;
-            Vector2 normalizedOldInput = oldMoveInput.normalized;
+            Vector2 normalizedNowInput = nowSpinInput.normalized;
+            Vector2 normalizedOldInput = oldSpinInput.normalized;
 
             // 角度を計算
             float oldAngle = Mathf.Atan2(normalizedOldInput.y, normalizedOldInput.x) * Mathf.Rad2Deg;
@@ -130,7 +137,7 @@ public class SpinImput : MonoBehaviour
     {
         // ブレーキ入力を取得
         oldBrakeInput = brakeInput; // 前回フレームのブレーキ入力を保存
-        brakeInput = InputManager.Instance.GetActionValue<bool>( 1, "MainGame", "Brake" );
+        brakeInput = InputManager.Instance.GetActionValue<bool>( 0, "MainGame", "Brake" );
 
         // ブレーキ入力がある場合は回転速度を減速
         if (brakeInput)
@@ -163,11 +170,9 @@ public class SpinImput : MonoBehaviour
                 sushiComponent.SplineAnimateRigidbody.StopMovement();
                 sushiComponent.SetSushiMode( SushiMode.Normal ); // ドリフトモードを解除
             }
-
-            nowSpinSpeed = -nowSpinSpeed;
         }
 
-        bool attackInput = InputManager.Instance.GetActionValue<bool>( 1, "MainGame", "Attack" );
+        bool attackInput = InputManager.Instance.GetActionValue<bool>( 0, "MainGame", "Attack" );
         
         // 攻撃入力がある場合は回転速度を逆回転
         if (attackInput)

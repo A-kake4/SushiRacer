@@ -59,7 +59,7 @@ public class SplineAnimateRigidbody : MonoBehaviour
         set 
         { 
 
-        offsetPsitionY = Mathf.Clamp( value, -10f, 10f ); // Y軸の補正角度を-1から1の範囲に制限
+        offsetPsitionY = Mathf.Clamp( value, -8f, 8f ); // Y軸の補正角度を-1から1の範囲に制限
         }
     }
 
@@ -270,6 +270,12 @@ public class SplineAnimateRigidbody : MonoBehaviour
 
                 if(joint.connectedBody != null)
                 {
+                    // 現在の接続先のRigidbodyの回転を取得
+                    var nowRotation = joint.connectedBody.rotation;
+
+                    // ラープ処理を行い、現在の回転とターゲット回転を補間
+                    var smoothRotation = Quaternion.Lerp( nowRotation, targetRotation, 0.5f );
+
                     // 接続先のRigidbodyも更新
                     joint.connectedBody.rotation = targetRotation;
                 }

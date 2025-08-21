@@ -35,6 +35,8 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     /// <summary>
     /// プレイヤーごとのInputUserをセットアップ
+    /// 例： RegisterPlayerDevice(1, Gamepad.current);
+    /// キーボード入力の場合は、Gamepad.currentをnullにするか、Keyboard.currentを使用
     /// </summary>
     public void RegisterPlayerDevice( int playerIndex, InputDevice device )
     {
@@ -150,6 +152,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
 
     /// <summary>
     /// プレイヤー番号・アクションマップ名・アクション名からフェーズを取得
+    /// 呼び出し例： GetActionPhase(1, "MainGame", "Jump")
     /// </summary>
     public InputActionPhase GetActionPhase( int playerIndex, string actionMapName, string actionName )
     {

@@ -572,11 +572,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f63ac21ec453249b1d169397ff61bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasabiSealPercentage: 0
   heightOffset: 5
   startPoint: {x: 0, y: 0, z: 0}
   playerRankImage: {fileID: 1473174251}
+  playerWasabiSeal: {fileID: 0}
   rank1Sprite: {fileID: 21300000, guid: 51d0575391800784ca59d971670a71e5, type: 3}
   rank2Sprite: {fileID: 21300000, guid: 2cc96d3b51e2680428ffa3b4fd234170, type: 3}
+  wasabiSealSprite_30Percent: {fileID: 21300000, guid: b9bd1a194fc42fc429395c9dbaf8a6cd, type: 3}
+  wasabiSealSprite_50Percent: {fileID: 21300000, guid: 880c251740ec1534793175bf7f24f651, type: 3}
+  wasabiSealSprite_100Percent: {fileID: 21300000, guid: 4391b08419c027540a547a57e815f068, type: 3}
 --- !u!1 &1065657776
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +674,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150465118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2569505890382581503, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+  m_PrefabInstance: {fileID: 392404602972158809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465acee15a351f7418c0b87ff4aa7f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1473174251 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4357986295712214832, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
@@ -1056,6 +1072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   racerProgress: {fileID: 1840618915}
+  so: {fileID: 1150465118}
 --- !u!114 &1840618915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,11 +1085,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f63ac21ec453249b1d169397ff61bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wasabiSealPercentage: 0
   heightOffset: 5
   startPoint: {x: 0, y: 0, z: 0}
   playerRankImage: {fileID: 1786205455}
+  playerWasabiSeal: {fileID: 0}
   rank1Sprite: {fileID: 21300000, guid: 51d0575391800784ca59d971670a71e5, type: 3}
   rank2Sprite: {fileID: 21300000, guid: 2cc96d3b51e2680428ffa3b4fd234170, type: 3}
+  wasabiSealSprite_30Percent: {fileID: 21300000, guid: b9bd1a194fc42fc429395c9dbaf8a6cd, type: 3}
+  wasabiSealSprite_50Percent: {fileID: 21300000, guid: 880c251740ec1534793175bf7f24f651, type: 3}
+  wasabiSealSprite_100Percent: {fileID: 21300000, guid: 4391b08419c027540a547a57e815f068, type: 3}
 --- !u!54 &1840618916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1538,6 +1560,66 @@ PrefabInstance:
     - target: {fileID: 4721272160966433308, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
       propertyPath: m_Name
       value: Canvas_Tsuji
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721272160966433308, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4979742957846531771, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4993471691477218409, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121270224506547920, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5177946513219891254, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287333028327632648, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6407171564193480872, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973806001209844956, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973806001209844956, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973806001209844956, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7973806001209844956, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138101592982839244, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138101592982839244, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138101592982839244, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961147203833162119, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
+      propertyPath: m_Color.a
+      value: 0.003921569
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

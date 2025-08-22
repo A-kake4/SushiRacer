@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class GoalAction_Tsuji : MonoBehaviour
 {
@@ -11,8 +10,12 @@ public class GoalAction_Tsuji : MonoBehaviour
     [SerializeField]
     private Camera cameraP1 = null;
 
+    public Camera CameraP1 => cameraP1;
+
     [SerializeField]
     private Camera cameraP2 = null;
+
+    public Camera CameraP2 => cameraP2;
 
     [SerializeField]
     private Canvas canvasTsuji = null;
@@ -64,8 +67,10 @@ public class GoalAction_Tsuji : MonoBehaviour
 
     void NonActives()
     {
-        cameraP1.gameObject.SetActive(false);
-        cameraP2.gameObject.SetActive(false);
+        PlayerKeeper_Tsuji.instance.GetCamera1().gameObject.SetActive(false);
+        PlayerKeeper_Tsuji.instance.GetCamera2().gameObject.SetActive(false);
+        //cameraP1.gameObject.SetActive(false);
+        //cameraP2.gameObject.SetActive(false);
     }
 
     public bool GetGoalFlag()

@@ -18,6 +18,9 @@ public class PlayerKeeper_Tsuji : MonoBehaviour
     [SerializeField]
     private Sprite rank2Sprite; // ２位のスプライト
 
+    private Camera camera1 = null; // プレイヤー1のカメラ
+    private Camera camera2 = null; // プレイヤー2のカメラ
+
     public static PlayerKeeper_Tsuji  instance = null; // シングルトンインスタンス
 
     private void Awake()
@@ -58,10 +61,29 @@ public class PlayerKeeper_Tsuji : MonoBehaviour
         player1.GetComponent<RacerProgress_Tsuji>().SetRankImageAndRankSprite(player1RankImage,rank1Sprite,rank2Sprite);
     }
 
+    public void SetCamera1(Camera cameraObject)
+    {
+        camera1 = cameraObject; // プレイヤー1のカメラを設定
+    }
+
+    public Camera GetCamera1()
+    {
+        return camera1; // プレイヤー1のカメラを取得
+    }
+
     public void SetPlayer2(GameObject player)
     {
         player2 = player; // プレイヤー2のGameObjectを設定
         player2.GetComponent<RacerProgress_Tsuji>().SetRankImageAndRankSprite(player2RankImage, rank1Sprite, rank2Sprite);
+    }
+    public void SetCamera2(Camera cameraObject)
+    {
+        camera2 = cameraObject; // プレイヤー2のカメラを設定
+    }
+
+    public Camera GetCamera2()
+    {
+        return camera2; // プレイヤー2のカメラを取得
     }
 
     public GameObject GetPlayer1()

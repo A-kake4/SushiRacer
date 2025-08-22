@@ -180,6 +180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racer 0 GASTRO
       objectReference: {fileID: 0}
+    - target: {fileID: 2275039237350935702, guid: 364bddb8f00d3ee46a8399cb49732d1d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     - target: {fileID: 3161801442253220967, guid: 364bddb8f00d3ee46a8399cb49732d1d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

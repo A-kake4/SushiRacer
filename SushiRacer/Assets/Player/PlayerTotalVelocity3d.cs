@@ -35,7 +35,7 @@ public class PlayerTotalVelocity3d : MonoBehaviour
     private void Start()
     {
         PlayerFocusCamera3d playerFocusCamera = FindAnyObjectByType<PlayerFocusCamera3d>();
-        playerFocusCamera.PlayerRigidbody = playerRigidbody; // カメラにRigidbodyを設定
+        //playerFocusCamera.PlayerRigidbody = playerRigidbody; // カメラにRigidbodyを設定
     }
 
     public void AddAngularVelocity(Vector3 vector3 )

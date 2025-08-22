@@ -18,6 +18,15 @@ public class PlayerKeeper_Tsuji : MonoBehaviour
     [SerializeField]
     private Sprite rank2Sprite; // ２位のスプライト
 
+    [SerializeField]
+    private CircleGauge_Tsuji circle1;
+    public CircleGauge_Tsuji Circle1 => circle1;
+
+    [SerializeField]
+    private CircleGauge_Tsuji circle2;
+    public CircleGauge_Tsuji Circle2 => circle2;
+
+
     private Camera camera1 = null; // プレイヤー1のカメラ
     private Camera camera2 = null; // プレイヤー2のカメラ
 
@@ -30,6 +39,11 @@ public class PlayerKeeper_Tsuji : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 
     //private void FixedUpdate()

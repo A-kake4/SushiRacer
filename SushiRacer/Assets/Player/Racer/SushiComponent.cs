@@ -1,8 +1,7 @@
-#if UNITY_EDITOR
-using System;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
+#if UNITY_EDITOR
+using UnityEditor;
 [CustomEditor( typeof( BaseComponent<SushiItem, SushiDataScriptableObject> ), true )]
 public class SushiComponentEditor : BaseComponentEditor{}
 #endif
@@ -67,6 +66,8 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
 
     private Vector3 moveDirection; // プレイヤーの移動方向
 
+    private bool started = false;
+
     public SushiItem GetSushiData()
     {
         return dataSource.GetItem(selectedItemNumber);
@@ -108,6 +109,8 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
                     | RigidbodyConstraints.FreezeRotationZ;
                 rb.isKinematic = true; // 動的にしない
 
+                playerTotalVelocity.SetLinearVelocity( Vector3.zero );
+
                 playerFocusCamera.FocusMode = 0; // カメラのフォーカスモードをイベントに設定
 
                 break;
@@ -146,7 +149,21 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
 
     private void FixedUpdate()
     {
-        if( sushiMode == SushiMode.Normal )
+        if ( sushiMode == SushiMode.Event )
+        {
+            if ( CountDownAnimation_Tsuji.instance.GetIsStarted() )
+            {
+                if ( !started )
+                {
+                    SetSushiMode( SushiMode.Normal );
+
+                    started = true;
+                }
+            }
+
+            return;
+        }
+        if ( sushiMode == SushiMode.Normal )
         {
             PlayerMove();
             return;

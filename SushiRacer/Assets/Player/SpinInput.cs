@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 //----------------------------------------
 // 回転の入力を管理するクラス
 //-----------------------------------------
@@ -92,8 +91,6 @@ public class SpinImput : MonoBehaviour
         // 移動入力を取得
         moveInput = InputManager.Instance.GetActionValue<Vector2>( sushiComponent.PlayerNumber, "MainGame", "Move" );
 
-
-
         // 前回の入力を保存
         oldSpinInput = nowSpinInput;
 
@@ -101,7 +98,7 @@ public class SpinImput : MonoBehaviour
         nowSpinInput = InputManager.Instance.GetActionValue<Vector2>( sushiComponent.PlayerNumber, "MainGame", "Spin" );
 
         // 入力が閾値を超えた場合のみ処理
-        if (nowSpinInput.sqrMagnitude > inputLimit * inputLimit && oldSpinInput.sqrMagnitude > inputLimit * inputLimit )
+        if ( nowSpinInput.sqrMagnitude > inputLimit * inputLimit && oldSpinInput.sqrMagnitude > inputLimit * inputLimit )
         {
             // 入力ベクトルを正規化
             Vector2 normalizedNowInput = nowSpinInput.normalized;
@@ -134,6 +131,16 @@ public class SpinImput : MonoBehaviour
                     nowSpinRotasion += spinRate;
                 }
             }
+        }
+        float rate= Mathf.Abs( (float)nowSpinSpeed) / (float)maxSpinSpeed;
+
+        if ( sushiComponent.PlayerNumber == 0 )
+        {
+            PlayerKeeper_Tsuji.instance.Circle1.SetGaugeValue( rate );
+        }
+        else
+        {
+            PlayerKeeper_Tsuji.instance.Circle2.SetGaugeValue( rate );
         }
     }
 

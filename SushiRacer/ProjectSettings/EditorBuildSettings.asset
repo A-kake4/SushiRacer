@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScenes/Select_Pre.unity
     guid: ff156ea258182db4ea0b34cea3f0aadb
   - enabled: 1
-    path: Assets/Scenes/MainScenes/Stage_Fuji.unity
-    guid: 3a7d69aa9cb3f774ea96b0201e7b37b0
+    path: Assets/Scenes/MainScenes/Stage_Template.unity
+    guid: cb33bc103b15ad542bef1b0c011e1886
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/Stage01.unity
+    guid: 734f22ad7563dde47824461b2598b09f
+  - enabled: 1
+    path: Assets/Scenes/MainScenes/Stage02.unity
+    guid: 8ab1b9ccac943604a88655b136f7de93
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

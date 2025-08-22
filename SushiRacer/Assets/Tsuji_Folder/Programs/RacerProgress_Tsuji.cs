@@ -4,7 +4,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class RacerProgress_Tsuji : MonoBehaviour
 {
-    private int currentWaypointIndex;
+    private int currentWaypointIndex = 0;
     private float totalDistance;
     private int rank;
     private int beforeRank;

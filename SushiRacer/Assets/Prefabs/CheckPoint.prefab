@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5655157532718296647}
   - component: {fileID: 3720313195802892211}
   - component: {fileID: 7986407042821050159}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CheckPoint
   m_TagString: WayPoint
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8569258207093008332}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

@@ -1,10 +1,25 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using UnityEditor.Splines;
 
 public class CountDownAnimation_Tsuji : MonoBehaviour
 {
+    public static CountDownAnimation_Tsuji instance;
+
+    private void Awake()
+    {
+        // シングルトンパターンの実装
+        if ( instance == null )
+        {
+            instance = this;
+        }
+    }
+
+
+    private void OnDestroy()
+    {
+        instance = null;
+    }
+
     [SerializeField]
     private Image countdownImage;    // UIのImage
 

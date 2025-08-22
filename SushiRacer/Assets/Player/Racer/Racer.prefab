@@ -195,7 +195,7 @@ MonoBehaviour:
   selectedItemNumber: 0
   selectedItemID: Tuna
   playerNumber: 0
-  sushiMode: 1
+  sushiMode: 0
   playerFocusCamera: {fileID: 526905383117626732}
   rb: {fileID: 70299393082917535}
   spinImput: {fileID: 6675329270558242429}
@@ -6525,6 +6525,10 @@ PrefabInstance:
     - target: {fileID: 4946949570821012922, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}
       propertyPath: far clip plane
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946949570821012922, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 5057
       objectReference: {fileID: 0}
     - target: {fileID: 8213501937293211798, guid: 8db35dfb2ac6ee341a876270647f4cb9, type: 3}
       propertyPath: playerRigidbody

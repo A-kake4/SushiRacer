@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 3715903175472035159}
   - component: {fileID: 3099886611954904305}
   - component: {fileID: 9005375163568157950}
+  - component: {fileID: 5553160603870683328}
   m_Layer: 8
   m_Name: Racer
   m_TagString: Untagged
@@ -143,10 +144,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5096421256915493359}
+  - {fileID: 8103743137777507110}
   - {fileID: 5982082067146636846}
   - {fileID: 9080472034600336066}
   - {fileID: 3357487406714587794}
-  - {fileID: 8103743137777507110}
   - {fileID: 482999876340141368}
   - {fileID: 3997344030048610405}
   m_Father: {fileID: 0}
@@ -306,6 +307,25 @@ MonoBehaviour:
   mainCamera: {fileID: 3608739778798884928}
   effectCamera: {fileID: 4974133770131773319}
   effectLayerObject: {fileID: 4798830434192146337}
+--- !u!114 &5553160603870683328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544264415860441349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2f63ac21ec453249b1d169397ff61bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wasabiSealPercentage: 0
+  heightOffset: 5
+  startPoint: {x: 0, y: 0, z: 0}
+  playerWasabiSeal: {fileID: 0}
+  wasabiSealSprite_30Percent: {fileID: 0}
+  wasabiSealSprite_50Percent: {fileID: 0}
+  wasabiSealSprite_100Percent: {fileID: 0}
 --- !u!1 &2647780271328439411
 GameObject:
   m_ObjectHideFlags: 0

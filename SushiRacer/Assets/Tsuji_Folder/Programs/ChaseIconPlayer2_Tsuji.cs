@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ChaseIconPlayer2_Tsuji : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerKeeper_Tsuji playerKeeper; // PlayerKeeperの参照
+    //[SerializeField]
+    //private PlayerKeeper_Tsuji playerKeeper; // PlayerKeeperの参照
 
     [SerializeField]
     private float offsetHeight = 0.0f;
@@ -11,7 +11,9 @@ public class ChaseIconPlayer2_Tsuji : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(playerKeeper != null)
+        PlayerKeeper_Tsuji playerKeeper = PlayerKeeper_Tsuji.instance; // PlayerKeeperのインスタンスを取得
+
+        if ( playerKeeper != null)
         {
             GameObject player2 = playerKeeper.GetPlayer2(); // PlayerKeeperからプレイヤー2のGameObjectを取得
             if (player2 != null)

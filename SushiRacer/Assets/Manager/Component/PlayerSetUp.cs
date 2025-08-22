@@ -40,5 +40,14 @@ public class PlayerSetUp : MonoBehaviour
 
         // 入力マネージャにデバイスを登録
         InputManager.Instance.RegisterPlayerDevice( playerNumber, device );
+
+        if(playerNumber == 0)
+        {
+            PlayerKeeper_Tsuji.instance.SetPlayer1( gameObject );
+        }
+        else if(playerNumber == 1)
+        {
+            PlayerKeeper_Tsuji.instance.SetPlayer2( gameObject );
+        }
     }
 }

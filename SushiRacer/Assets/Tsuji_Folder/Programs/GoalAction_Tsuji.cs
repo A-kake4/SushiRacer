@@ -24,11 +24,14 @@ public class GoalAction_Tsuji : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(onGoalFlag == true)
+        if (onGoalFlag == true)
         {
-            canvasTsuji.gameObject.SetActive(false);
+            if (canvasTsuji != null)
+            {
+                canvasTsuji.gameObject.SetActive(false);
 
-            StartCoroutine(CameraChange());
+                StartCoroutine(CameraChange());
+            }
         }
     }
 

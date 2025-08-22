@@ -993,6 +993,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6508079605377503729}
   - {fileID: 7799595493277466867}
   - {fileID: 4657860733786761335}
   - {fileID: 7691742417022467894}
@@ -2054,3 +2055,85 @@ MonoBehaviour:
   speed: 15
   soParent: {fileID: 2569505890382581503}
   mySeal: 2
+--- !u!1001 &625959139283569563
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1148626701963622322}
+    m_Modifications:
+    - target: {fileID: 847450924878684449, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: rank1Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 51d0575391800784ca59d971670a71e5, type: 3}
+    - target: {fileID: 847450924878684449, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: rank2Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2cc96d3b51e2680428ffa3b4fd234170, type: 3}
+    - target: {fileID: 847450924878684449, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: player1RankImage
+      value: 
+      objectReference: {fileID: 4317181072383105241}
+    - target: {fileID: 847450924878684449, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: player2RankImage
+      value: 
+      objectReference: {fileID: 4357986295712214832}
+    - target: {fileID: 3007217504121627001, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: checkPoints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.724876
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10.058778
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.9439133
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8722496094913052741, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+      propertyPath: m_Name
+      value: RacersManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+--- !u!4 &6508079605377503729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5980372859662735978, guid: d5b14d758c136534687c32bf4f9a3c53, type: 3}
+  m_PrefabInstance: {fileID: 625959139283569563}
+  m_PrefabAsset: {fileID: 0}

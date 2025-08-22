@@ -82,7 +82,7 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         rotationMinSpeed = sushiData.rotationMinSpeed;
         gierRatio = sushiData.gierRatio;
 
-        playerFocusCamera.PlayerRigidbody = rb; // ƒJƒƒ‰‚ÉRigidbody‚ðÝ’è
+        //playerFocusCamera.PlayerRigidbody = rb; // ƒJƒƒ‰‚ÉRigidbody‚ðÝ’è
     }
 
     private void Reset()

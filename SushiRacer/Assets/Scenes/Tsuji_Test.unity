@@ -324,7 +324,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -600,7 +600,7 @@ MonoBehaviour:
   goalCamera: {fileID: 2139284033}
   cameraP1: {fileID: 1679625193}
   cameraP2: {fileID: 1065657778}
-  canvas: {fileID: 1253611619}
+  canvasTsuji: {fileID: 0}
   waitTime: 2
 --- !u!1 &1045722244
 GameObject:
@@ -839,11 +839,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465acee15a351f7418c0b87ff4aa7f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!223 &1253611619 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 4422442478944098573, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}
-  m_PrefabInstance: {fileID: 392404602972158809}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1473174251 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4357986295712214832, guid: b8393963a2ca50e44837f4865f2f44a3, type: 3}

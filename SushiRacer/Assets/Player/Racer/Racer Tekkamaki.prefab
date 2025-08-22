@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racer Tekkamaki
       objectReference: {fileID: 0}
+    - target: {fileID: 8786263726553743858, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8652978604523132224, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}

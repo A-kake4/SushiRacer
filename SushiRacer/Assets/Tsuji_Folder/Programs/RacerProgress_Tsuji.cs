@@ -17,16 +17,18 @@ public class RacerProgress_Tsuji : MonoBehaviour
     [SerializeField]
     private Vector3 startPoint = Vector3.zero;  // スタート地点
 
-    [SerializeField]
-    private Image playerRankImage; // プレイヤー順位用のUIイメージ
+
 
     [SerializeField]
     private Image playerWasabiSeal; // プレイヤーのわさびシール用UIイメージ
 
-    [SerializeField]
+    // [SerializeField]
+    private Image playerRankImage; // プレイヤー順位用のUIイメージ
+
+   // [SerializeField]
     private Sprite rank1Sprite; // １位のスプライト
 
-    [SerializeField]
+   // [SerializeField]
     private Sprite rank2Sprite; // ２位のスプライト
 
     [SerializeField]
@@ -53,28 +55,28 @@ public class RacerProgress_Tsuji : MonoBehaviour
         }
         beforeRank = rank;
 
-        if (playerWasabiSeal != null)
-        {
-            // UIを非表示
-            playerWasabiSeal.color = new Color(playerWasabiSeal.color.r, playerWasabiSeal.color.g, playerWasabiSeal.color.b, 1f);
-            if (wasabiSealPercentage >= 100f)
-            {
-                playerWasabiSeal.sprite = wasabiSealSprite_100Percent; // 100%のスプライトを設定
-            }
-            else if (wasabiSealPercentage >= 50f)
-            {
-                playerWasabiSeal.sprite = wasabiSealSprite_50Percent; // 50%のスプライトを設定
-            }
-            else if (wasabiSealPercentage >= 30f)
-            {
-                playerWasabiSeal.sprite = wasabiSealSprite_30Percent; // 30%のスプライトを設定
-            }
-            else
-            {
-                // UIを非表示
-                playerWasabiSeal.color = new Color(playerWasabiSeal.color.r, playerWasabiSeal.color.g, playerWasabiSeal.color.b, 0f);
-            }
-        }
+        //if (playerWasabiSeal != null)
+        //{
+        //    // UIを非表示
+        //    playerWasabiSeal.color = new Color(playerWasabiSeal.color.r, playerWasabiSeal.color.g, playerWasabiSeal.color.b, 1f);
+        //    if (wasabiSealPercentage >= 100f)
+        //    {
+        //        playerWasabiSeal.sprite = wasabiSealSprite_100Percent; // 100%のスプライトを設定
+        //    }
+        //    else if (wasabiSealPercentage >= 50f)
+        //    {
+        //        playerWasabiSeal.sprite = wasabiSealSprite_50Percent; // 50%のスプライトを設定
+        //    }
+        //    else if (wasabiSealPercentage >= 30f)
+        //    {
+        //        playerWasabiSeal.sprite = wasabiSealSprite_30Percent; // 30%のスプライトを設定
+        //    }
+        //    else
+        //    {
+        //        // UIを非表示
+        //        playerWasabiSeal.color = new Color(playerWasabiSeal.color.r, playerWasabiSeal.color.g, playerWasabiSeal.color.b, 0f);
+        //    }
+        //}
     }
 
     public void UpdateProgress(Transform[] waypoints)
@@ -93,10 +95,10 @@ public class RacerProgress_Tsuji : MonoBehaviour
         rank = _rank;
     }
 
-    public void SetWasabiSealPercentage(float percentage)
-    {
-        wasabiSealPercentage = Mathf.Clamp(percentage, 0f, 100f);
-    }
+    //public void SetWasabiSealPercentage(float percentage)
+    //{
+    //    wasabiSealPercentage = Mathf.Clamp(percentage, 0f, 100f);
+    //}
 
     public float GetTotalDistance()
     {
@@ -120,6 +122,13 @@ public class RacerProgress_Tsuji : MonoBehaviour
             Vector3 newPosition = startPoint + Vector3.up * heightOffset;
             transform.position = newPosition;
         }
+    }
+
+    public void SetRankImageAndRankSprite(Image rankImage, Sprite rank1,Sprite rank2)
+    {
+        playerRankImage = rankImage;
+        rank1Sprite = rank1;
+        rank2Sprite = rank2;
     }
 
     private void OnTriggerEnter(Collider collider)

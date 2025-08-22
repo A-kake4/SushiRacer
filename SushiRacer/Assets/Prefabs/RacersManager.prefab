@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5980372859662735978}
   - component: {fileID: 3007217504121627001}
+  - component: {fileID: 847450924878684449}
   m_Layer: 0
   m_Name: RacersManager
   m_TagString: Untagged
@@ -44,11 +45,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 652c1b433212ecf4389b97397964ae94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  checkPoints: []
   racers:
   - {fileID: 0}
   - {fileID: 0}
+  playerKeeper: {fileID: 847450924878684449}
+--- !u!114 &847450924878684449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8722496094913052741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b6364a519ada8438af80223375cfeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

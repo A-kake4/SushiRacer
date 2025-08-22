@@ -173,7 +173,7 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
                     rotationMinSpeed * Time.fixedDeltaTime,
                     nowSpinSpeed / maxSpinSpeed );
 
-                splineAnimateRigidbody.OffsetPsitionY -= rotationSpeed * moveInput.x; // “ü—Í‚É‰ž‚¶‚ÄƒJƒƒ‰‚ÌYŽ²‰ñ“]‚ð’²®
+                splineAnimateRigidbody.OffsetPsitionY += rotationSpeed * moveInput.x * 5f; // “ü—Í‚É‰ž‚¶‚ÄƒJƒƒ‰‚ÌYŽ²‰ñ“]‚ð’²®
             }
             return;
         }

@@ -141,8 +141,6 @@ public class SpinImput : MonoBehaviour
         oldBrakeInput = brakeInput; // 前回フレームのブレーキ入力を保存
         brakeInput = InputManager.Instance.GetActionValue<bool>( sushiComponent.PlayerNumber, "MainGame", "Brake" );
 
-        Debug.Log( sushiComponent.PlayerNumber +" : " + brakeInput );
-
         // ブレーキ入力がある場合は回転速度を減速
         if (brakeInput)
         {
@@ -162,11 +160,11 @@ public class SpinImput : MonoBehaviour
         }
         else if (oldBrakeInput)
         {
-            if (brakeInputFrameCount > 60)
-            {
-                // ブレーキ入力が解除された場合は回転速度を元に戻す
-                nowSpinSpeed = (int)( oldSpinSpeed * 0.9f ); // ブレーキ前の回転速度を復元
-            }
+            //if (brakeInputFrameCount > 60)
+            //{
+            //    // ブレーキ入力が解除された場合は回転速度を元に戻す
+            //    nowSpinSpeed = (int)( oldSpinSpeed * 0.9f ); // ブレーキ前の回転速度を復元
+            //}
 
             // ドリフト中の場合は解除
             if (sushiComponent.GetSushiMode() == SushiMode.DriftWall)

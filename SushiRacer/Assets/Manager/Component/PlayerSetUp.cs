@@ -22,10 +22,10 @@ public class PlayerSetUp : MonoBehaviour
         mainCamera.rect = playerWindow.GetCameraDatas(playerNumber).viewportRect;
         effectCamera.rect = playerWindow.GetCameraDatas( playerNumber ).viewportRect;
 
-        int layerNum = 1 << playerWindow.GetCameraDatas( playerNumber ).effectLayer;
+        int layerNum = playerWindow.GetCameraDatas( playerNumber ).effectLayer;
 
         effectCamera.cullingMask = layerNum;
-        effectLayerObject.layer = layerNum;
+        effectLayerObject.layer = (int)Mathf.Log( layerNum, 2 );
 
         // ゲームパッドの入力設定
         var device = PlayerSelectManager.Instance.GetPlayerDevice( playerNumber );

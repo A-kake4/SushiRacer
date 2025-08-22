@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3541803472921045731}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tornade_start_left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5748791940108654566}
   - component: {fileID: 4668130047367369190}
   - component: {fileID: 7449179506528782182}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: start_add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4877,7 +4877,7 @@ GameObject:
   - component: {fileID: 515919086870438297}
   - component: {fileID: 159101744152742638}
   - component: {fileID: 4574356675844817462}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: start_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

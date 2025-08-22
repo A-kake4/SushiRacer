@@ -38,7 +38,6 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         get => rb;
     }
 
-
     [SerializeField, ReadOnly]
     private SpinImput spinImput; // SpinImputスクリプトの参照
 
@@ -81,8 +80,6 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
         rotationMaxSpeed = sushiData.rotationMaxSpeed;
         rotationMinSpeed = sushiData.rotationMinSpeed;
         gierRatio = sushiData.gierRatio;
-
-        //playerFocusCamera.PlayerRigidbody = rb; // カメラにRigidbodyを設定
     }
 
     private void Reset()

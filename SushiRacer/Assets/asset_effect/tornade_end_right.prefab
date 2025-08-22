@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7324625100127820292}
   - component: {fileID: 1688949159938799762}
   - component: {fileID: 6265853547385945914}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: end_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4851,13 +4851,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5834720009354425767}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tornade_end_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5834720009354425767
 Transform:
   m_ObjectHideFlags: 0
@@ -4886,7 +4886,7 @@ GameObject:
   - component: {fileID: 2506287696421504146}
   - component: {fileID: 2681720509953412413}
   - component: {fileID: 897945441309321175}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: end_add
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,6 +19,13 @@ public class SplineAnimateRigidbody : MonoBehaviour
         set { splineContainer = value; }
     }
 
+    [SerializeField, Header( "スパークエフェクト" )]
+    private GameObject sparkEffect;
+
+    [SerializeField, Header( "電撃の場所" )]
+    private float sparkPositionX;
+
+
     [SerializeField, Header( "接続対象" )]
     private HingeJoint joint; // Rigidbodyと接続するためのJoint
     public HingeJoint Joint
@@ -46,8 +53,6 @@ public class SplineAnimateRigidbody : MonoBehaviour
         get { return offsetPosition; }
         set { offsetPosition = value; }
     }
-
-    private float offsetRotationY;
 
     private float offsetPsitionY = 0f; // Y軸の補正角度
     public float OffsetPsitionY
@@ -176,7 +181,6 @@ public class SplineAnimateRigidbody : MonoBehaviour
 
         if (rigidbody != null)
         {
-            offsetRotationY = rigidbody.rotation.eulerAngles.y;
             SetJoint( rigidbody, connecteDistance );
         }
 
@@ -189,6 +193,17 @@ public class SplineAnimateRigidbody : MonoBehaviour
             initialConnectedRotation = rigidbody.rotation;
         }
         initialPathRotation = Quaternion.LookRotation( splineContainer.Spline.EvaluateTangent( distance ), Vector3.up );
+
+        sparkEffect.SetActive( true );
+
+        if ( isReversing )
+        {
+            sparkEffect.transform.localPosition = Vector3.right * sparkPositionX + Vector3.up * 0.24f;
+        }
+        else
+        {
+            sparkEffect.transform.localPosition = -Vector3.right * sparkPositionX + Vector3.up * 0.24f;
+        }
 
         isMoving = true;
         return true;
@@ -203,6 +218,7 @@ public class SplineAnimateRigidbody : MonoBehaviour
         UpdateAtCurrentDistance();
         derayFreamCount = 0;
         joint.connectedBody = null;
+        sparkEffect.SetActive( false );
         isMoving = false;
     }
 

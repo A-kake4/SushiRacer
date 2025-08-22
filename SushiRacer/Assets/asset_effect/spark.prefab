@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5391326170460025707}
   - component: {fileID: 1900245817788645835}
   - component: {fileID: 2240498336285389823}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4798,8 +4798,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1170976477
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 7753764165296694557}
   - component: {fileID: 1619738557748259282}
   - component: {fileID: 5731843461017984227}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9658,8 +9658,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1170976477
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -9702,7 +9702,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3286403397948728607}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9738,7 +9738,7 @@ GameObject:
   - component: {fileID: 6072757529362085190}
   - component: {fileID: 2390147891291450551}
   - component: {fileID: 1698339186282213196}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: spark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14525,8 +14525,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1170976477
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 1
   m_MeshDistribution: 0

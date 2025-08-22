@@ -15,7 +15,7 @@ TagManager:
   - Wall
   - Graund
   - Player
-  - Real
+  - Efect
   - GimmickHit
   - PlayerIcon
   - Gimmick
@@ -57,3 +57,4 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
+  - Effect

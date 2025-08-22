@@ -62,6 +62,8 @@ public class SpinImput : MonoBehaviour
     [SerializeField, ReadOnly]
     private float angleLimit = 5f; // 角度差分の閾値
 
+    [SerializeField]
+    private GameObject breakEffect;
     private void Reset()
     {
         // 初期化処理
@@ -149,6 +151,8 @@ public class SpinImput : MonoBehaviour
                 // ブレーキ入力が新たに開始された場合はフレームカウントをリセット
                 brakeInputFrameCount = 0;
                 oldSpinSpeed = nowSpinSpeed; // ブレーキ前の回転速度を保存
+
+                breakEffect.SetActive( true );
             }
 
             brakeInputFrameCount++;
@@ -172,6 +176,8 @@ public class SpinImput : MonoBehaviour
                 sushiComponent.SplineAnimateRigidbody.StopMovement();
                 sushiComponent.SetSushiMode( SushiMode.Normal ); // ドリフトモードを解除
             }
+
+            breakEffect.SetActive( false );
         }
 
         bool attackInput = InputManager.Instance.GetActionValue<bool>( sushiComponent.PlayerNumber, "MainGame", "Attack" );

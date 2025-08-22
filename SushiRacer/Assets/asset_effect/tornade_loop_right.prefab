@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3171827631349410713}
   - component: {fileID: 2126053361081865144}
   - component: {fileID: 576597322369010639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: loop_add
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 6086904281058905858}
   - component: {fileID: 7275106676484223487}
   - component: {fileID: 4519074275093825751}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: loop_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9675,7 +9675,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8468783910606641349}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: tornade_loop_right
   m_TagString: Untagged
   m_Icon: {fileID: 0}

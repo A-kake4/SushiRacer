@@ -1,9 +1,23 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+struct GoalObjects
+{
+    public GameObject obj;
+    public CheckPointDir dir;
+    public int count;
+
+    public GoalObjects(GameObject _obj, CheckPointDir _dir, int _count)
+    {
+        obj = _obj;
+        dir = _dir;
+        count = _count;
+    }
+}
 
 public class GoalAction_Tsuji : MonoBehaviour
 {
-    private GameObject goalObj = null;
     [SerializeField]
     private Camera goalCamera = null;
 
@@ -23,6 +37,8 @@ public class GoalAction_Tsuji : MonoBehaviour
     [SerializeField]
     private float waitTime = 0.0f;
 
+    List<GoalObjects> goalObjs = new List<GoalObjects>();
+
     private bool onGoalFlag = false;
 
     private void FixedUpdate()
@@ -41,20 +57,95 @@ public class GoalAction_Tsuji : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         int playerLayer = LayerMask.NameToLayer("Player");
-        if (collider.gameObject.layer == playerLayer && goalObj == null)
+        GameObject obj = collider.gameObject;
+        if (obj.layer == playerLayer)
         {
-            goalObj = collider.gameObject;
-            onGoalFlag = true;
+            Vector3 goalPos = transform.position;
+            goalPos.y = 0.0f;
+
+            Vector3 racerPos = obj.transform.position;
+            racerPos.y = 0.0f;
+
+            Vector3 wallfromPlayerDir = racerPos - goalPos;
+
+            float dot = Vector3.Dot(transform.forward.normalized, wallfromPlayerDir.normalized);
+
+            if (dot < 0.0f)
+            {
+                for (int i = 0; i < goalObjs.Count; i++)
+                {
+                    if (goalObjs[i].obj == obj)
+                    {
+                        var temp = goalObjs[i];
+                        temp.dir = CheckPointDir.ForwardDirection;
+                        goalObjs[i] = temp;
+                        return;
+                    }
+                }
+
+                goalObjs.Add(new GoalObjects(obj, CheckPointDir.ForwardDirection, 0));
+
+            }
+            else if (dot > 0.0f)
+            {
+                for (int i = 0; i < goalObjs.Count; i++)
+                {
+                    if (goalObjs[i].obj == obj)
+                    {
+                        var temp = goalObjs[i];
+                        temp.dir = CheckPointDir.ReverseDirection;
+                        goalObjs[i] = temp;
+                        return;
+                    }
+                }
+
+                goalObjs.Add(new GoalObjects(obj, CheckPointDir.ReverseDirection, -1));
+            }
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider collider)
     {
         int playerLayer = LayerMask.NameToLayer("Player");
-        if (collision.gameObject.layer == playerLayer && goalObj == null)
+        GameObject obj = collider.gameObject;
+        if (obj.layer == playerLayer)
         {
-            goalObj = collision.gameObject;
-            onGoalFlag = true;
+            Vector3 goalPos = transform.position;
+            goalPos.y = 0.0f;
+
+            Vector3 racerPos = obj.transform.position;
+            racerPos.y = 0.0f;
+
+            Vector3 wallfromPlayerDir = racerPos - goalPos;
+
+            float dot = Vector3.Dot(transform.forward.normalized, wallfromPlayerDir.normalized);
+
+            if (dot > 0.0f)
+            {
+                if (goalObjs.Count > 0 && onGoalFlag == false)
+                {
+                    for (int i = 0; i < goalObjs.Count; i++)
+                    {
+                        if (goalObjs[i].obj == obj &&
+                            goalObjs[i].dir == CheckPointDir.ForwardDirection)
+                        {
+                            if (goalObjs[i].count >= 0)
+                            {
+                                onGoalFlag = true;
+                                break;
+                            }
+                            
+                            var temp = goalObjs[i];
+                            temp.count = 1;
+                            goalObjs[i] = temp; // Œ³‚ÌƒŠƒXƒg‚É”½‰f
+                        }
+                    }
+                }
+            }
+            else if (dot < 0.0f)
+            {
+//                Debug.Log("‹t•ûŒü”²‚¯");
+            }
         }
     }
 

@@ -31,7 +31,7 @@ public class Spline3DWall : MonoBehaviour
     [SerializeField, ReadOnly]
     private MeshCollider meshCollider;
 
-    [SerializeField, Tooltip( "メッシュの面を反転するかどうか" )]
+    //[SerializeField, Tooltip( "メッシュの面を反転するかどうか" )]
     private bool reverseFaces = false;
 
     private float cachedLength = -1f;

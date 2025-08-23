@@ -27,6 +27,13 @@ MonoBehaviour:
     rotationMaxSpeed: 50
     brakeSpeed: 0.79
     gierRatio: 1
+    selectData:
+      previewObject: {fileID: 0}
+      sushiIcon: {fileID: 0}
+      speedText: "\u306F\u3084\u3044"
+      accelText: 
+      rotationText: 
+      descriptionText: 
   - id: Ikura
     sushiPrefub: {fileID: 7621135768791106524, guid: 5c7ae701c56f45e409b06148f7f1e3ae, type: 3}
     maxFrontSpeed: 2200
@@ -41,6 +48,13 @@ MonoBehaviour:
     rotationMaxSpeed: 60
     brakeSpeed: 0.78
     gierRatio: 1.3
+    selectData:
+      previewObject: {fileID: 0}
+      sushiIcon: {fileID: 0}
+      speedText: 
+      accelText: 
+      rotationText: 
+      descriptionText: 
   - id: Salmon
     sushiPrefub: {fileID: 5890650759879822583, guid: cb15bebcff76a6046907c5827535fdbf, type: 3}
     maxFrontSpeed: 1500
@@ -55,6 +69,13 @@ MonoBehaviour:
     rotationMaxSpeed: 30
     brakeSpeed: 0.79
     gierRatio: 1
+    selectData:
+      previewObject: {fileID: 0}
+      sushiIcon: {fileID: 0}
+      speedText: 
+      accelText: 
+      rotationText: 
+      descriptionText: 
   - id: Tekkamaki
     sushiPrefub: {fileID: 7621135768791106524, guid: 2e68836644b8c29488822067b6012735, type: 3}
     maxFrontSpeed: 2200
@@ -69,6 +90,13 @@ MonoBehaviour:
     rotationMaxSpeed: 60
     brakeSpeed: 0.68
     gierRatio: 1.7
+    selectData:
+      previewObject: {fileID: 0}
+      sushiIcon: {fileID: 0}
+      speedText: 
+      accelText: 
+      rotationText: 
+      descriptionText: 
   - id: Uni
     sushiPrefub: {fileID: 2327180845134270947, guid: b5e6af992c4c0c54f97466647e0f7f0e, type: 3}
     maxFrontSpeed: 3300
@@ -83,6 +111,13 @@ MonoBehaviour:
     rotationMaxSpeed: 20
     brakeSpeed: 0.45
     gierRatio: 0.5
+    selectData:
+      previewObject: {fileID: 0}
+      sushiIcon: {fileID: 0}
+      speedText: 
+      accelText: 
+      rotationText: 
+      descriptionText: 
   - id: Ebi
     sushiPrefub: {fileID: 2327180845134270947, guid: 8ade2214f32c83048a0e04a5c781a2cf, type: 3}
     maxFrontSpeed: 2400
@@ -97,3 +132,10 @@ MonoBehaviour:
     rotationMaxSpeed: 90
     brakeSpeed: 0.35
     gierRatio: 1
+    selectData:
+      previewObject: {fileID: 0}
+      sushiIcon: {fileID: 0}
+      speedText: 
+      accelText: 
+      rotationText: 
+      descriptionText: 

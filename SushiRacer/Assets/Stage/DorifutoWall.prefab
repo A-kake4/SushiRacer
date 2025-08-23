@@ -324,7 +324,6 @@ MonoBehaviour:
   mesh: {fileID: 0}
   meshFilter: {fileID: 1604367449409773902}
   meshCollider: {fileID: 1938503082172840986}
-  reverseFaces: 0
 --- !u!114 &8379813354762911621
 MonoBehaviour:
   m_ObjectHideFlags: 0

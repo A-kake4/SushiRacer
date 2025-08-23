@@ -31,12 +31,12 @@ public class RaceManager_Tsuji : MonoBehaviour
             }
             else
             {
-                return;
+              //  return;
             }
         }
         else
         {
-            return; // プレイヤーが設定されていない場合は何もしない
+          //  return; // プレイヤーが設定されていない場合は何もしない
         }
 
         if (racers.Count >= 2)
@@ -46,7 +46,18 @@ public class RaceManager_Tsuji : MonoBehaviour
                 racer.UpdateProgress(checkPoints);
             }
 
-            racers.Sort((a, b) => b.GetTotalDistance().CompareTo(a.GetTotalDistance()));
+            //racers.Sort((a, b) => b.GetTotalDistance().CompareTo(a.GetTotalDistance()));
+
+            // 通過数 → 距離 の順で比較
+            racers.Sort((a, b) =>
+            {
+                int passedCompare = b.GetCheckPointCount().CompareTo(a.GetCheckPointCount());
+                if (passedCompare != 0)
+                    return passedCompare; // 通過数が多い方が上位
+
+                // 通過数が同じなら距離で比較
+                return a.GetTotalDistance().CompareTo(b.GetTotalDistance());
+            });
 
             for (int i = 0; i < racers.Count; i++)
             {

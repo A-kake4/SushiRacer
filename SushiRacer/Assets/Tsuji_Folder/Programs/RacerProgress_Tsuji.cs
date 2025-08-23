@@ -1,5 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+enum CheckPointDir
+{
+    None,
+    ForwardDirection,
+    ReverseDirection,
+}
 
 [System.Serializable]
 public class RacerProgress_Tsuji : MonoBehaviour
@@ -8,8 +16,7 @@ public class RacerProgress_Tsuji : MonoBehaviour
     private float totalDistance;
     private int rank;
     private int beforeRank;
-    [SerializeField]
-    private float wasabiSealPercentage;
+    private int checkPointCount = 0;    // 通過したチェックポイントの数
 
     private Transform targetObject; // 参照元のオブジェクト
     [SerializeField]
@@ -17,31 +24,55 @@ public class RacerProgress_Tsuji : MonoBehaviour
     [SerializeField]
     private Vector3 startPoint = Vector3.zero;  // スタート地点
 
-
+    CheckPointDir insertPattern = CheckPointDir.None;
+    CheckPointDir exitPattern = CheckPointDir.None;
 
     [SerializeField]
-    private Image playerWasabiSeal; // プレイヤーのわさびシール用UIイメージ
-
-    // [SerializeField]
     private Image playerRankImage; // プレイヤー順位用のUIイメージ
 
-   // [SerializeField]
+    [SerializeField]
     private Sprite rank1Sprite; // １位のスプライト
 
-   // [SerializeField]
+    [SerializeField]
     private Sprite rank2Sprite; // ２位のスプライト
 
     [SerializeField]
-    private Sprite wasabiSealSprite_30Percent; // わさびシールのスプライト、30%
-
-    [SerializeField]
-    private Sprite wasabiSealSprite_50Percent; // わさびシールのスプライト、50%
-
-    [SerializeField]
-    private Sprite wasabiSealSprite_100Percent; // わさびシールのスプライト、100%
+    private float returnHeight = -20f; // 復帰したい高さ
 
     private void FixedUpdate()
-    {
+    { 
+        if(rank1Sprite == null || rank2Sprite == null || playerRankImage == null)
+        {
+            Debug.Log("順位用の Image や Sprite が未設定です");
+
+            return;
+        }
+
+        if (transform.position.y < returnHeight)
+        {
+            Teleport();
+        }
+
+        // チェックポイントの通過判定
+        if (insertPattern == CheckPointDir.ForwardDirection && exitPattern == CheckPointDir.ForwardDirection)
+        {
+            checkPointCount++;
+
+            insertPattern = CheckPointDir.None;
+            exitPattern = CheckPointDir.None;
+        }
+
+        // 逆走してチェックポイントを通過した場合
+        else if (insertPattern == CheckPointDir.ReverseDirection && exitPattern == CheckPointDir.ReverseDirection)
+        {
+            if(checkPointCount > 0)
+            {
+                checkPointCount--;
+            }
+            insertPattern = CheckPointDir.None;
+            exitPattern = CheckPointDir.None;
+        }
+
         if (beforeRank != rank && playerRankImage != null && rank1Sprite != null && rank2Sprite != null)
         {
             if (rank == 1)
@@ -55,28 +86,6 @@ public class RacerProgress_Tsuji : MonoBehaviour
         }
         beforeRank = rank;
 
-        //if (playerWasabiSeal != null)
-        //{
-        //    // UIを非表示
-        //    playerWasabiSeal.color = new Color(playerWasabiSeal.color.r, playerWasabiSeal.color.g, playerWasabiSeal.color.b, 1f);
-        //    if (wasabiSealPercentage >= 100f)
-        //    {
-        //        playerWasabiSeal.sprite = wasabiSealSprite_100Percent; // 100%のスプライトを設定
-        //    }
-        //    else if (wasabiSealPercentage >= 50f)
-        //    {
-        //        playerWasabiSeal.sprite = wasabiSealSprite_50Percent; // 50%のスプライトを設定
-        //    }
-        //    else if (wasabiSealPercentage >= 30f)
-        //    {
-        //        playerWasabiSeal.sprite = wasabiSealSprite_30Percent; // 30%のスプライトを設定
-        //    }
-        //    else
-        //    {
-        //        // UIを非表示
-        //        playerWasabiSeal.color = new Color(playerWasabiSeal.color.r, playerWasabiSeal.color.g, playerWasabiSeal.color.b, 0f);
-        //    }
-        //}
     }
 
     public void UpdateProgress(Transform[] waypoints)
@@ -95,11 +104,6 @@ public class RacerProgress_Tsuji : MonoBehaviour
         rank = _rank;
     }
 
-    //public void SetWasabiSealPercentage(float percentage)
-    //{
-    //    wasabiSealPercentage = Mathf.Clamp(percentage, 0f, 100f);
-    //}
-
     public float GetTotalDistance()
     {
         return totalDistance;
@@ -109,18 +113,32 @@ public class RacerProgress_Tsuji : MonoBehaviour
     {
         return rank;
     }
+    public int GetCheckPointCount()
+    {
+        return checkPointCount;
+    }
 
     public void Teleport()
     {
-        if (targetObject != null)
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
         {
-            Vector3 newPosition = targetObject.position + Vector3.up * heightOffset;
-            transform.position = newPosition;
-        }
-        else
-        {
-            Vector3 newPosition = startPoint + Vector3.up * heightOffset;
-            transform.position = newPosition;
+            Vector3 vel = rb.linearVelocity;
+
+            // 落下速度をリセット
+            vel.y = 0;
+            rb.linearVelocity = vel;
+
+            if (targetObject != null)
+            {
+                Vector3 newPosition = targetObject.position + Vector3.up * heightOffset;
+                transform.position = newPosition;
+            }
+            else
+            {
+                Vector3 newPosition = startPoint + Vector3.up * heightOffset;
+                transform.position = newPosition;
+            }
         }
     }
 
@@ -133,17 +151,58 @@ public class RacerProgress_Tsuji : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if(collider.gameObject.tag == "WayPoint")
+        GameObject obj = collider.gameObject;
+        if (obj.tag == "WayPoint")
         {
             targetObject = collider.transform;
+
+
+            Vector3 wallPos = collider.transform.position;
+            wallPos.y = 0.0f;
+
+            Vector3 racerPos = transform.position;
+            racerPos.y = 0.0f;
+
+            Vector3 wallfromPlayerDir = racerPos - wallPos;
+
+            float dot = Vector3.Dot(obj.transform.forward.normalized, wallfromPlayerDir.normalized);
+            
+            if(dot < 0.0f)
+            {
+                insertPattern = CheckPointDir.ForwardDirection;
+            }
+            else if(dot > 0.0f)
+            {
+                insertPattern = CheckPointDir.ReverseDirection;
+            }
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerExit(Collider collider)
     {
-        if (collision.gameObject.tag == "WayPoint")
+        GameObject obj = collider.gameObject;
+        if (obj.tag == "WayPoint")
         {
-            targetObject = collision.transform;
+            targetObject = collider.transform;
+
+            Vector3 wallPos = collider.transform.position;
+            wallPos.y = 0.0f;
+
+            Vector3 racerPos = transform.position;
+            racerPos.y = 0.0f;
+
+            Vector3 wallfromPlayerDir = racerPos - wallPos;
+
+            float dot = Vector3.Dot(obj.transform.forward.normalized, wallfromPlayerDir.normalized);
+
+            if (dot > 0.0f)
+            {
+                exitPattern = CheckPointDir.ForwardDirection;
+            }
+            else if (dot < 0.0f)
+            {
+                exitPattern = CheckPointDir.ReverseDirection;
+            }
         }
     }
 }

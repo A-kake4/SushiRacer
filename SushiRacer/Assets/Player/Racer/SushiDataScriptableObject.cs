@@ -7,6 +7,24 @@ public class SushiDataScriptableObject : BaseDataScriptableObject<SushiItem>
 }
 
 [System.Serializable]
+public class SushiSelectData
+{
+    [Header( "プレビューオブジェクト" ), Tooltip( "レース用のスクリプトが付いていないやつ" )]
+    public GameObject previewObject;
+
+    [Header( "スシのアイコン" ), Tooltip( "選択画面で使う" )]
+    public Sprite sushiIcon;
+    [Header( "速さ" ), Tooltip( "説明、数値ではなく「すごい」とか「ふつう」とか書く" )]
+    public string speedText;
+    [Header( "加速" ), Tooltip( "説明、数値ではなく「すごい」とか「ふつう」とか書く" )]
+    public string accelText;
+    [Header( "操作性" ), Tooltip( "説明、数値ではなく「すごい」とか「ふつう」とか書く" )]
+    public string rotationText;
+    [Header( "説明文 ( 改行できる )" ), Tooltip( "改行できる長文説明、ギア比やブレーキ等を説明" ), Multiline(6)]
+    public string descriptionText;
+}
+
+[System.Serializable]
 public class SushiItem : BaseItem
 {
     [Header( "スシのプレハブ" ), Tooltip( "プレイヤーが使用するオブジェクト" )]
@@ -38,5 +56,8 @@ public class SushiItem : BaseItem
 
     [Header( "ギア比" ), Tooltip( "壁ドリフト時の速度。1で通常時と同じ、2で2倍、0.5で半分の速度" )]
     public float gierRatio = 1f; // ギア比。1で通常、2で2倍、0.5で半分の速度
+
+    [Header( "選択データ" ), Tooltip( "選択画面で使うデータ" )]
+    public SushiSelectData selectData;
 }
 

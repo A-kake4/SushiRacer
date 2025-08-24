@@ -323,7 +323,6 @@ MonoBehaviour:
   mesh: {fileID: 0}
   meshFilter: {fileID: 7572911604719905978}
   meshCollider: {fileID: 4712120818982064165}
-  reverseFaces: 0
 --- !u!64 &4712120818982064165
 MeshCollider:
   m_ObjectHideFlags: 0

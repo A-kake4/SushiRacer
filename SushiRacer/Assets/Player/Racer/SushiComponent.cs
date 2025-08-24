@@ -50,8 +50,6 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     [SerializeField, ReadOnly]
     private PlayerTotalVelocity3d playerTotalVelocity; // プレイヤーの総合速度スクリプト
 
-
-
     [SerializeField, ReadOnly]
     private float accelSideRate = 10f; // プレイヤーの加速度
     [SerializeField, ReadOnly]
@@ -67,6 +65,9 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     private Vector3 moveDirection; // プレイヤーの移動方向
 
     private bool started = false;
+
+    [SerializeField, ReadOnly]
+    private float spGage = 0f;
 
     public SushiItem GetSushiData()
     {
@@ -163,10 +164,16 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
 
             return;
         }
+
+
+
         if ( sushiMode == SushiMode.Normal )
         {
             PlayerMove();
-            return;
+
+            float rotationSpeed = (float) spinImput.NowSpinSpeed / (float)spinImput.MaxSpinSpeed;
+
+            spGage += rotationSpeed;
         }
         if (sushiMode == SushiMode.DriftWall)
         {
@@ -189,8 +196,11 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
 
                 splineAnimateRigidbody.OffsetPsitionY += rotationSpeed * moveInput.x * 5f; // 入力に応じてカメラのY軸回転を調整
             }
-            return;
+
+            spGage += rb.linearVelocity.magnitude * 0.01f;
+
         }
+        Debug.Log(spGage);
     }
 
     private void PlayerMove()

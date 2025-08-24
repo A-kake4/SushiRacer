@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2362037187319475339, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5019496389550671036, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
       propertyPath: selectedItemID
       value: Ikura
@@ -93,7 +97,79 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 8652978604523132224, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+    - {fileID: 7523292666687259067, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2362037187319475339, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248698672795967005}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+--- !u!4 &4186028740838466358 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2362037187319475339, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+  m_PrefabInstance: {fileID: 1932157183776001981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6290743244267040123
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4186028740838466358}
+    m_Modifications:
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044509931754946918, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+      propertyPath: m_Name
+      value: Textuer Ikura
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+--- !u!4 &248698672795967005 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6070495534351971174, guid: 2f1bf598c5231fb49b159e1d5b8843f2, type: 3}
+  m_PrefabInstance: {fileID: 6290743244267040123}
+  m_PrefabAsset: {fileID: 0}

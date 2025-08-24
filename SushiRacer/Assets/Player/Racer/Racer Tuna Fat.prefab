@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1467264899953066607
+--- !u!1001 &1541634444078474350
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,79 +8,59 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 174443891466202141}
     m_Modifications:
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
+    - target: {fileID: 1641995913072729434, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
+      propertyPath: m_Name
+      value: Textuer TunaFat
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.45
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.075
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
+    - target: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568062639002810802, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_Name
-      value: Nigiri_Tuna_Fat_001 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568062639002810802, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_Layer
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
---- !u!4 &5931995471085609319 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
+--- !u!4 &3913888924997110580 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-  m_PrefabInstance: {fileID: 1467264899953066607}
+  m_CorrespondingSourceObject: {fileID: 2536671621981417306, guid: 006cf9b501ade2b42976cf4176e9aa50, type: 3}
+  m_PrefabInstance: {fileID: 1541634444078474350}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2498402151871856790
 PrefabInstance:
@@ -141,99 +121,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 787948208199377996, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+    - {fileID: 5306881012473327151, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2362037187319475339, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8827949225647483219}
-    - targetCorrespondingSourceObject: {fileID: 2362037187319475339, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5931995471085609319}
+      addedObject: {fileID: 3913888924997110580}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
 --- !u!4 &174443891466202141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2362037187319475339, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
   m_PrefabInstance: {fileID: 2498402151871856790}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &4363221511406193243
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 174443891466202141}
-    m_Modifications:
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568062639002810802, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_Name
-      value: Nigiri_Tuna_Fat_001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5568062639002810802, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
---- !u!4 &8827949225647483219 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5048090793799230216, guid: d4fdd35ae7541fa4894185b6dbadba56, type: 3}
-  m_PrefabInstance: {fileID: 4363221511406193243}
   m_PrefabAsset: {fileID: 0}

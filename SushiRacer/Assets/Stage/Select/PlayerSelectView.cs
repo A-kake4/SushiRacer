@@ -1,11 +1,18 @@
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.iOS;
 
 public class SelectView : MonoBehaviour
 {
-    [SerializeField]
-    private int playerIndex = 0;
+    [SerializeField, Header( "プレイヤーデバイス" )]
+    private int playerNumber = 0;
+
+    [SerializeField, Header("準備完了")]
+    private bool isReady = false;
+
+    [SerializeField, Header( "完了用オブジェクト" )]
+    private GameObject readyObject;
 
     [SerializeField]
     private SushiDataScriptableObject sushiDatas;
@@ -13,28 +20,38 @@ public class SelectView : MonoBehaviour
     [SerializeField, Header( "選択している寿司のインデックス" )]
     private int sushiIndex = 0;
 
-    [SerializeField, Header( "収納する親オブジェクト" )]
-    private Transform parentTransform;
-
     [SerializeField, Header( "説明文を入れるText" )]
     private TMP_Text[] descriptionText;
 
-    [SerializeField, Header( "選択できるオブジェクト" )]
-    private Dictionary<int,List<Transform>> selectTransforms;
+    [SerializeField, Header( "左位置" )]
+    private Transform leftPosition;
+    [SerializeField, Header( "中央位置" )]
+    private Transform centerPosition;
+    [SerializeField, Header( "右位置" )]
+    private Transform rightPosition;
 
-    private Vector2Int selectNavigate = Vector2Int.zero;
-    private Vector2Int maxSelectNavigate;
+    // 直前に生成したオブジェクトを保持する変数
+    private GameObject previousObject;
+    private GameObject currentObject;
 
     private readonly int inputDelay = 8;
+    private int inputDelayCount = 0;
 
     void Start()
     {
-        for ( int i = 0; i < sushiDatas.items.Length; i++ )
-        {
-            var sushiData = sushiDatas.items[i].selectData;
-        }
+        sushiIndex = PlayerSelectManager.Instance.GetSelectedCharacterIndex( playerNumber );
+
+        currentObject = SpownSushi( sushiIndex, centerPosition.position );
+
+        SetTextDescriptionText( sushiIndex );
     }
 
+    private GameObject SpownSushi( int index, Vector3 position )
+    {
+        var pre = sushiDatas.items[index].selectData.previewObject;
+        var obj = Instantiate( pre, position, Quaternion.identity );
+        return obj;
+    }
     public void SetTextDescriptionText(int index)
     {
         var sushiData = sushiDatas.items[index].selectData;
@@ -52,47 +69,91 @@ public class SelectView : MonoBehaviour
         }
     }
 
-    public void SetSelectPlayer()
+    public void SetSelectPlayer(int number)
     {
-        PlayerSelectManager.Instance.SetSelectedCharacterIndex( playerIndex, sushiIndex );
-    }
-
-    private void FixedUpdate()
-    {
-        var inputNavigate = InputManager.Instance.GetActionValue<Vector2>( playerIndex, "UI", "Navigate" );
-
-        // X入力とY入力のどちらかが閾値を超えた場合に処理を行う
-        if ( Mathf.Abs( inputNavigate.x ) > 0.5f )
-        {
-            NavigateX( inputNavigate.x );
-        }
-        else if ( Mathf.Abs( inputNavigate.y ) > 0.5f )
-        {
-            NavigateY( inputNavigate.y );
-        }
+        PlayerSelectManager.Instance.SetSelectedCharacterIndex( number, sushiIndex );
     }
 
     private void NavigateX(float addNum)
     {
+        Vector3 startPos;
+        Vector3 finishPos;
         if ( addNum > 0f )
         {
-            selectNavigate.x += 1;
+            sushiIndex += 1;
+            startPos = leftPosition.position;
+            finishPos = rightPosition.position;
         }
-        else if ( addNum < 0f )
+        else
         {
-            selectNavigate.x -= 1;
+            sushiIndex -= 1;
+            startPos = rightPosition.position;
+            finishPos = leftPosition.position;
         }
+
+        var sinMoveCurrent = currentObject.AddComponent<SinMovePosition>();
+        sinMoveCurrent.SetMove( finishPos );
+        sinMoveCurrent.DelayDestroy = true;
+
+        if ( previousObject != null )
+        {
+            Destroy( previousObject );
+        }
+        previousObject = currentObject;
+
+        sushiIndex = ( sushiIndex + sushiDatas.items.Length ) % sushiDatas.items.Length;
+        SetTextDescriptionText( sushiIndex );
+
+
+        currentObject = SpownSushi( sushiIndex, startPos );
+        var sinMoveNext = currentObject.AddComponent<SinMovePosition>();
+        sinMoveNext.SetMove( centerPosition.position );
     }
 
-    private void NavigateY( float addNum )
+    private void OnReady(bool ready)
     {
-        if (addNum > 0f)
+        isReady = ready;
+        readyObject.SetActive( ready );
+    }
+
+    private void FixedUpdate()
+    {
+        var inputSubmit = InputManager.Instance.GetActionValue<bool>( playerNumber, "UI", "Submit" );
+        if (inputSubmit && !isReady)
         {
-            selectNavigate.y += 1;
+            OnReady( true );
         }
-        else if (addNum < 0f)
+
+        if (isReady)
         {
-            selectNavigate.y -= 1;
+            var inputCancel = InputManager.Instance.GetActionValue<bool>( playerNumber, "UI", "Cancel" );
+            if (inputCancel)
+            {
+                OnReady( false );
+            }
+            return;
+        }
+
+        var inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "UI", "Navigate" ).x;
+
+        // X入力どちらかが閾値を超えた場合に処理を行う
+        if (Mathf.Abs( inputNavigateX ) > 0.5f && inputDelayCount > inputDelay)
+        {
+            // 入力を受け付けたのでカウントリセット
+            inputDelayCount = 0;
+
+            NavigateX( inputNavigateX );
+            SetSelectPlayer( playerNumber );
+        }
+        else if (Mathf.Abs( inputNavigateX ) <= 0.5f)
+        {
+            // 閾値以下ならすぐに入力を受け付けるようにする
+            inputDelayCount = inputDelay;
+        }
+        else if (inputDelayCount <= inputDelay)
+        {
+            // 入力を受け付けた後、一定時間入力を無視する
+            inputDelayCount++;
         }
     }
 }

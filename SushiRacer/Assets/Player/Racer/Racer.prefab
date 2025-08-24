@@ -6170,6 +6170,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tornade_loop_left
       objectReference: {fileID: 0}
+    - target: {fileID: 7444746640178530318, guid: 5afddb5a254f75348a02143d409be242, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

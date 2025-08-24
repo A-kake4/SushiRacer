@@ -10,6 +10,11 @@ public class RotationObject : MonoBehaviour
 
     [SerializeField,Header("‰ñ“]‚³‚¹‚é‚©")]
     private bool isRotate = true;
+    public bool IsRotate
+    {
+        get => isRotate;
+        set => isRotate = value;
+    }
 
     private Transform myTransform;
 
@@ -31,8 +36,4 @@ public class RotationObject : MonoBehaviour
         }
     }
 
-    public void SetIsRotate(bool isRotate)
-    {
-        this.isRotate = isRotate;
-    }
 }

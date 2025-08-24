@@ -125,6 +125,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racer Ebi
       objectReference: {fileID: 0}
+    - target: {fileID: 8761425627342779138, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
+    - target: {fileID: 8761425627342779138, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
+    - target: {fileID: 8761425627342779138, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8786263726553743858, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

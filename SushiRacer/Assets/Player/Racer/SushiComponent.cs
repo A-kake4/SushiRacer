@@ -62,6 +62,9 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
     [SerializeField, ReadOnly]
     private float gierRatio = 1f; // プレイヤーのギア比
 
+    [SerializeField, Header("衝突音")]
+    private AudioComponent collisionSound; // 衝突音の参照
+
     private Vector3 moveDirection; // プレイヤーの移動方向
 
     private bool started = false;
@@ -275,6 +278,14 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
             // プレイヤーの向きを移動方向に合わせて回転
             Quaternion targetRotation = Quaternion.LookRotation( moveDirection, Vector3.up );
             rb.rotation = Quaternion.Slerp( rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime );
+        }
+    }
+
+    private void OnCollisionEnter( Collision collision )
+    {
+        if ( collision.gameObject.layer == LayerMask.NameToLayer( "Player" ))
+        {
+            collisionSound.Play();
         }
     }
 }

@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateValue: {x: 0, y: 30, z: 0}
-  rotateSpeed: 1
+  rotateSpeed: 5
 --- !u!114 &3270280004530853969
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
 public class PlayerSelectView : MonoBehaviour
 {
@@ -28,12 +29,24 @@ public class PlayerSelectView : MonoBehaviour
     [SerializeField, Header( "右位置" )]
     private Transform rightPosition;
 
+    [SerializeField,Header("決定音")]
+    private AudioComponent decideSound;
+    [SerializeField,Header("キャンセル音")]
+    private AudioComponent cancelSound;
+    [SerializeField,Header("カーソル移動音")]
+    private AudioComponent moveSound;
+
     // 直前に生成したオブジェクトを保持する変数
     private GameObject previousObject;
     private GameObject currentObject;
 
     private readonly int inputDelay = 8;
     private int inputDelayCount = 0;
+
+    private bool isSubmit = false;
+    private bool oldSubmit = false;
+    private bool isCancel = false;
+    private bool oldCancel = false;
 
     private void Start()
     {
@@ -116,6 +129,9 @@ public class PlayerSelectView : MonoBehaviour
     {
         isReady = ready;
         readyObject.SetActive( ready );
+
+        currentObject.GetComponent<RotationObject>().IsRotate = !ready;
+        currentObject.GetComponent<RotateSet>().IsRotate = ready;
     }
 
     private void FixedUpdate()
@@ -126,19 +142,30 @@ public class PlayerSelectView : MonoBehaviour
             return;
         }
 
-        var inputSubmit = InputManager.Instance.GetActionPhase( playerNumber, "UI", "Submit" );
+        oldSubmit = isSubmit;
 
-        if (inputSubmit == InputActionPhase.Performed && !isReady)
+        var inputSubmit = InputManager.Instance.GetActionPhase( playerNumber, "UI", "Submit" );
+        isSubmit = inputSubmit == InputActionPhase.Performed;
+
+        if (isSubmit && !oldSubmit && !isReady)
         {
             OnReady( true );
+            decideSound.Play();
+            inputDelayCount = 0;
         }
 
         if (isReady)
         {
+            oldCancel = isCancel;
+
             var inputCancel = InputManager.Instance.GetActionPhase( playerNumber, "UI", "Cancel" );
-            if (inputCancel == InputActionPhase.Performed)
+            isCancel = inputCancel == InputActionPhase.Performed;
+
+            if (isCancel && !oldCancel)
             {
                 OnReady( false );
+                cancelSound.Play();
+                inputDelayCount = 0;
             }
             return;
         }
@@ -150,6 +177,8 @@ public class PlayerSelectView : MonoBehaviour
         {
             // 入力を受け付けたのでカウントリセット
             inputDelayCount = 0;
+
+            moveSound.Play();
 
             NavigateX( inputNavigateX );
             SetSelectPlayer( playerNumber );

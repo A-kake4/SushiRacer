@@ -60,6 +60,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Racer Salmon
       objectReference: {fileID: 0}
+    - target: {fileID: 8761425627342779138, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
+    - target: {fileID: 8761425627342779138, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
+    - target: {fileID: 8761425627342779138, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5306881012473327151, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}

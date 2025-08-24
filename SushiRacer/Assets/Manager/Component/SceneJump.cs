@@ -72,4 +72,16 @@ public class SceneJump : MonoBehaviour
             Debug.LogError( "Invalid target scene specified." );
         }
     }
+
+    //ゲーム終了
+    public void EndGame()
+    {
+        //Escが押された時
+
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+#else
+    Application.Quit();//ゲームプレイ終了
+#endif
+    }
 }

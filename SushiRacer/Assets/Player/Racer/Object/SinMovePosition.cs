@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class SinMovePosition : MonoBehaviour
 {
-    private Transform myTransform;
-
     private Vector3 startPosition;
     private Vector3 targetPosition;
 
@@ -22,12 +20,6 @@ public class SinMovePosition : MonoBehaviour
         set { delayDestroy = value; }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        myTransform = this.transform;
-    }
-
     public void SetMove(Vector3 targetPos, Vector3 startPos )
     {
         startPosition = startPos;
@@ -38,7 +30,7 @@ public class SinMovePosition : MonoBehaviour
 
     public void SetMove(Vector3 targetPos)
     {
-        SetMove( targetPos, myTransform.position );
+        SetMove( targetPos, transform.position );
     }
 
     private void FixedUpdate()
@@ -46,10 +38,10 @@ public class SinMovePosition : MonoBehaviour
         if (!isMoving) return;
         time += Time.fixedDeltaTime * moveSpeed;
         float t = Mathf.Sin(time * Mathf.PI * 0.5f); // 0から1までをsin波で補間
-        myTransform.position = Vector3.Lerp(startPosition, targetPosition, t);
+        transform.position = Vector3.Lerp(startPosition, targetPosition, t);
         if (t >= 1f)
         {
-            myTransform.position = targetPosition; // 最終位置を確実に設定
+            transform.position = targetPosition; // 最終位置を確実に設定
             isMoving = false; // 移動完了
             if (delayDestroy)
             {

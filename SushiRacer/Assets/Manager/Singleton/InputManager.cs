@@ -179,6 +179,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
             }
         }
         return InputActionPhase.Disabled;
+
     }
 
     private class ActionData

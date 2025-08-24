@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class PlayerSelectView : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerSelectView : MonoBehaviour
     private int sushiIndex = 0;
     [SerializeField, Header("準備完了")]
     private bool isReady = false;
+    public bool IsReady => isReady;
 
     [SerializeField, Header( "完了用オブジェクト" )]
     private GameObject readyObject;
@@ -41,9 +43,7 @@ public class PlayerSelectView : MonoBehaviour
 
         SetTextDescriptionText( sushiIndex );
 
-        //InputManager.Instance.CurrentGameMode = "MainGame";
-
-        //InputManager.Instance.CurrentGameMode = "UI";
+        SelectOk.Instance.SetSelectView( this );
     }
 
     private GameObject SpownSushi( int index, Vector3 position )
@@ -91,7 +91,7 @@ public class PlayerSelectView : MonoBehaviour
             finishPos = leftPosition.position;
         }
 
-        var sinMoveCurrent = currentObject.AddComponent<SinMovePosition>();
+        var sinMoveCurrent = currentObject.GetComponent<SinMovePosition>();
         sinMoveCurrent.SetMove( finishPos );
         sinMoveCurrent.DelayDestroy = true;
 
@@ -104,9 +104,11 @@ public class PlayerSelectView : MonoBehaviour
         sushiIndex = ( sushiIndex + sushiDatas.items.Length ) % sushiDatas.items.Length;
         SetTextDescriptionText( sushiIndex );
 
-
         currentObject = SpownSushi( sushiIndex, startPos );
-        var sinMoveNext = currentObject.AddComponent<SinMovePosition>();
+        if (!currentObject.TryGetComponent<SinMovePosition>( out var sinMoveNext ))
+        {
+            Debug.LogError( "SinMovePosition component is missing on the sushi preview object." );
+        }
         sinMoveNext.SetMove( centerPosition.position );
     }
 
@@ -114,11 +116,6 @@ public class PlayerSelectView : MonoBehaviour
     {
         isReady = ready;
         readyObject.SetActive( ready );
-    }
-
-    private void Update()
-    {
-        Debug.Log( playerNumber + " MoveInput: " + InputManager.Instance.GetActionValue<Vector2>( playerNumber, "UI", "Navigate" ) );
     }
 
     private void FixedUpdate()
@@ -129,25 +126,24 @@ public class PlayerSelectView : MonoBehaviour
             return;
         }
 
-        var inputSubmit = InputManager.Instance.GetActionValue<bool>( playerNumber, "UI", "Submit" );
+        var inputSubmit = InputManager.Instance.GetActionPhase( playerNumber, "UI", "Submit" );
 
-        if (inputSubmit && !isReady)
+        if (inputSubmit == InputActionPhase.Performed && !isReady)
         {
             OnReady( true );
         }
 
         if (isReady)
         {
-            var inputCancel = InputManager.Instance.GetActionValue<bool>( playerNumber, "UI", "Cancel" );
-            if (inputCancel)
+            var inputCancel = InputManager.Instance.GetActionPhase( playerNumber, "UI", "Cancel" );
+            if (inputCancel == InputActionPhase.Performed)
             {
                 OnReady( false );
             }
             return;
         }
 
-        var inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "MainGame", "Move" ).x;
-        inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "MainGame", "Spin" ).x;
+        var inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "UI", "Navigate" ).x;
 
         // X入力どちらかが閾値を超えた場合に処理を行う
         if (Mathf.Abs( inputNavigateX ) > 0.5f)

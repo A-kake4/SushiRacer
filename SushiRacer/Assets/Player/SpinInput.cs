@@ -90,7 +90,6 @@ public class SpinImput : MonoBehaviour
     {
         // 移動入力を取得
         moveInput = InputManager.Instance.GetActionValue<Vector2>( sushiComponent.PlayerNumber, "MainGame", "Move" );
-        Debug.Log( sushiComponent.PlayerNumber+ " MoveInput: " + InputManager.Instance.GetActionValue<Vector2>( sushiComponent.PlayerNumber, "UI", "Navigate" ) );
 
         // 前回の入力を保存
         oldSpinInput = nowSpinInput;

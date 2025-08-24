@@ -30,6 +30,26 @@ public class PlayerSelectManager : SingletonMonoBehaviour<PlayerSelectManager>
         InitializedAllDevices();
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < maxPlayerCount; i++)
+        {
+            // ゲームパッドの入力設定
+            var device = PlayerSelectManager.Instance.GetPlayerDevice( i );
+            if (device == null)
+            {
+                Debug.LogError( $"プレイヤー{i}に割り当てられたデバイスが null です。" );
+            }
+            else
+            {
+                Debug.Log( $"プレイヤー{i}に割り当てられたデバイス: {device}" );
+            }
+
+            // 入力マネージャにデバイスを登録
+            InputManager.Instance.RegisterPlayerDevice( i, device );
+        }
+    }
+
     protected override void OnDestroySingleton()
     {
         // デバイス変更の監視解除

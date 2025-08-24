@@ -27,20 +27,6 @@ public class PlayerSetUp : MonoBehaviour
         effectCamera.cullingMask = layerNum;
         effectLayerObject.layer = (int)Mathf.Log( layerNum, 2 );
 
-        // ゲームパッドの入力設定
-        var device = PlayerSelectManager.Instance.GetPlayerDevice( playerNumber );
-        if ( device == null )
-        {
-            Debug.LogError( $"プレイヤー{playerNumber}に割り当てられたデバイスが null です。" );
-        }
-        else
-        {
-            Debug.Log( $"プレイヤー{playerNumber}に割り当てられたデバイス: {device}" );
-        }
-
-        // 入力マネージャにデバイスを登録
-        InputManager.Instance.RegisterPlayerDevice( playerNumber, device );
-
         if(playerNumber == 0)
         {
             PlayerKeeper_Tsuji.instance.SetPlayer1( gameObject );

@@ -52,7 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Textuer Ebi
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7625003617192727935, guid: a83da0726958e2e4683659521324b6da, type: 3}
+    - {fileID: 2642642119423848830, guid: a83da0726958e2e4683659521324b6da, type: 3}
+    - {fileID: 4266117373547080843, guid: a83da0726958e2e4683659521324b6da, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -6232,7 +6232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Textuer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3270280004530853969, guid: baf67375c452bc54ba957716221345d5, type: 3}
+    - {fileID: -5549955975340571228, guid: baf67375c452bc54ba957716221345d5, type: 3}
+    - {fileID: 9189420318562574757, guid: baf67375c452bc54ba957716221345d5, type: 3}
     m_RemovedGameObjects:
     - {fileID: 8223757530672454201, guid: baf67375c452bc54ba957716221345d5, type: 3}
     - {fileID: 5245760469009832793, guid: baf67375c452bc54ba957716221345d5, type: 3}
@@ -6306,7 +6309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613477959632906548, guid: bb6c39b6532d6114fb31128ffbb25c20, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5559406401246683629, guid: bb6c39b6532d6114fb31128ffbb25c20, type: 3}
       propertyPath: m_LocalScale.x

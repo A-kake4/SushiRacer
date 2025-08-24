@@ -9,7 +9,6 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     private InputActionAsset inputActionAsset;
 
     public InputActionAsset InputActionAsset => inputActionAsset;
-
     [SerializeField, ReadOnly]
     private string nowGameMode;
 
@@ -17,8 +16,10 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     {
         set
         {
-            if ( value == null )
+            if (value != null)
+            {
                 nowGameMode = value;
+            }
         }
               
         get
@@ -165,6 +166,7 @@ public class InputManager : SingletonMonoBehaviour<InputManager>
     /// <summary>
     /// プレイヤー番号・アクションマップ名・アクション名からフェーズを取得
     /// 呼び出し例： GetActionPhase(1, "MainGame", "Jump")
+    /// if( GetActionPhase(1, "MainGame", "Jump") == InputActionPhase.Performed ) { ... }
     /// </summary>
     public InputActionPhase GetActionPhase( int playerIndex, string actionMapName, string actionName )
     {

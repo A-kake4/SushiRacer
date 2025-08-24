@@ -1,13 +1,12 @@
-using System;
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
+using TMPro;
 
-public class SelectView : MonoBehaviour
+public class PlayerSelectView : MonoBehaviour
 {
     [SerializeField, Header( "プレイヤーデバイス" )]
     private int playerNumber = 0;
-
+    [SerializeField, Header( "選択している寿司のインデックス" )]
+    private int sushiIndex = 0;
     [SerializeField, Header("準備完了")]
     private bool isReady = false;
 
@@ -16,9 +15,6 @@ public class SelectView : MonoBehaviour
 
     [SerializeField]
     private SushiDataScriptableObject sushiDatas;
-
-    [SerializeField, Header( "選択している寿司のインデックス" )]
-    private int sushiIndex = 0;
 
     [SerializeField, Header( "説明文を入れるText" )]
     private TMP_Text[] descriptionText;
@@ -37,13 +33,17 @@ public class SelectView : MonoBehaviour
     private readonly int inputDelay = 8;
     private int inputDelayCount = 0;
 
-    void Start()
+    private void Start()
     {
         sushiIndex = PlayerSelectManager.Instance.GetSelectedCharacterIndex( playerNumber );
 
         currentObject = SpownSushi( sushiIndex, centerPosition.position );
 
         SetTextDescriptionText( sushiIndex );
+
+        //InputManager.Instance.CurrentGameMode = "MainGame";
+
+        //InputManager.Instance.CurrentGameMode = "UI";
     }
 
     private GameObject SpownSushi( int index, Vector3 position )
@@ -116,9 +116,21 @@ public class SelectView : MonoBehaviour
         readyObject.SetActive( ready );
     }
 
+    private void Update()
+    {
+        Debug.Log( playerNumber + " MoveInput: " + InputManager.Instance.GetActionValue<Vector2>( playerNumber, "UI", "Navigate" ) );
+    }
+
     private void FixedUpdate()
     {
+        if(inputDelayCount < inputDelay)
+        {
+            inputDelayCount++;
+            return;
+        }
+
         var inputSubmit = InputManager.Instance.GetActionValue<bool>( playerNumber, "UI", "Submit" );
+
         if (inputSubmit && !isReady)
         {
             OnReady( true );
@@ -134,26 +146,17 @@ public class SelectView : MonoBehaviour
             return;
         }
 
-        var inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "UI", "Navigate" ).x;
+        var inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "MainGame", "Move" ).x;
+        inputNavigateX = InputManager.Instance.GetActionValue<Vector2>( playerNumber, "MainGame", "Spin" ).x;
 
         // X入力どちらかが閾値を超えた場合に処理を行う
-        if (Mathf.Abs( inputNavigateX ) > 0.5f && inputDelayCount > inputDelay)
+        if (Mathf.Abs( inputNavigateX ) > 0.5f)
         {
             // 入力を受け付けたのでカウントリセット
             inputDelayCount = 0;
 
             NavigateX( inputNavigateX );
             SetSelectPlayer( playerNumber );
-        }
-        else if (Mathf.Abs( inputNavigateX ) <= 0.5f)
-        {
-            // 閾値以下ならすぐに入力を受け付けるようにする
-            inputDelayCount = inputDelay;
-        }
-        else if (inputDelayCount <= inputDelay)
-        {
-            // 入力を受け付けた後、一定時間入力を無視する
-            inputDelayCount++;
         }
     }
 }

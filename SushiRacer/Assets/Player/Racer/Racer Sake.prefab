@@ -52,7 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Textuer Sake
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8755940229878601539, guid: a189f3ed4b0ce0f4da28e2e7f47e9088, type: 3}
+    - {fileID: 3818665842818577218, guid: a189f3ed4b0ce0f4da28e2e7f47e9088, type: 3}
+    - {fileID: 3127299684583173815, guid: a189f3ed4b0ce0f4da28e2e7f47e9088, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

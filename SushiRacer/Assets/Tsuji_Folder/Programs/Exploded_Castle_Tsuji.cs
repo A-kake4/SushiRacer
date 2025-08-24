@@ -40,7 +40,7 @@ public class Exploded_Castle_Tsuji : MonoBehaviour
             float offset = Mathf.Sin(Time.time * frequency) * amplitude;
             float fallOffset = Time.time * fallSpeed;
 
-            transform.position = startPosition + new Vector3(offset, -fallOffset, 0);
+            transform.position = startPosition + new Vector3(0, -fallOffset, offset);
        // }
 
     }
@@ -48,10 +48,10 @@ public class Exploded_Castle_Tsuji : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (sceneAsset != null)
-        {
-            sceneName = sceneAsset.name; // エディタ上でシーン名を自動取得
-        }
+        //if (sceneAsset != null)
+        //{
+        //    sceneName = sceneAsset.name; // エディタ上でシーン名を自動取得
+        //}
     }
 #endif
 

@@ -76,8 +76,8 @@ MonoBehaviour:
       accelText: 
       rotationText: 
       descriptionText: 
-  - id: Tekkamaki
-    sushiPrefub: {fileID: 7621135768791106524, guid: 2e68836644b8c29488822067b6012735, type: 3}
+  - id: Anago
+    sushiPrefub: {fileID: 5782814722408875724, guid: bca7394c85ce70646a7780db37b086ab, type: 3}
     maxFrontSpeed: 2200
     accelSpinRate: 7
     decaySpinRate: 1

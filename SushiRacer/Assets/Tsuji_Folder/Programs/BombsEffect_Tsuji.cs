@@ -6,36 +6,26 @@ public class BombsEffect_Tsuji : MonoBehaviour
     [SerializeField]
     List<GameObject> boms = new List<GameObject>();
     [SerializeField]
-    private GoalAction_Tsuji goalAction;
+    private Exploded_Castle_Tsuji explodedCastle;
 
-    private float timer = 0.0f;
     private float coolTimer = 0.0f;
     private bool isCoolOn = false;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-    }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(goalAction == null) return;
+        if(explodedCastle == null) return;
 
-        if(goalAction.GetGoalFlag() == false)
+        if(explodedCastle.GetExplodedFlag() == false)
+            return;
+
+        if(explodedCastle.GetFinishFlag() == true)
             return;
 
         if (boms.Count == 0)
         {
             return;
         }
-
-        //timer += Time.fixedDeltaTime;
-
-        //if (timer < 1.0f)
-        //{
-        //    return;
-        //}
 
         if (isCoolOn)
         {

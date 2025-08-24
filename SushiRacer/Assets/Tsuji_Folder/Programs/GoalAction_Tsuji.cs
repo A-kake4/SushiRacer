@@ -164,6 +164,7 @@ public class GoalAction_Tsuji : MonoBehaviour
         //cameraP2.gameObject.SetActive(false);
     }
 
+
     public bool GetGoalFlag()
     {
         return onGoalFlag;

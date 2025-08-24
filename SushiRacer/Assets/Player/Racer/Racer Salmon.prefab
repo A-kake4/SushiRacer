@@ -61,7 +61,82 @@ PrefabInstance:
       value: Racer Salmon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 5306881012473327151, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+    - {fileID: 787948208199377996, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2362037187319475339, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1446510225455880182}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+--- !u!4 &174443891466202141 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2362037187319475339, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+  m_PrefabInstance: {fileID: 2498402151871856790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5159774234307435689
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 174443891466202141}
+    m_Modifications:
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382985035383372127, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+      propertyPath: m_Name
+      value: Textuer Salmon
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9200995582839727633, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+    - {fileID: 3660716068096213520, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+    - {fileID: 3266728186241327077, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f7a1cbc48309b754583801bd0c7e1a17, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+--- !u!4 &1446510225455880182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6019124909028871007, guid: 6dd8ac496e6b4104eaad01dffe22612c, type: 3}
+  m_PrefabInstance: {fileID: 5159774234307435689}
+  m_PrefabAsset: {fileID: 0}

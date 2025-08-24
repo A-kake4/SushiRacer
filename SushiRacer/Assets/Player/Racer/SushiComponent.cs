@@ -165,8 +165,6 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
             return;
         }
 
-
-
         if ( sushiMode == SushiMode.Normal )
         {
             PlayerMove();
@@ -200,7 +198,6 @@ public class SushiComponent : BaseComponent<SushiItem, SushiDataScriptableObject
             spGage += rb.linearVelocity.magnitude * 0.01f;
 
         }
-        Debug.Log(spGage);
     }
 
     private void PlayerMove()

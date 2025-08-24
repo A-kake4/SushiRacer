@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4e34775fc57ecd4eb5204281d49e8b9, type: 3}
+  m_Name: AudioBGM
+  m_EditorClassIdentifier: Assembly-CSharp::AudioDataScriptableObject
+  items:
+  - id: Title
+    m_audioClip: {fileID: 8300000, guid: 5d30438a84b2d344cb62472110fa94f2, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 1
+    m_spatialBlend: 0
+  - id: Game01
+    m_audioClip: {fileID: 8300000, guid: adb03055ccfbf44458d2e2aa6bf309a7, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 1
+    m_spatialBlend: 0
+  - id: Game02
+    m_audioClip: {fileID: 8300000, guid: 7c457cac0b1c7954291a5e5ebb9865ae, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 1
+    m_spatialBlend: 0
+  - id: Game03
+    m_audioClip: {fileID: 8300000, guid: 4d0a54020c15c294aaedc2127c879572, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 1
+    m_spatialBlend: 0
+  audioGroup: {fileID: -4397817602723512457, guid: b0936c9b96666bb4499817742b4a91c8, type: 2}

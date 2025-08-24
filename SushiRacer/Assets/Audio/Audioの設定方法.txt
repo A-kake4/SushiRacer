@@ -1,0 +1,38 @@
+それぞれAudio_Managerに設定して使用する
+
+BGM（アプリ起動直後に使わない）
+
+Load In Background: オン
+Load Type: Streaming
+Commpression Format: Vorbis
+Quality: 1~50
+Sample Rate Setting: Optimize Sample Rate
+
+アプリ起動直後に使わなければ Load In Background: オン、BGMは Load Type: Streamingにするのがオススメ。
+
+SEは Force To Monoをオンにしてモノラル化した方がいい
+
+SE（元ファイルサイズ 1MB前後-ジングルなど）
+Load In Background: オン
+Load Type: Compressed In Memory
+Commpression Format: Vorbis
+Quality: 1~50
+Sample Rate Setting: Optimize Sample Rate
+
+再生時のメモリ負荷を抑えられる Load Type: Compressed In Memoryにするのがオススメ。
+
+SE（元ファイルサイズ軽い）
+SE（頻繁に使う）
+Load In Background: オン
+Load Type: Decopmpress On Load
+Commpression Format: ADPCM
+Sample Rate Setting: Optimize Sample Rate
+頻繁に使う場合はCPU負荷が軽い Commpression Format: ADPCMにするのがオススメ。
+
+SE（頻繁に使わない）
+Load In Background: オン
+Load Type: Decopmpress On Load
+Commpression Format: Vorbis
+Quality: 1~50
+Sample Rate Setting: Optimize Sample Rate
+頻繁に使わない場合はサイズが軽くなる Commpression Format: Vorbisにするのがオススメ。

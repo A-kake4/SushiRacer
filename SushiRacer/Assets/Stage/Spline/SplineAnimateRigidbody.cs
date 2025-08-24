@@ -25,6 +25,9 @@ public class SplineAnimateRigidbody : MonoBehaviour
     [SerializeField, Header( "電撃の場所" )]
     private float sparkPositionX;
 
+    [SerializeField,Header("ドリフト音")]
+    private AudioComponent driftSound;
+
 
     [SerializeField, Header( "接続対象" )]
     private HingeJoint joint; // Rigidbodyと接続するためのJoint
@@ -205,6 +208,8 @@ public class SplineAnimateRigidbody : MonoBehaviour
             sparkEffect.transform.localPosition = -Vector3.right * sparkPositionX + Vector3.up * 0.24f;
         }
 
+        driftSound?.Play();
+
         isMoving = true;
         return true;
     }
@@ -219,6 +224,7 @@ public class SplineAnimateRigidbody : MonoBehaviour
         derayFreamCount = 0;
         joint.connectedBody = null;
         sparkEffect.SetActive( false );
+        driftSound?.Stop();
         isMoving = false;
     }
 

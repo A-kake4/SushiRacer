@@ -51,6 +51,21 @@ public class AudioComponent : BaseComponent<AudioItem, AudioDataScriptableObject
     /// <summary>Ä¶’â~ƒCƒxƒ“ƒg</summary>
     public event Action OnStop;
 
+    [SerializeField, ReadOnly]
+    private float setVolume = 1f;
+    public float SetVolume
+    {
+        get => setVolume;
+        set
+        {
+            setVolume = Mathf.Clamp01(value);
+            if ( m_audioSource != null && TryGetCurrentAudioItem( out var audioItem ) )
+            {
+                m_audioSource.volume = setVolume * audioItem.Volume;
+            }
+        }
+    }
+
     private Coroutine fadeCoroutine;
 
     private void Awake()

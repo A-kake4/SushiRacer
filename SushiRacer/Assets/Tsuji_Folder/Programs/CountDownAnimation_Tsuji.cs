@@ -45,6 +45,13 @@ public class CountDownAnimation_Tsuji : MonoBehaviour
 
     private bool isStarted = false; // 開始フラグ
 
+    private bool isAudioPlayed = false; // 音が再生されたかどうかのフラグ
+
+    [SerializeField]
+    private AudioComponent countDownSound; // カウントダウン音の参照
+    [SerializeField]
+    private AudioComponent startSound; // スタート音の参照
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -64,14 +71,24 @@ public class CountDownAnimation_Tsuji : MonoBehaviour
                 timer += Time.fixedDeltaTime; // タイマーを更新
                 if (timer > 0.5f && timer < 0.8f)
                 {
-                    if (countNumber == 3)
+                    if (countNumber == 3 && !isStarted)
                     {
+                        startSound.Play();
                         isStarted = true; // タイマーが0.5秒を超えたら開始フラグを立てる
+                    }
+                    else if(!isAudioPlayed)
+                    {
+                        countDownSound.Play();
+                        isAudioPlayed = true; // 音が再生されたことを記録
                     }
                     return;
                 }
+                else
+                {
+                    isAudioPlayed = false; // 音が再生されていないことを記録
+                }
 
-                countdownImage.transform.localScale = new Vector2(transform.localScale.x - subtractionSize, transform.localScale.y - subtractionSize); // 画面サイズに合わせてImageのサイズを変更
+                    countdownImage.transform.localScale = new Vector2( transform.localScale.x - subtractionSize, transform.localScale.y - subtractionSize ); // 画面サイズに合わせてImageのサイズを変更
 
                 Rolling(); // 回転処理を呼び出す
 

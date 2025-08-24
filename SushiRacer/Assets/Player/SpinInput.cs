@@ -23,6 +23,9 @@ public class SpinImput : MonoBehaviour
     [SerializeField]
     SushiComponent sushiComponent = null; // 対象のSushiComponent
 
+    [SerializeField, Header( "ブレーキ音" )]
+    private AudioComponent brakeSound; // ブレーキ音の参照
+
     [SerializeField, ReadOnly]
     private int nowSpinRotasion = 0;
 
@@ -136,11 +139,11 @@ public class SpinImput : MonoBehaviour
 
         if ( sushiComponent.PlayerNumber == 0 )
         {
-            PlayerKeeper_Tsuji.instance.Circle1.SetGaugeValue( rate );
+            PlayerKeeper_Tsuji.instance.Circle1.SetGaugeValue( rate * 0.75f );
         }
         else
         {
-            PlayerKeeper_Tsuji.instance.Circle2.SetGaugeValue( rate );
+            PlayerKeeper_Tsuji.instance.Circle2.SetGaugeValue( rate * 0.75f );
         }
     }
 
@@ -160,6 +163,9 @@ public class SpinImput : MonoBehaviour
                 oldSpinSpeed = nowSpinSpeed; // ブレーキ前の回転速度を保存
 
                 breakEffect.SetActive( true );
+
+                // ブレーキ音を再生
+                brakeSound.Play();
             }
 
             brakeInputFrameCount++;
@@ -183,6 +189,8 @@ public class SpinImput : MonoBehaviour
                 sushiComponent.SplineAnimateRigidbody.StopMovement();
                 sushiComponent.SetSushiMode( SushiMode.Normal ); // ドリフトモードを解除
             }
+
+            brakeSound.Stop();
 
             breakEffect.SetActive( false );
         }

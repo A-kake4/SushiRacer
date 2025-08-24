@@ -16,8 +16,13 @@ public class SpinObject : MonoBehaviour
     [SerializeField]
     private Transform spinObject; // ‰ñ“]‚³‚¹‚éƒIƒuƒWƒFƒNƒg
 
+    [SerializeField, Header( "‰ñ“]‰¹" )]
+    private AudioComponent spinSound;
+
     [SerializeField, ReadOnly]
     private float rotationSpeed = 1f; // ‰ñ“]‘¬“x‚Ì”{—¦
+
+
 
     private void Start()
     {
@@ -31,6 +36,26 @@ public class SpinObject : MonoBehaviour
 
         // Å‘å‘¬“x‚ð1‚Æ‚µ‚½ê‡‚Ì‰ñ“]‘¬“x‚ðŒvŽZ
         float rotationAmount = spinSpeed / (float)maxSpinSpeed;
+
+        // ‰ñ“]‰¹‚ÌÄ¶E’âŽ~
+        if ( spinSound != null )
+        {
+            if ( rotationAmount > 0f )
+            {
+                if ( !spinSound.IsPlaying )
+                {
+                    spinSound.Play();
+                }
+                spinSound.SetVolume = rotationAmount;
+            }
+            else
+            {
+                if ( spinSound.IsPlaying )
+                {
+                    spinSound.Stop();
+                }
+            }
+        }
 
         // ‰ñ“]—Ê‚ðŒvŽZ
         float rotationAngle = rotationAmount * rotationSpeed * Time.fixedDeltaTime;

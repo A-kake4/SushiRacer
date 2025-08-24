@@ -11,6 +11,11 @@ public class RotateSet : MonoBehaviour
     private Transform myTransform;
 
     private bool isRotate = false;
+    public bool IsRotate
+    {
+        get => isRotate;
+        set => isRotate = value;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +28,7 @@ public class RotateSet : MonoBehaviour
         rotateValue = addRotate;
         isRotate = true;
     }
+
 
     private void FixedUpdate()
     {

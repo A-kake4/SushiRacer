@@ -13,16 +13,70 @@ MonoBehaviour:
   m_Name: AudioSE
   m_EditorClassIdentifier: Assembly-CSharp::AudioDataScriptableObject
   items:
-  - id: Maingame_Kusari_Break
-    m_audioClip: {fileID: 8300000, guid: 72ab2ff91bba2fa48b2fb12feab86dcd, type: 3}
-    m_volume: 0.814
+  - id: Bakuhatu
+    m_audioClip: {fileID: 8300000, guid: 6939835395a122843a969efdf257971d, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0.5
+  - id: Break
+    m_audioClip: {fileID: 8300000, guid: ef0a6a9f519b18c40b8bf26cff25a259, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0.5
+  - id: CountGo
+    m_audioClip: {fileID: 8300000, guid: bfa03b5384cba2540add2962e31ba2dc, type: 3}
+    m_volume: 0.5
     m_pitch: 1
     m_loop: 0
     m_spatialBlend: 0
-  - id: Maingame_Kusari_jhbgbbv
-    m_audioClip: {fileID: 8300000, guid: 72ab2ff91bba2fa48b2fb12feab86dcd, type: 3}
-    m_volume: 0.258
+  - id: CountDown
+    m_audioClip: {fileID: 8300000, guid: 783adafc015922e48b78f52d0669d16b, type: 3}
+    m_volume: 0.5
     m_pitch: 1
     m_loop: 0
     m_spatialBlend: 0
+  - id: Dorifuto
+    m_audioClip: {fileID: 8300000, guid: 42800584f02f31c4c8d7523d717319fc, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 1
+    m_spatialBlend: 0.5
+  - id: Spin1
+    m_audioClip: {fileID: 8300000, guid: d9818ff78a0fd88439facb60b560f28c, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 1
+    m_spatialBlend: 0.5
+  - id: Select
+    m_audioClip: {fileID: 8300000, guid: 609d4a496b888b84096a8bf11639c9d2, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0
+  - id: Submit
+    m_audioClip: {fileID: 8300000, guid: 7a0ce081c64b16e42824f951bb3054ab, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0
+  - id: Cancel
+    m_audioClip: {fileID: 8300000, guid: 13c1c0f89a72ac841a19eb64fc0c7bd8, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0
+  - id: Wall_Hit
+    m_audioClip: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0.5
+  - id: Spin2
+    m_audioClip: {fileID: 8300000, guid: 187671744f698e34f8e81300aa746136, type: 3}
+    m_volume: 0.5
+    m_pitch: 1
+    m_loop: 0
+    m_spatialBlend: 0.5
   audioGroup: {fileID: 3982537492441001337, guid: b0936c9b96666bb4499817742b4a91c8, type: 2}

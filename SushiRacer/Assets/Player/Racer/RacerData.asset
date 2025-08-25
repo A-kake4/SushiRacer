@@ -140,24 +140,3 @@ MonoBehaviour:
       accelText: "\u3059\u3054\u3044"
       rotationText: "\u3075\u3064\u3046"
       descriptionText: "\u3010\u3048\u3073\u3011\n\u5C3B\u5C3E\u306E\u66F2\u304C\u308A\u529B\n\n\u5FA9\u5E30\u529B\u306F\u30D4\u30AB\u30A4\u30C1\uFF01\uFF01\n\u6B62\u307E\u3063\u3066\u52D5\u3044\u3066\u3092\u7E70\u308A\u8FD4\u3057\u3066\u614E\u91CD\u306B\u9032\u3082\u3046"
-  - id: Tekkamaki
-    sushiPrefub: {fileID: 7621135768791106524, guid: 2e68836644b8c29488822067b6012735, type: 3}
-    maxFrontSpeed: 1700
-    accelSpinRate: 10
-    decaySpinRate: 5
-    rotationSpeed: 3800
-    inputLimit: 0.1
-    angleLimit: 5
-    maxSideSpeed: 30
-    accelSideRate: 4
-    rotationMinSpeed: 180
-    rotationMaxSpeed: 90
-    brakeSpeed: 0.88
-    gierRatio: 1
-    selectData:
-      previewObject: {fileID: 7096279413506884212, guid: e61da6dfd972baa4184361bd83232be2, type: 3}
-      sushiIcon: {fileID: 21300000, guid: b7020f75473871743bdc27550bb7fac5, type: 3}
-      speedText: "\u3059\u3054\u3044"
-      accelText: "\u3072\u304F\u3044"
-      rotationText: "\u304A\u304B\u3057\u3044"
-      descriptionText: "\u3010\u9244\u706B\u5DFB\u304D\u3011\n\u30CF\u30C1\u30E3\u30E1\u30C1\u30E3\u9BAE\u5EA6\n\n3\u3064\u306E\u982D\u3092\u56DE\u3057\u3066\u8D70\u308B3\u5144\u5F1F\n\u6700\u9AD8\u901F\u306F\u65E9\u3044\u304C\n\u64CD\u4F5C\u304C\u66B4\u308C\u99AC\u306E\u69D8\u306A\u6027\u80FD"

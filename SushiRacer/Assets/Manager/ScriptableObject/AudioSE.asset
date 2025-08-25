@@ -75,7 +75,7 @@ MonoBehaviour:
     m_spatialBlend: 0.5
   - id: Spin2
     m_audioClip: {fileID: 8300000, guid: 187671744f698e34f8e81300aa746136, type: 3}
-    m_volume: 0.8
+    m_volume: 1
     m_pitch: 1
     m_loop: 0
     m_spatialBlend: 0.5

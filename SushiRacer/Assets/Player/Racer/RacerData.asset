@@ -35,6 +35,7 @@ MonoBehaviour:
       rotationText: "\u3075\u3064\u3046"
       descriptionText: "\u3010\u30DE\u30B0\u30ED\u3011\n\u30D0\u30E9\u30F3\u30B9\u9BAE\u5EA6\n\n\u8102\u304C\u4E57\u3063\u305F\u8D70\u308A\u3092\u307F\u305B\u308B\nThis
         is JpaneseSUSHI\uFF01"
+    minimapMaterial: {fileID: 2100000, guid: 60d39b3c9f6cabd4d86b6924a9b3faa9, type: 2}
   - id: Ikura
     sushiPrefub: {fileID: 7621135768791106524, guid: 5c7ae701c56f45e409b06148f7f1e3ae, type: 3}
     maxFrontSpeed: 1600
@@ -56,6 +57,7 @@ MonoBehaviour:
       accelText: "\u304A\u305D\u3081"
       rotationText: "\u3075\u3064\u3046"
       descriptionText: "\u3010\u30A4\u30AF\u30E9\u3011\n\u901F\u5EA6\u7279\u5316\u306E\u9BAE\u5EA6\n\n\u52E2\u3044\u306B\u4E57\u308B\u3068\u306F\u3084\u3044\u304C\u6642\u9593\u304C\u304B\u304B\u308B\u305E\n\u3067\u3082\u3044\u304F\u3089\u3063\u3066\u3053\u3093\u306A\u3082\u3093\u3060\u3088\u306D...\uFF1F"
+    minimapMaterial: {fileID: 2100000, guid: e89555802b8e6744f9adcf76d9097cc1, type: 2}
   - id: Salmon
     sushiPrefub: {fileID: 5890650759879822583, guid: cb15bebcff76a6046907c5827535fdbf, type: 3}
     maxFrontSpeed: 1500
@@ -77,6 +79,7 @@ MonoBehaviour:
       accelText: "\u306F\u3084\u3081"
       rotationText: "\u3075\u3064\u3046"
       descriptionText: "\u3010\u30B5\u30FC\u30E2\u30F3\u3011\n\u5B9A\u756A\u52A0\u901F\u306E\u9BAE\u5EA6\n\n\u52A0\u901F\u306E\u5F97\u610F\u306A\u5BFF\u53F8\uFF01\n\u3053\u3069\u3082\u306F\u30C0\u30A4\u30B9\u30AD\u3067\u3059\u3088\u306D\uFF01\uFF01"
+    minimapMaterial: {fileID: 2100000, guid: cd09b8b5c5a476b43ba543f77e23db5a, type: 2}
   - id: Anago
     sushiPrefub: {fileID: 5782814722408875724, guid: bca7394c85ce70646a7780db37b086ab, type: 3}
     maxFrontSpeed: 1300
@@ -98,6 +101,7 @@ MonoBehaviour:
       accelText: "\u304A\u305D\u3081"
       rotationText: "\u3059\u3054\u3059\u304E"
       descriptionText: "\u3010\u30A2\u30CA\u30B4\u3011\n\u81EA\u6162\u306E\u30BF\u30EC\u9BAE\u5EA6\n\n\u901F\u5EA6\u306F\u51FA\u306A\u3044\u304C\u64CD\u4F5C\u306F\u3084\u308A\u3084\u3059\u3044\u305E\uFF01\n\u3042\u306A\u3054\u306F\u30D3\u30BF\u30DF\u30F3A\u3084\u4E0D\u98FD\u548C\u8102\u80AA\u9178\u304C\u8C4A\u5BCC\u3067\u4F4E\u30AB\u30ED\u30EA\u30FC\u3001\u30A6\u30CA\u30AE\u3068\u6BD4\u3079\u3066\u3042\u3063\u3055\u308A\u3068\u3057\u305F\u5473\u308F\u3044\u304C\u7279\u5FB4\u3060\u305E\uFF01"
+    minimapMaterial: {fileID: 2100000, guid: e4dfa15d619a2274aa0182b997def385, type: 2}
   - id: Uni
     sushiPrefub: {fileID: 2327180845134270947, guid: b5e6af992c4c0c54f97466647e0f7f0e, type: 3}
     maxFrontSpeed: 2000
@@ -119,6 +123,7 @@ MonoBehaviour:
       accelText: "\u3075\u3064\u3046"
       rotationText: "\u3084\u3070\u3081"
       descriptionText: "\u3010\u3046\u306B\u3011\n\u76F4\u7DDA\u5473\u899A\u306E\u9BAE\u5EA6\n\n\u3068\u306B\u304B\u304F\u306F\u3084\u3044\u305E\uFF01\n\u305F\u3060\u306F\u3084\u3059\u304E\u3066\u6271\u3044\u304D\u308C\u308B\u304B\u306F\u3042\u306A\u305F\u6B21\u7B2C"
+    minimapMaterial: {fileID: 2100000, guid: c6fc33810cd148b4bbae4256a1b96328, type: 2}
   - id: Ebi
     sushiPrefub: {fileID: 2327180845134270947, guid: 8ade2214f32c83048a0e04a5c781a2cf, type: 3}
     maxFrontSpeed: 1200
@@ -140,3 +145,4 @@ MonoBehaviour:
       accelText: "\u3059\u3054\u3044"
       rotationText: "\u3075\u3064\u3046"
       descriptionText: "\u3010\u3048\u3073\u3011\n\u5C3B\u5C3E\u306E\u66F2\u304C\u308A\u529B\n\n\u5FA9\u5E30\u529B\u306F\u30D4\u30AB\u30A4\u30C1\uFF01\uFF01\n\u6B62\u307E\u3063\u3066\u52D5\u3044\u3066\u3092\u7E70\u308A\u8FD4\u3057\u3066\u614E\u91CD\u306B\u9032\u3082\u3046"
+    minimapMaterial: {fileID: 2100000, guid: 8a6a0efed6ce1da4fb12f89124121ecc, type: 2}

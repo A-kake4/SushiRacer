@@ -120,7 +120,6 @@ GameObject:
   m_Component:
   - component: {fileID: 782795601598116347}
   - component: {fileID: 968708561070588967}
-  - component: {fileID: 3144136992126991049}
   - component: {fileID: 2147691436985307481}
   m_Layer: 0
   m_Name: GoalCamera
@@ -153,8 +152,8 @@ Camera:
   m_GameObject: {fileID: 8909892533105155345}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0.19215688, b: 0.25490198, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -195,14 +194,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &3144136992126991049
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8909892533105155345}
-  m_Enabled: 1
 --- !u!114 &2147691436985307481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,7 +1459,7 @@ MonoBehaviour:
   goalAction: {fileID: 0}
   sceneName: title
   finishHeight: -58
-  finishWaitTime: 2
+  finishWaitTime: 0.8
   explodeStartTime: 3
 --- !u!4 &7957932101428919383 stripped
 Transform:

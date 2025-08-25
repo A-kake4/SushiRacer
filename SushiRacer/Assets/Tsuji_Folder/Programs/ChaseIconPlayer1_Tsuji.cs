@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ChaseIconPlayer1_Tsuji : MonoBehaviour
 {
@@ -7,7 +8,13 @@ public class ChaseIconPlayer1_Tsuji : MonoBehaviour
 
     [SerializeField]
     private float offsetHeight = 0.0f;
+    [SerializeField]
+    private MeshRenderer meshRenderer;
 
+    [SerializeField]
+    private SushiDataScriptableObject sushi;
+
+    private bool setUp = false;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -19,6 +26,14 @@ public class ChaseIconPlayer1_Tsuji : MonoBehaviour
             {
                 // プレイヤー1の位置にアイコンを追従させる
                 transform.position = player1.transform.position + Vector3.up * offsetHeight;
+
+
+                if ( !setUp )
+                {
+                    int charIndex = PlayerSelectManager.Instance.GetSelectedCharacterIndex(0);
+                    meshRenderer.material = sushi.items[charIndex].minimapMaterial;
+                    setUp = true;
+                }
             }
         }
 

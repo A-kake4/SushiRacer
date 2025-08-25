@@ -73,6 +73,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2717089528893360756, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5019496389550671036, guid: df3becfd925cd1145ba6a1e8c182dae3, type: 3}
       propertyPath: selectedItemID
       value: Ebi

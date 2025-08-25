@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 5, y: 20, z: 0}
-  m_LocalScale: {x: 1.225, y: 1, z: 0.875}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 10.000001, y: 0.033333335, z: 8.333334}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a1e1f434f76645e49b11cbe88cfa1c44, type: 2}
+  - {fileID: 2100000, guid: e89555802b8e6744f9adcf76d9097cc1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,5 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72fafa4bcf680f409412d7e35e5c9ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerKeeper: {fileID: 0}
   offsetHeight: 20
+  meshRenderer: {fileID: 5418217452274348016}
+  sushi: {fileID: 11400000, guid: 06160b8d98917a748921af52dd50733b, type: 2}

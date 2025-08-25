@@ -59,5 +59,8 @@ public class SushiItem : BaseItem
 
     [Header( "選択データ" ), Tooltip( "選択画面で使うデータ" )]
     public SushiSelectData selectData;
+
+    [Header( "ミニマップアイコン" )]
+    public Material minimapMaterial;
 }
 

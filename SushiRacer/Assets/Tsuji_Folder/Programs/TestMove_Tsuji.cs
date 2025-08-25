@@ -36,7 +36,7 @@ public class TestMove_Tsuji : MonoBehaviour
     {
         // —á: ’Pƒ‚ÉTranslate‚Å“®‚©‚·
         Vector3 move = new Vector3(moveInput.x, 0, moveInput.y);
-        transform.Translate(move * 10f * Time.deltaTime);
+        transform.Translate(move * 30f * Time.deltaTime);
     }
 
     void OnWarp()

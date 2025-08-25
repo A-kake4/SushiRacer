@@ -158,8 +158,18 @@ public class GoalAction_Tsuji : MonoBehaviour
 
     void NonActives()
     {
-        PlayerKeeper_Tsuji.instance.GetCamera1().gameObject.SetActive(false);
-        PlayerKeeper_Tsuji.instance.GetCamera2().gameObject.SetActive(false);
+        GameObject p1 = PlayerKeeper_Tsuji.instance.GetPlayer1();
+        if (p1 != null)
+        {
+            p1.SetActive(false);
+        }
+
+        GameObject p2 = PlayerKeeper_Tsuji.instance.GetPlayer2();
+        if (p2 != null)
+        {
+            p2.SetActive(false);
+        }
+
         //cameraP1.gameObject.SetActive(false);
         //cameraP2.gameObject.SetActive(false);
     }

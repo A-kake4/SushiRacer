@@ -582,7 +582,6 @@ MonoBehaviour:
   maxDelayCount: 30
   sceneJump:
   - {fileID: 628151166}
-  - {fileID: 1711980000}
 --- !u!114 &677715992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -599,6 +598,7 @@ MonoBehaviour:
   selectedItemNumber: 3
   selectedItemID: Game03
   m_audioSource: {fileID: 677715993}
+  setVolume: 1
 --- !u!82 &677715993
 AudioSource:
   m_ObjectHideFlags: 0
@@ -612,7 +612,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 4d0a54020c15c294aaedc2127c879572, type: 3}
   m_Resource: {fileID: 8300000, guid: 4d0a54020c15c294aaedc2127c879572, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2171,7 +2171,7 @@ GameObject:
   - component: {fileID: 1711979999}
   - component: {fileID: 1711980000}
   m_Layer: 0
-  m_Name: Stage01
+  m_Name: Stage02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

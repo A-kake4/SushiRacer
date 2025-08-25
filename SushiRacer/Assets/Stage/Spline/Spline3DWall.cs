@@ -349,24 +349,41 @@ public class Spline3DWall : MonoBehaviour
         {
             ValidateMeshFilter();
         }
-#else
 #endif
     }
 
     private void ValidateMeshFilter()
     {
-        if (meshFilter == null)
+        if ( meshFilter == null )
         {
             TryGetComponent( out meshFilter );
         }
 
-        if (mesh == null)
+#if UNITY_EDITOR
+        // エディター実行中（プレイモードでない場合）は sharedMesh を用いる
+        if ( !Application.isPlaying )
+        {
+            if ( mesh == null )
+            {
+                mesh = new Mesh { name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh" };
+                meshFilter.sharedMesh = mesh;
+            }
+            else if ( meshFilter.sharedMesh != mesh )
+            {
+                mesh = Instantiate( meshFilter.sharedMesh );
+                mesh.name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh";
+                meshFilter.sharedMesh = mesh;
+            }
+            return;
+        }
+#endif
+        // プレイ中の場合は通常どおり mesh プロパティを用いる
+        if ( mesh == null )
         {
             mesh = new Mesh { name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh" };
             meshFilter.mesh = mesh;
         }
-
-        if (meshFilter != null && meshFilter.sharedMesh != mesh)
+        else if ( meshFilter.sharedMesh != mesh )
         {
             mesh = Instantiate( meshFilter.sharedMesh );
             mesh.name = $"{SceneManager.GetActiveScene().name}_{gameObject.name}_3dWallMesh";

@@ -11,12 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScenes/Main_Select.unity
     guid: f2b21cbc43ff95348b6eadd4424c0744
-  - enabled: 0
-    path: Assets/Scenes/MainScenes/Select_Pre.unity
-    guid: ff156ea258182db4ea0b34cea3f0aadb
-  - enabled: 1
-    path: Assets/Scenes/MainScenes/Stage_Template.unity
-    guid: cb33bc103b15ad542bef1b0c011e1886
   - enabled: 1
     path: Assets/Scenes/MainScenes/Stage01.unity
     guid: 734f22ad7563dde47824461b2598b09f

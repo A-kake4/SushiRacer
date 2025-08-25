@@ -2,6 +2,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerSelectView : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class PlayerSelectView : MonoBehaviour
 
     [SerializeField, Header( "完了用オブジェクト" )]
     private GameObject readyObject;
+
+    [SerializeField,Header("選択中の寿司アイコン")]
+    private Image  sushiIconImage;
 
     [SerializeField]
     private SushiDataScriptableObject sushiDatas;
@@ -80,6 +84,7 @@ public class PlayerSelectView : MonoBehaviour
             if (j == 3)
                 descriptionText[j].text = sushiData.descriptionText;
         }
+        sushiIconImage.sprite = sushiData.sushiIcon;
     }
 
     public void SetSelectPlayer(int number)

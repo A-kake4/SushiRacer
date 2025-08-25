@@ -317,6 +317,7 @@ RectTransform:
   m_Children:
   - {fileID: 1390027922655508250}
   - {fileID: 4373184651527910903}
+  - {fileID: 2635604584975433139}
   m_Father: {fileID: 401264278053392643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.008, y: 0.03}
@@ -792,7 +793,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u6E96\u5099\u3044\u3044"
+  m_text: "\u6E96\u5099\u3088\u3044"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9aaf6baa166496499883eecf69f76f4, type: 2}
   m_sharedMaterial: {fileID: -5216147547210062565, guid: b9aaf6baa166496499883eecf69f76f4, type: 2}
@@ -1423,6 +1424,81 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &6671699898529864433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2635604584975433139}
+  - component: {fileID: 485087997421683842}
+  - component: {fileID: 1398461371283932814}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2635604584975433139
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671699898529864433}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 6116998515606161195}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 250}
+  m_Pivot: {x: 1, y: 1}
+--- !u!222 &485087997421683842
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671699898529864433}
+  m_CullTransparentMesh: 1
+--- !u!114 &1398461371283932814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671699898529864433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 1c390889200bb6b49bb3a7fce304e888, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6806480534075385384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1631,7 @@ MonoBehaviour:
   sushiIndex: 0
   isReady: 0
   readyObject: {fileID: 6624325481162301719}
+  sushiIconImage: {fileID: 1398461371283932814}
   sushiDatas: {fileID: 11400000, guid: 06160b8d98917a748921af52dd50733b, type: 2}
   descriptionText:
   - {fileID: 4461802676424304146}
@@ -1632,7 +1709,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "[\u30A4\u30AF\u30E9]\n\u3000\u3059\u3054\u304F\u8D64\u3044\n\u3000"
+  m_text: "\u3010\u30DE\u30B0\u30ED\u3011\n\u30D0\u30E9\u30F3\u30B9\u9BAE\u5EA6\n\n\u8102\u304C\u4E57\u3063\u305F\u8D70\u308A\u3067\u5B89\u5B9A\u3057\u305F\n\u9BAE\u5EA6\u3092\u63D0\u4F9B\u3059\u308B\uFF01\nThis
+    is JpaneseSUSHI\uFF01"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9aaf6baa166496499883eecf69f76f4, type: 2}
   m_sharedMaterial: {fileID: -5216147547210062565, guid: b9aaf6baa166496499883eecf69f76f4, type: 2}

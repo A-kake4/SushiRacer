@@ -183,10 +183,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3982537492441001337, guid: b0936c9b96666bb4499817742b4a91c8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7a0ce081c64b16e42824f951bb3054ab, type: 3}
-  m_Resource: {fileID: 8300000, guid: 7a0ce081c64b16e42824f951bb3054ab, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 609d4a496b888b84096a8bf11639c9d2, type: 3}
+  m_Resource: {fileID: 8300000, guid: 609d4a496b888b84096a8bf11639c9d2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataSource: {fileID: 11400000, guid: 64ee1e161ea810248ba891a07645871b, type: 2}
-  selectedItemNumber: 7
+  selectedItemNumber: 6
   selectedItemID: Select
   m_audioSource: {fileID: 8524563827911596026}
   setVolume: 1
@@ -1866,8 +1866,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3982537492441001337, guid: b0936c9b96666bb4499817742b4a91c8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
-  m_Resource: {fileID: 8300000, guid: 54001371b66112b47aaaf8f8d4a07d6d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 13c1c0f89a72ac841a19eb64fc0c7bd8, type: 3}
+  m_Resource: {fileID: 8300000, guid: 13c1c0f89a72ac841a19eb64fc0c7bd8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
@@ -1913,7 +1913,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1966,7 +1966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataSource: {fileID: 11400000, guid: 64ee1e161ea810248ba891a07645871b, type: 2}
-  selectedItemNumber: 9
+  selectedItemNumber: 8
   selectedItemID: Cancel
   m_audioSource: {fileID: 639021118548102509}
   setVolume: 1
@@ -2154,10 +2154,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 3982537492441001337, guid: b0936c9b96666bb4499817742b4a91c8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 13c1c0f89a72ac841a19eb64fc0c7bd8, type: 3}
-  m_Resource: {fileID: 8300000, guid: 13c1c0f89a72ac841a19eb64fc0c7bd8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7a0ce081c64b16e42824f951bb3054ab, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7a0ce081c64b16e42824f951bb3054ab, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2254,7 +2254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataSource: {fileID: 11400000, guid: 64ee1e161ea810248ba891a07645871b, type: 2}
-  selectedItemNumber: 8
+  selectedItemNumber: 7
   selectedItemID: Submit
   m_audioSource: {fileID: 5374743078663716558}
   setVolume: 1
